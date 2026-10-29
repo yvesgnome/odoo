@@ -50,7 +50,9 @@ venv/Scripts/python.exe odoo-bin -c wb.conf -d wb_dev -u regie_fonciere --i18n-o
 
 # browser (UI) tests: Odoo only looks for Chrome; use Edge (Chromium) through ODOO_BROWSER_BIN,
 # `websocket-client` is installed in the venv, and use another port than the running server (8070)
-ODOO_BROWSER_BIN="C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" MSYS_NO_PATHCONV=1     venv/Scripts/python.exe odoo-bin -c wb.conf -d wb_dev -u regie_fonciere --test-tags /regie_fonciere     --stop-after-init --http-port=8079
+ODOO_BROWSER_BIN="C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" MSYS_NO_PATHCONV=1 \
+    venv/Scripts/python.exe odoo-bin -c wb.conf -d wb_dev -u regie_fonciere --test-tags /regie_fonciere \
+    --stop-after-init --http-port=8079
 # (without ODOO_BROWSER_BIN the browser test is skipped)
 
 # run the server
