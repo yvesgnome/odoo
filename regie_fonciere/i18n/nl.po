@@ -4087,3 +4087,48 @@ msgstr "met de gestructureerde mededeling"
 #: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
 msgid "× EPC correction factor"
 msgstr "× EPB-correctiefactor"
+
+#. module: regie_fonciere
+#: model:regie.charge.category,description:regie_fonciere.charge_category_cleaning
+msgid "Cleaning of the common areas and cleaning products."
+msgstr "Schoonmaak van de gemeenschappelijke delen en schoonmaakproducten."
+
+#. module: regie_fonciere
+#: model:regie.charge.category,description:regie_fonciere.charge_category_common_electricity
+msgid "Electricity of the halls, staircases, cellars and outdoor lighting."
+msgstr ""
+"Elektriciteit van de hallen, traphallen, kelders en buitenverlichting."
+
+#. module: regie_fonciere
+#: model:regie.charge.category,description:regie_fonciere.charge_category_heating
+msgid "Energy of the collective heating and of the hot water production."
+msgstr "Energie van de collectieve verwarming en van de warmwaterproductie."
+
+#. module: regie_fonciere
+#: model:regie.charge.category,description:regie_fonciere.charge_category_elevator
+msgid "Maintenance contract, inspections and electricity of the elevator."
+msgstr "Onderhoudscontract, keuringen en elektriciteit van de lift."
+
+#. module: regie_fonciere
+#: model:regie.charge.category,description:regie_fonciere.charge_category_gardens
+msgid "Maintenance of the common gardens and green spaces."
+msgstr "Onderhoud van de gemeenschappelijke tuinen en groene ruimten."
+
+#. module: regie_fonciere
+#: model:regie.charge.category,description:regie_fonciere.charge_category_maintenance
+msgid ""
+"Other maintenance contracts of the common equipment (boiler, fire safety, "
+"doors...)."
+msgstr ""
+"Andere onderhoudscontracten van de gemeenschappelijke uitrusting (ketel, "
+"brandveiligheid, deuren...)."
+
+#. module: regie_fonciere
+#: model:regie.charge.category,description:regie_fonciere.charge_category_caretaker
+msgid "Remuneration and charges of the caretaker (recoverable part)."
+msgstr "Bezoldiging en lasten van de conciërge (verhaalbaar deel)."
+
+#. module: regie_fonciere
+#: model:regie.charge.category,description:regie_fonciere.charge_category_water
+msgid "Water consumption of the building (common meter)."
+msgstr "Waterverbruik van het gebouw (gemeenschappelijke meter)."

@@ -5,6 +5,7 @@
         <field name="name">Chauffage Lumière SRL (démo)</field>
         <field name="is_company" eval="True"/>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="city">Bruxelles</field>
         <field name="country_id" ref="base.be"/>
     </record>
@@ -12,6 +13,7 @@
         <field name="name">Distribution d'eau du Canal (démo)</field>
         <field name="is_company" eval="True"/>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="city">Bruxelles</field>
         <field name="country_id" ref="base.be"/>
     </record>
@@ -19,6 +21,7 @@
         <field name="name">Stroom &amp; Co BV (demo)</field>
         <field name="is_company" eval="True"/>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="city">Brussel</field>
         <field name="country_id" ref="base.be"/>
     </record>
@@ -26,6 +29,7 @@
         <field name="name">Net &amp; Propre SRL (démo)</field>
         <field name="is_company" eval="True"/>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="city">Anderlecht</field>
         <field name="country_id" ref="base.be"/>
     </record>
@@ -33,6 +37,7 @@
         <field name="name">Liftservice Zenne NV (demo)</field>
         <field name="is_company" eval="True"/>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="city">Vilvoorde</field>
         <field name="country_id" ref="base.be"/>
     </record>

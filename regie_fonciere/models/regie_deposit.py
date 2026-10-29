@@ -187,14 +187,15 @@ class RegieDeposit(models.Model):
     def _regie_demo_process_deposits(self):
         """ Demo: retentions and release request of the deposit of the terminated lease (11), full
         retention of the deposit of the litigation lease (12). """
+        self = self.with_context(lang='fr_BE')  # noqa: PLW0642 (demo texts in French)
         deposit = self.env.ref('regie_fonciere.demo_deposit_11', raise_if_not_found=False)
         if deposit and deposit.state == 'constituted':
             deposit.action_compute_retentions()
-            deposit.write({'damage_amount': 150.0, 'retention_reason': "Unpaid rent of August 2026; broken kitchen cupboard door."})
+            deposit.write({'damage_amount': 150.0, 'retention_reason': "Loyer impayé d'août 2026 ; porte d'armoire de cuisine cassée."})
             deposit.action_request_release()
         deposit = self.env.ref('regie_fonciere.demo_deposit_12', raise_if_not_found=False)
         if deposit and deposit.state == 'constituted':
             deposit.action_compute_retentions()
-            deposit.retention_reason = "Unpaid rents since March 2026 (proceedings before the justice of the peace)."
+            deposit.retention_reason = "Loyers impayés depuis mars 2026 (procédure devant la justice de paix)."
             deposit.state = 'release_requested'
             deposit.action_release()

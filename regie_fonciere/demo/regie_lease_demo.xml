@@ -4,6 +4,7 @@
     <record id="demo_partner_marc_dubois" model="res.partner">
         <field name="name">Marc Dubois</field>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="street">Rue du Héron Cendré 14, bte 1.1</field>
         <field name="zip">1060</field>
         <field name="city">Saint-Gilles</field>
@@ -13,6 +14,7 @@
     <record id="demo_partner_sofie_peeters" model="res.partner">
         <field name="name">Sofie Peeters</field>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="street">Rue du Héron Cendré 14, bte 1.2</field>
         <field name="zip">1060</field>
         <field name="city">Saint-Gilles</field>
@@ -22,6 +24,7 @@
     <record id="demo_partner_youssef_benali" model="res.partner">
         <field name="name">Youssef Benali</field>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="street">Rue du Héron Cendré 14, bte 2.1</field>
         <field name="zip">1060</field>
         <field name="city">Saint-Gilles</field>
@@ -31,6 +34,7 @@
     <record id="demo_partner_jan_vermeulen" model="res.partner">
         <field name="name">Jan Vermeulen</field>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="street">Rue du Héron Cendré 14, bte 3.2</field>
         <field name="zip">1060</field>
         <field name="city">Saint-Gilles</field>
@@ -40,6 +44,7 @@
     <record id="demo_partner_camille_lambert" model="res.partner">
         <field name="name">Camille Lambert</field>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="street">Rue du Héron Cendré 14, bte 4.1</field>
         <field name="zip">1060</field>
         <field name="city">Saint-Gilles</field>
@@ -49,6 +54,7 @@
     <record id="demo_partner_lotte_janssens" model="res.partner">
         <field name="name">Lotte Janssens</field>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="street">Rue du Héron Cendré 14, bte 2.2</field>
         <field name="zip">1060</field>
         <field name="city">Saint-Gilles</field>
@@ -58,6 +64,7 @@
     <record id="demo_partner_pieter_desmet" model="res.partner">
         <field name="name">Pieter De Smet</field>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="street">Avenue des Saules Pleureurs 27, bte 2.1</field>
         <field name="zip">1050</field>
         <field name="city">Ixelles</field>
@@ -67,6 +74,7 @@
     <record id="demo_partner_thomas_maes" model="res.partner">
         <field name="name">Thomas Maes</field>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="street">Avenue des Saules Pleureurs 27, bte 2.1</field>
         <field name="zip">1050</field>
         <field name="city">Ixelles</field>
@@ -76,6 +84,7 @@
     <record id="demo_partner_hilde_desmet" model="res.partner">
         <field name="name">Hilde De Smet</field>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="street">Kerkstraat 101</field>
         <field name="zip">9000</field>
         <field name="city">Gent</field>
@@ -86,6 +95,7 @@
         <field name="name">Le Fournil du Héron SRL</field>
         <field name="is_company" eval="True"/>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="street">Rue du Héron Cendré 14</field>
         <field name="zip">1060</field>
         <field name="city">Saint-Gilles</field>
@@ -95,6 +105,7 @@
     <record id="demo_partner_elise_wouters" model="res.partner">
         <field name="name">Elise Wouters</field>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="street">Avenue des Saules Pleureurs 31</field>
         <field name="zip">1050</field>
         <field name="city">Ixelles</field>
@@ -104,6 +115,7 @@
     <record id="demo_partner_nathalie_lefebvre" model="res.partner">
         <field name="name">Nathalie Lefebvre</field>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="street">Avenue des Saules Pleureurs 27, bte 1.1</field>
         <field name="zip">1050</field>
         <field name="city">Ixelles</field>
@@ -113,6 +125,7 @@
     <record id="demo_partner_koen_claes" model="res.partner">
         <field name="name">Koen Claes</field>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="street">Rue des Peupliers Bleus 3</field>
         <field name="zip">1080</field>
         <field name="city">Molenbeek-Saint-Jean</field>
@@ -122,6 +135,7 @@
     <record id="demo_partner_amelie_fontaine" model="res.partner">
         <field name="name">Amélie Fontaine</field>
         <field name="company_id" ref="demo_company"/>
+        <field name="lang">fr_BE</field>
         <field name="street">Rue des Trois Lanternes 9</field>
         <field name="zip">1030</field>
         <field name="city">Schaerbeek</field>

@@ -277,10 +277,9 @@ class RegieIndexation(models.Model):
         company = self.env.ref('regie_fonciere.demo_company', raise_if_not_found=False)
         if not company:
             return
-        self = self.with_company(company).with_context(allowed_company_ids=company.ids)  # noqa: PLW0642
+        self = self.with_company(company).with_context(allowed_company_ids=company.ids, lang='fr_BE')  # noqa: PLW0642
         if self.search_count([('company_id', '=', company.id)]):
             return
-        self.env['res.lang']._activate_lang('fr_BE')
         ref = self.env.ref
         date = fields.Date.to_date
         # To validate: EPC F and EPC E, leases in force before 14/10/2022 (correction factor)
@@ -301,7 +300,7 @@ class RegieIndexation(models.Model):
         applied.action_apply()
         # Refused
         refused = ref('regie_fonciere.demo_lease_09')._create_indexation(date('2026-08-01'))
-        refused.refusal_reason = "Parking rent kept unchanged (decision of the board of 2026-07-14)."
+        refused.refusal_reason = "Loyer du parking maintenu (décision du conseil d'administration du 14/07/2026)."
         refused.action_refuse()
 
     def action_open_lease(self):

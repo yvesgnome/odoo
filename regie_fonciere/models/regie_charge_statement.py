@@ -220,7 +220,7 @@ class RegieChargeStatement(models.Model):
         company = self.env.ref('regie_fonciere.demo_company', raise_if_not_found=False)
         if not company:
             return
-        self = self.with_company(company).with_context(allowed_company_ids=company.ids)  # noqa: PLW0642
+        self = self.with_company(company).with_context(allowed_company_ids=company.ids, lang='fr_BE')  # noqa: PLW0642
         building = self.env.ref('regie_fonciere.demo_building_heron')
         if self.search_count([('building_id', '=', building.id)]):
             return

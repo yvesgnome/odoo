@@ -13,41 +13,49 @@
     <record id="charge_category_heating" model="regie.charge.category">
         <field name="name">Heating</field>
         <field name="code">HEAT</field>
+        <field name="description">Energy of the collective heating and of the hot water production.</field>
         <field name="sequence">10</field>
     </record>
     <record id="charge_category_water" model="regie.charge.category">
         <field name="name">Water</field>
         <field name="code">WATER</field>
+        <field name="description">Water consumption of the building (common meter).</field>
         <field name="sequence">20</field>
     </record>
     <record id="charge_category_common_electricity" model="regie.charge.category">
         <field name="name">Common Areas Electricity</field>
         <field name="code">ELEC</field>
+        <field name="description">Electricity of the halls, staircases, cellars and outdoor lighting.</field>
         <field name="sequence">30</field>
     </record>
     <record id="charge_category_cleaning" model="regie.charge.category">
         <field name="name">Cleaning</field>
         <field name="code">CLEAN</field>
+        <field name="description">Cleaning of the common areas and cleaning products.</field>
         <field name="sequence">40</field>
     </record>
     <record id="charge_category_elevator" model="regie.charge.category">
         <field name="name">Elevator</field>
         <field name="code">LIFT</field>
+        <field name="description">Maintenance contract, inspections and electricity of the elevator.</field>
         <field name="sequence">50</field>
     </record>
     <record id="charge_category_caretaker" model="regie.charge.category">
         <field name="name">Caretaker</field>
         <field name="code">CARE</field>
+        <field name="description">Remuneration and charges of the caretaker (recoverable part).</field>
         <field name="sequence">60</field>
     </record>
     <record id="charge_category_gardens" model="regie.charge.category">
         <field name="name">Gardens</field>
         <field name="code">GARDEN</field>
+        <field name="description">Maintenance of the common gardens and green spaces.</field>
         <field name="sequence">70</field>
     </record>
     <record id="charge_category_maintenance" model="regie.charge.category">
         <field name="name">Maintenance Contracts</field>
         <field name="code">MAINT</field>
+        <field name="description">Other maintenance contracts of the common equipment (boiler, fire safety, doors...).</field>
         <field name="sequence">80</field>
     </record>
 

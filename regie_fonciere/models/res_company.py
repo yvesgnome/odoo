@@ -116,6 +116,9 @@ class ResCompany(models.Model):
         company = self.env.ref('regie_fonciere.demo_company', raise_if_not_found=False)
         if not company:
             return
+        # French and Dutch for the demo: tenants, invoices and letters in French.
+        for code in ('fr_BE', 'nl_BE'):
+            self.env['res.lang']._activate_lang(code)
         if not company.chart_template:
             # _load() rather than try_loading(): the latter warns when the registry is not fully
             # loaded unless the chart's own demo (sample invoices) is installed, which we don't want.

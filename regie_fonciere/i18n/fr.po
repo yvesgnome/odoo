@@ -4071,3 +4071,48 @@ msgstr "avec la communication structurée"
 #: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
 msgid "× EPC correction factor"
 msgstr "× facteur de correction PEB"
+
+#. module: regie_fonciere
+#: model:regie.charge.category,description:regie_fonciere.charge_category_cleaning
+msgid "Cleaning of the common areas and cleaning products."
+msgstr "Nettoyage des parties communes et produits d'entretien."
+
+#. module: regie_fonciere
+#: model:regie.charge.category,description:regie_fonciere.charge_category_common_electricity
+msgid "Electricity of the halls, staircases, cellars and outdoor lighting."
+msgstr ""
+"Électricité des halls, cages d'escalier, caves et de l'éclairage extérieur."
+
+#. module: regie_fonciere
+#: model:regie.charge.category,description:regie_fonciere.charge_category_heating
+msgid "Energy of the collective heating and of the hot water production."
+msgstr "Énergie du chauffage collectif et de la production d'eau chaude."
+
+#. module: regie_fonciere
+#: model:regie.charge.category,description:regie_fonciere.charge_category_elevator
+msgid "Maintenance contract, inspections and electricity of the elevator."
+msgstr "Contrat d'entretien, contrôles et électricité de l'ascenseur."
+
+#. module: regie_fonciere
+#: model:regie.charge.category,description:regie_fonciere.charge_category_gardens
+msgid "Maintenance of the common gardens and green spaces."
+msgstr "Entretien des jardins communs et des espaces verts."
+
+#. module: regie_fonciere
+#: model:regie.charge.category,description:regie_fonciere.charge_category_maintenance
+msgid ""
+"Other maintenance contracts of the common equipment (boiler, fire safety, "
+"doors...)."
+msgstr ""
+"Autres contrats d'entretien des équipements communs (chaudière, sécurité "
+"incendie, portes...)."
+
+#. module: regie_fonciere
+#: model:regie.charge.category,description:regie_fonciere.charge_category_caretaker
+msgid "Remuneration and charges of the caretaker (recoverable part)."
+msgstr "Rémunération et charges du concierge (part récupérable)."
+
+#. module: regie_fonciere
+#: model:regie.charge.category,description:regie_fonciere.charge_category_water
+msgid "Water consumption of the building (common meter)."
+msgstr "Consommation d'eau de l'immeuble (compteur commun)."

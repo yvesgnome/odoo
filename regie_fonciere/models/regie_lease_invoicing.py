@@ -219,7 +219,7 @@ class RegieLease(models.Model):
         company = self.env.ref('regie_fonciere.demo_company', raise_if_not_found=False)
         if not company:
             return
-        self = self.with_company(company).with_context(allowed_company_ids=company.ids)  # noqa: PLW0642
+        self = self.with_company(company).with_context(allowed_company_ids=company.ids, lang='fr_BE')  # noqa: PLW0642
         leases = self.search([('company_id', '=', company.id)])
         if not leases or leases.schedule_line_ids:
             return
@@ -248,7 +248,7 @@ class RegieLease(models.Model):
              'mail_template_id': ref('account_followup.mail_template_partner_payment_second_reminder').id},
             {'company_id': company.id, 'delay': 45, 'send_email': True, 'create_activity': True,
              'activity_type_id': ref('mail.mail_activity_data_call').id,
-             'activity_summary': "Last reminder: call the tenant",
+             'activity_summary': "Dernier rappel : appeler le locataire",
              'mail_template_id': ref('account_followup.mail_template_partner_payment_last_reminder').id},
         ])
 
