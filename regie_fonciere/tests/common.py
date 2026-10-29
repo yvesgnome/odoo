@@ -1,7 +1,16 @@
+import os
+
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 
 
 class RegieTestCommon(AccountTestInvoicingCommon):
+
+    @classmethod
+    def _gc_filestore(cls):
+        # Odoo writes the filestore files read-only (0o444) and Windows refuses to delete them: the
+        # GC leaves *.__gc files behind, which make the next GC fail. Skip it on Windows.
+        if os.name != 'nt':
+            super()._gc_filestore()
 
     @classmethod
     def get_default_groups(cls):

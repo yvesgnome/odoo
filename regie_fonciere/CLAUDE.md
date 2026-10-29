@@ -95,9 +95,18 @@ missing `pdfminer.six`, missing `markdown2`.
   and demo `<function>` tags are **not executed** (only at install). New demo records are created.
   To check demo changes, uninstall and reinstall the module (see commands).
 - After an uninstall, the demo company (it has a chart of accounts) and its partners cannot be
-  deleted; their xml ids survive, so a reinstall reuses them. `_regie_demo_archive_previous_company`
-  archives and renames a leftover demo company that lost its xml id. Building analytic accounts
-  are reused by code (plan *Buildings*) instead of being duplicated.
+  deleted; their xml ids survive, so a reinstall reuses them. At install,
+  `_regie_demo_reset_previous_company` deletes the accounting documents, SEPA mandates and
+  follow-up levels left in **the demo company only** by a previous demo, so the reinstall does not
+  duplicate them. Building analytic accounts are reused by code (plan *Buildings*).
+  (Creating a new demo company on each reinstall was tried and rejected: mail alias conflicts
+  with the journals of the old company.) An archived company
+  "Régie foncière (démo, archivée …)" may exist in `wb_dev` from that attempt; it is harmless.
+- **Windows filestore bug (Odoo core)**: Odoo writes filestore files read-only (`0o444`), Windows
+  refuses to delete them, the attachment GC leaves `*.__gc` files and the next GC fails on an
+  assertion. `tests/common.py` skips the test GC on Windows. If an Odoo log shows
+  `_file_gc could not unlink`, the leftovers (unreferenced by definition) can be removed with
+  `find /c/Odoo/20/data/filestore/wb_dev -name "*__gc" -exec chmod u+w {} + -exec rm -f {} +`.
 
 ## Security groups
 
@@ -135,3 +144,31 @@ Future household income data (income-based rents, out of scope) must be restrict
    - Open balance / overdue invoices from `account.move.regie_lease_id`; buttons for a one-off
      invoice or credit note.
    - Lease numbers `BAIL/<year of the effective date>/NNNN`.
+3. **Rent invoicing** (`regie.lease.schedule.line`, `models/regie_lease_invoicing.py`):
+   - No subscription, no sale order: the lease is the only reference.
+   - Company settings (Land Agency settings): generation day (default 20) and month
+     (default *previous month*, rent paid in advance), due day (default 1st of the invoiced month),
+     rent journal, rent and charge provision income accounts, communication prefix.
+   - Schedule line = lease + month (`period_date`), dates, prorata, rent and charge amounts,
+     invoice, status. **Unique (lease, period)**: a month is never invoiced twice.
+   - `_generate_invoices(today)`: creates the missing lines from `invoicing_start_date` up to the
+     last period whose generation date is reached (missed months are **caught up**), then one
+     **posted** invoice per line, dated `today`. Daily cron + button *Generate Invoices* on the lease
+     + server action on the list (mass).
+   - Amounts read in the rent history at the first invoiced day of the month; **prorata per day**
+     for the first month (effective date) and the last one (move-out date).
+   - Two products (`product_rent`, `product_charge_provision`, no taxes) on the two income
+     accounts of the company; building analytic account on every line; taxes only with the VAT
+     option of the lease; `payment_reference` = structured communication of the lease.
+   - SEPA: `sepa_mandate_id` on the lease (active mandate of the main tenant); while usable, the
+     invoices get the *SEPA Direct Debit* preferred payment method of the bank journal.
+   - Payment follow-ups: standard `account_followup` levels (demo: 10, 25 and 45 days, no fees).
+     `account_followup` is added to the dependencies (not in the initial list) because the
+     follow-up levels are a model of that module.
+   - Income accounts (Belgian chart, demo company): **700100 Loyers** (class 70, turnover) for the
+     rents and **743100 Provisions pour charges locatives** (under 743, miscellaneous operating
+     income) for the charge provisions; both created by the demo setup if missing. To be confirmed
+     by the agency's accountant (provisions could also be booked on a liability account).
+   - Demo payments are posted directly on the bank account (payment account of the manual inbound
+     method = bank account): without an outstanding account, Odoo 20 only reconciles payments
+     with invoices at bank reconciliation.

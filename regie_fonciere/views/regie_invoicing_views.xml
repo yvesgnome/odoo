@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="regie_lease_schedule_line_view_list" model="ir.ui.view">
+        <field name="name">regie.lease.schedule.line.list</field>
+        <field name="model">regie.lease.schedule.line</field>
+        <field name="arch" type="xml">
+            <list string="Invoicing Schedule" create="0" edit="0"
+                  decoration-muted="state == 'cancelled'" decoration-info="state == 'to_invoice'">
+                <field name="lease_id"/>
+                <field name="partner_id"/>
+                <field name="building_id" optional="show"/>
+                <field name="period_date" widget="date" options="{'format': 'MM/yyyy'}"/>
+                <field name="prorata" optional="hide"/>
+                <field name="rent_amount" sum="Total"/>
+                <field name="charge_amount" sum="Total"/>
+                <field name="amount_total" sum="Total"/>
+                <field name="invoice_id"/>
+                <field name="payment_state" widget="badge" optional="show"
+                       decoration-success="payment_state in ('paid', 'in_payment')"
+                       decoration-danger="payment_state == 'not_paid'"
+                       decoration-warning="payment_state == 'partial'"/>
+                <field name="state" widget="badge"/>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="regie_lease_schedule_line_view_search" model="ir.ui.view">
+        <field name="name">regie.lease.schedule.line.search</field>
+        <field name="model">regie.lease.schedule.line</field>
+        <field name="arch" type="xml">
+            <search string="Invoicing Schedule">
+                <field name="lease_id"/>
+                <field name="partner_id"/>
+                <field name="building_id"/>
+                <filter name="to_invoice" string="To Invoice" domain="[('state', '=', 'to_invoice')]"/>
+                <filter name="invoiced" string="Invoiced" domain="[('state', '=', 'invoiced')]"/>
+                <separator/>
+                <filter name="period" string="Period" date="period_date"/>
+                <filter name="group_period" string="Period" context="{'group_by': 'period_date:month'}"/>
+                <filter name="group_building" string="Building" context="{'group_by': 'building_id'}"/>
+                <filter name="group_lease" string="Lease" context="{'group_by': 'lease_id'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="regie_lease_schedule_line_action" model="ir.actions.act_window">
+        <field name="name">Invoicing Schedule</field>
+        <field name="res_model">regie.lease.schedule.line</field>
+        <field name="view_mode">list</field>
+        <field name="context">{'search_default_group_period': 1}</field>
+    </record>
+
+    <record id="regie_rent_invoice_action" model="ir.actions.act_window">
+        <field name="name">Rent Invoices</field>
+        <field name="res_model">account.move</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="account.view_out_invoice_tree"/>
+        <field name="search_view_id" ref="account.view_account_invoice_filter"/>
+        <field name="domain">[('regie_lease_id', '!=', False), ('move_type', 'in', ('out_invoice', 'out_refund'))]</field>
+        <field name="context">{'default_move_type': 'out_invoice'}</field>
+    </record>
+
+    <!-- Settings -->
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.regie</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="90"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Land Agency" string="Land Agency" name="regie_fonciere"
+                     groups="regie_fonciere.group_regie_supervisor">
+                    <block title="Rent Invoicing" name="regie_invoicing_settings">
+                        <setting id="regie_invoice_schedule" string="Invoicing Schedule" company_dependent="1"
+                                 help="When the rent invoices are generated and when they are due.">
+                            <div class="content-group">
+                                <div class="row mt8">
+                                    <label for="regie_invoice_day" class="col-lg-5 o_light_label"/>
+                                    <field name="regie_invoice_day"/>
+                                </div>
+                                <div class="row">
+                                    <label for="regie_invoice_month_offset" class="col-lg-5 o_light_label"/>
+                                    <field name="regie_invoice_month_offset"/>
+                                </div>
+                                <div class="row">
+                                    <label for="regie_due_day" class="col-lg-5 o_light_label"/>
+                                    <field name="regie_due_day"/>
+                                </div>
+                            </div>
+                        </setting>
+                        <setting id="regie_invoice_accounts" string="Accounting" company_dependent="1"
+                                 help="Journal and income accounts of the rent invoices.">
+                            <div class="content-group">
+                                <div class="row mt8">
+                                    <label for="regie_rent_journal_id" class="col-lg-5 o_light_label"/>
+                                    <field name="regie_rent_journal_id"/>
+                                </div>
+                                <div class="row">
+                                    <label for="regie_rent_account_id" class="col-lg-5 o_light_label"/>
+                                    <field name="regie_rent_account_id"/>
+                                </div>
+                                <div class="row">
+                                    <label for="regie_charge_account_id" class="col-lg-5 o_light_label"/>
+                                    <field name="regie_charge_account_id"/>
+                                </div>
+                                <div class="row">
+                                    <label for="regie_communication_prefix" class="col-lg-5 o_light_label"/>
+                                    <field name="regie_communication_prefix"/>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="regie_config_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'module': 'regie_fonciere'}</field>
+    </record>
+</odoo>

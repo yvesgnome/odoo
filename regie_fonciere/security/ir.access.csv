@@ -16,3 +16,6 @@ regie_lease_company_rule,Lease multi-company,regie.lease,,crud,"[('company_id', 
 access_regie_lease_rent_line_property_manager,regie.lease.rent.line property manager,regie.lease.rent.line,group_regie_property_manager,crud,
 access_regie_lease_rent_line_accountant,regie.lease.rent.line accountant,regie.lease.rent.line,group_regie_accountant,r,
 regie_lease_rent_line_company_rule,Lease rent history multi-company,regie.lease.rent.line,,crud,"[('company_id', 'in', company_ids)]"
+access_regie_lease_schedule_line_property_manager,regie.lease.schedule.line property manager,regie.lease.schedule.line,group_regie_property_manager,r,
+access_regie_lease_schedule_line_accountant,regie.lease.schedule.line accountant,regie.lease.schedule.line,group_regie_accountant,crud,
+regie_lease_schedule_line_company_rule,Lease schedule multi-company,regie.lease.schedule.line,,crud,"[('company_id', 'in', company_ids)]"

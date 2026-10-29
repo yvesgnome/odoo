@@ -11,11 +11,17 @@
     <menuitem id="menu_regie_building" action="regie_building_action" parent="menu_regie_properties" sequence="10"/>
     <menuitem id="menu_regie_unit" action="regie_unit_action" parent="menu_regie_properties" sequence="20"/>
 
+    <menuitem id="menu_regie_invoicing" name="Invoicing" parent="menu_regie_root" sequence="40"
+              groups="group_regie_accountant"/>
+    <menuitem id="menu_regie_rent_invoice" action="regie_rent_invoice_action" parent="menu_regie_invoicing" sequence="10"/>
+    <menuitem id="menu_regie_schedule" action="regie_lease_schedule_line_action" parent="menu_regie_invoicing" sequence="20"/>
+
     <menuitem id="menu_regie_reporting" name="Reporting" parent="menu_regie_root" sequence="80"/>
     <menuitem id="menu_regie_report_vacant_units" action="regie_unit_vacant_action" parent="menu_regie_reporting" sequence="20"/>
     <menuitem id="menu_regie_report_ending_leases" action="regie_lease_ending_action" parent="menu_regie_reporting" sequence="30"/>
 
     <menuitem id="menu_regie_configuration" name="Configuration" parent="menu_regie_root" sequence="90"
               groups="group_regie_supervisor"/>
+    <menuitem id="menu_regie_settings" action="regie_config_settings_action" parent="menu_regie_configuration" sequence="10"/>
     <menuitem id="menu_regie_charge_category" action="regie_charge_category_action" parent="menu_regie_configuration" sequence="20"/>
 </odoo>

@@ -6,3 +6,6 @@ from . import regie_charge_category
 from . import regie_lease
 from . import regie_lease_rent_line
 from . import account_move
+from . import regie_lease_schedule_line
+from . import regie_lease_invoicing
+from . import res_config_settings

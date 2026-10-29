@@ -53,6 +53,9 @@
                             invisible="state != 'litigation'"/>
                     <button name="action_reset_to_draft" string="Reset to Draft" type="object"
                             invisible="state != 'signed'"/>
+                    <button name="action_generate_schedule" string="Generate Invoices" type="object"
+                            groups="regie_fonciere.group_regie_accountant"
+                            invisible="state not in ('active', 'notice', 'litigation', 'terminated', 'rescinded')"/>
                     <button name="action_new_invoice" string="One-off Invoice" type="object"
                             groups="regie_fonciere.group_regie_accountant"
                             invisible="state == 'draft'"/>
@@ -169,7 +172,28 @@
                                     <field name="tax_ids" widget="many2many_tags"
                                            invisible="not vat_option" required="vat_option"/>
                                 </group>
+                                <group name="invoicing_payment">
+                                    <field name="sepa_mandate_id" options="{'no_create': True}"/>
+                                </group>
                             </group>
+                            <field name="schedule_line_ids" readonly="1">
+                                <list decoration-muted="state == 'cancelled'" decoration-info="state == 'to_invoice'">
+                                    <field name="period_date" widget="date" options="{'format': 'MM/yyyy'}"/>
+                                    <field name="date_from" optional="hide"/>
+                                    <field name="date_to" optional="hide"/>
+                                    <field name="prorata" optional="show"/>
+                                    <field name="rent_amount" sum="Total"/>
+                                    <field name="charge_amount" sum="Total"/>
+                                    <field name="amount_total" sum="Total"/>
+                                    <field name="invoice_id"/>
+                                    <field name="payment_state" widget="badge" optional="show"
+                                           decoration-success="payment_state in ('paid', 'in_payment')"
+                                           decoration-danger="payment_state == 'not_paid'"
+                                           decoration-warning="payment_state == 'partial'"/>
+                                    <field name="state" widget="badge"/>
+                                    <field name="currency_id" column_invisible="1"/>
+                                </list>
+                            </field>
                         </page>
                         <page string="Notes" name="notes">
                             <field name="notes"/>

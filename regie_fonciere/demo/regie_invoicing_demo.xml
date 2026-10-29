@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Fictitious bank account of a tenant (valid Belgian IBAN checksum). -->
+    <record id="demo_bank_youssef_benali" model="res.partner.bank">
+        <field name="account_number">BE81310000032624</field>
+        <field name="partner_id" ref="demo_partner_youssef_benali"/>
+        <field name="company_id" ref="demo_company"/>
+    </record>
+
+    <!-- SEPA mandate, follow-up levels, invoices generated month by month by the schedule and payments. -->
+    <function model="regie.lease" name="_regie_demo_generate_invoices"/>
+</odoo>

@@ -14,6 +14,7 @@ factor), rental deposits and recoverable charges statements.
     'depends': [
         'contacts',
         'account_accountant',
+        'account_followup',  # Odoo's standard payment follow-up levels (reminders)
         'l10n_be',
         'account_sepa_direct_debit',
         'mail',
@@ -23,9 +24,11 @@ factor), rental deposits and recoverable charges statements.
         'security/ir.access.csv',
         'data/regie_analytic_data.xml',
         'data/regie_lease_data.xml',
+        'data/regie_invoicing_data.xml',
         'views/regie_building_views.xml',
         'views/regie_unit_views.xml',
         'views/regie_lease_views.xml',
+        'views/regie_invoicing_views.xml',
         'views/account_move_views.xml',
         'views/regie_menus.xml',
     ],
@@ -33,6 +36,7 @@ factor), rental deposits and recoverable charges statements.
         'demo/regie_company_demo.xml',
         'demo/regie_building_demo.xml',
         'demo/regie_lease_demo.xml',
+        'demo/regie_invoicing_demo.xml',
     ],
     'application': True,
     'installable': True,
