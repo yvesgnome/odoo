@@ -54,7 +54,7 @@
                             <td class="text-end"><span t-field="detail.category_amount"/></td>
                             <td><span t-field="detail.method"/></td>
                             <td class="text-end">
-                                <span t-out="'%.2f' % (detail.weight / detail.total_weight * 100 if detail.total_weight else 0)"/> %
+                                <span t-out="detail.weight / detail.total_weight * 100 if detail.total_weight else 0" t-options="{'widget': 'float', 'precision': 2}"/> %
                             </td>
                             <td>
                                 <span t-out="detail.date_from" t-options="{'widget': 'date'}"/> –

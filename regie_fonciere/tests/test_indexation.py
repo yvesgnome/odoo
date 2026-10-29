@@ -133,6 +133,13 @@ class TestIndexation(RegieTestCommon):
         november = lease.schedule_line_ids.filtered(lambda l: l.period_date == date(2025, 11, 1))
         self.assertEqual(november.rent_amount, 899.19)
 
+    def test_letter_before_sending(self):
+        lease = self._old_lease(self.unit_b, '2020-10-20')
+        indexation = lease._create_indexation(date(2025, 10, 20))
+        html, _report_type = self.env['ir.actions.report']._render_qweb_html(
+            'regie_fonciere.action_report_indexation_letter', indexation.ids)
+        self.assertIn(lease.structured_communication, html.decode())
+
     def test_cron_creates_proposals_before_anniversary(self):
         lease = self._old_lease(self.unit_a, '2020-12-01')
         Lease = self.env['regie.lease']

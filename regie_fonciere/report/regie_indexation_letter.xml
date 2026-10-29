@@ -29,7 +29,7 @@
         <t t-call="web.external_layout" company="o.company_id.sudo()" address="address">
             <div class="page">
                 <p class="text-end">
-                    <span t-out="o.company_id.city"/>, <span t-out="o.request_date or context_today()" t-options="{'widget': 'date'}"/>
+                    <span t-out="o.company_id.city"/>, <span t-out="o._get_letter_date()" t-options="{'widget': 'date'}"/>
                 </p>
                 <p>
                     <strong>Subject:</strong> indexation of the rent – lease <span t-out="lease.name"/>
@@ -50,20 +50,20 @@
                         </tr>
                         <tr>
                             <td>Initial health index (base <span t-out="o.company_id.regie_index_base_year"/>)</td>
-                            <td class="text-end"><span t-out="'%.2f' % o.initial_index"/></td>
+                            <td class="text-end"><span t-out="o.initial_index" t-options="{'widget': 'float', 'precision': 2}"/></td>
                         </tr>
                         <tr>
                             <td>
                                 New health index (<span t-out="o.new_index_month.strftime('%m/%Y') if o.new_index_month else ''"/>)
                             </td>
-                            <td class="text-end"><span t-out="'%.2f' % o.new_index"/></td>
+                            <td class="text-end"><span t-out="o.new_index" t-options="{'widget': 'float', 'precision': 2}"/></td>
                         </tr>
                         <tr t-if="o.correction_factor != 1.0">
                             <td>
                                 EPC correction factor (EPC class <span t-field="o.peb_class"/>, lease in force before
                                 <span t-out="o.company_id.regie_peb_correction_cutoff_date" t-options="{'widget': 'date'}"/>)
                             </td>
-                            <td class="text-end"><span t-out="'%.9f' % o.correction_factor"/></td>
+                            <td class="text-end"><span t-out="o.correction_factor" t-options="{'widget': 'float', 'precision': 9}"/></td>
                         </tr>
                         <tr>
                             <td>Current rent</td>
@@ -77,7 +77,7 @@
                 </table>
                 <p>
                     Calculation: base rent × new index / initial index<t t-if="o.correction_factor != 1.0"> × EPC correction factor</t>
-                    = <span t-field="o.base_rent"/> × <span t-out="'%.2f' % o.new_index"/> / <span t-out="'%.2f' % o.initial_index"/><t t-if="o.correction_factor != 1.0"> × <span t-out="'%.9f' % o.correction_factor"/></t>
+                    = <span t-field="o.base_rent"/> × <span t-out="o.new_index" t-options="{'widget': 'float', 'precision': 2}"/> / <span t-out="o.initial_index" t-options="{'widget': 'float', 'precision': 2}"/><t t-if="o.correction_factor != 1.0"> × <span t-out="o.correction_factor" t-options="{'widget': 'float', 'precision': 9}"/></t>
                     = <span t-field="o.computed_rent"/>.
                 </p>
                 <p>

@@ -146,6 +146,10 @@ class RegieIndexation(models.Model):
                                            lease=indexation.lease_id.name, reasons="\n".join(blocking)))
             indexation.state = 'validated'
 
+    def _get_letter_date(self):
+        self.ensure_one()
+        return self.request_date or fields.Date.context_today(self)
+
     def _get_letter_lang(self):
         self.ensure_one()
         return self.company_id._regie_get_letter_lang(self.partner_id)

@@ -269,3 +269,19 @@ and pushed without asking (user request of 2026-10-29).
    - **Dashboard** (`regie.dashboard`, transient, opened by a server action, first menu): open and
      overdue balance, tenants with overdue invoices, occupancy, vacant units, running / ending /
      litigation leases, indexations, deposit releases, with links to the lists.
+
+## Translations
+
+- `i18n/fr.po` and `i18n/nl.po` are **complete** (647 terms each, Brussels terminology: régie
+  foncière / grondregie, bail / huurovereenkomst, PEB / EPB, CPAS / OCMW, Fonds du Logement /
+  Woningfonds, Dutch names of the 19 municipalities). `fr.po` serves `fr_BE`, `nl.po` serves `nl_BE`.
+- Languages loaded in `wb_dev`: `odoo-bin i18n loadlang -c wb.conf -d wb_dev -l fr_BE nl_BE`.
+- After changing strings: export the template
+  (`odoo-bin i18n export -c wb.conf -d wb_dev -l pot -o <scratch>/regie_fonciere.pot regie_fonciere`;
+  `*.pot` is git-ignored in this repository), merge it into both files (e.g.
+  `msgmerge --update i18n/fr.po regie_fonciere.pot` or polib), translate the new entries, then
+  `-u regie_fonciere --i18n-overwrite` to reload them.
+- Keep placeholders (`%s`, `%(name)s`), HTML tags and the leading/trailing punctuation of QWeb
+  fragments identical to the English source.
+- Letters (indexation, deposit release, charge statement) are rendered in `fr_BE` (else `fr_FR`);
+  numbers use the language formats (`float` / `monetary` widgets).

@@ -1,0 +1,4089 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* regie_fonciere
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0+e-20261022\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-29 20:52+0000\n"
+"PO-Revision-Date: 2026-10-29 20:52+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: regie_fonciere
+#: model:ir.module.module,description:base.module_regie_fonciere
+msgid ""
+"\n"
+"Rental management for a public municipal real estate operator in Brussels\n"
+"that rents out its own properties: buildings and units, leases, monthly rent\n"
+"invoicing schedule, health-index indexation (with the Brussels EPC correction\n"
+"factor), rental deposits and recoverable charges statements.\n"
+msgstr ""
+"\n"
+"Verhuurbeheer voor een openbare gemeentelijke vastgoedoperator in Brussel\n"
+"die zijn eigen panden verhuurt: gebouwen en eenheden, huurovereenkomsten,\n"
+"maandelijkse facturatieplanning van de huur, indexering volgens de\n"
+"gezondheidsindex (met de Brusselse EPB-correctiefactor), huurwaarborgen en\n"
+"afrekeningen van de lasten.\n"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_invoicing.py:0
+msgid " (from %(date_from)s to %(date_to)s)"
+msgstr " (van %(date_from)s tot %(date_to)s)"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_invoicing.py:0
+msgid "%s rent invoice(s) generated."
+msgstr "%s huurfactu(u)r(en) aangemaakt."
+
+#. module: regie_fonciere
+#: model:ir.actions.report,print_report_name:regie_fonciere.action_report_charge_statement
+msgid ""
+"'Charge statement %s - %s' % (object.year, (object.lease_id.name or "
+"'').replace('/', '-'))"
+msgstr ""
+"'Afrekening lasten %s - %s' % (object.year, (object.lease_id.name or "
+"'').replace('/', '-'))"
+
+#. module: regie_fonciere
+#: model:ir.actions.report,print_report_name:regie_fonciere.action_report_deposit_release
+msgid "'Deposit release - %s' % (object.name or '').replace('/', '-')"
+msgstr "'Vrijgave waarborg - %s' % (object.name or '').replace('/', '-')"
+
+#. module: regie_fonciere
+#: model:ir.actions.report,print_report_name:regie_fonciere.action_report_indexation_letter
+msgid "'Indexation - %s' % (object.name or '').replace('/', '-')"
+msgstr "'Indexering - %s' % (object.name or '').replace('/', '-')"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid "(invoice"
+msgstr "(factuur"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
+msgid ""
+",\n"
+"                    was communicated to you."
+msgstr ""
+",\n"
+"                    werd u bezorgd."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
+msgid ", lease in force before"
+msgstr ", huurovereenkomst van kracht vóór"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_form
+msgid ", rent excluding charges)."
+msgstr ", huur zonder lasten)."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
+msgid ""
+".\n"
+"                    Please pay it from your next payment, with the structured communication"
+msgstr ""
+".\n"
+"                    Gelieve die te betalen vanaf uw volgende betaling, met de gestructureerde mededeling"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__floor
+msgid "0 for the ground floor, negative for basements."
+msgstr "0 voor het gelijkvloers, negatief voor de kelders."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_meter__ean_code
+msgid "18-digit EAN code of the delivery point (gas and electricity)."
+msgstr "EAN-code van 18 cijfers van het leveringspunt (gas en elektriciteit)."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form_indexation
+msgid "<strong>Indexation not allowed: </strong>"
+msgstr "<strong>Indexering niet toegestaan: </strong>"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+msgid "<strong>Reasons of the retentions:</strong>"
+msgstr "<strong>Redenen van de inhoudingen:</strong>"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
+msgid "<strong>Subject:</strong> indexation of the rent – lease"
+msgstr "<strong>Betreft:</strong> indexering van de huur – huurovereenkomst"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__peb_class__a
+msgid "A"
+msgstr "A"
+
+#. module: regie_fonciere
+#: model_terms:ir.actions.act_window,help:regie_fonciere.regie_building_action
+msgid ""
+"A building groups the rental units (apartments, shops, parkings...) of an "
+"address."
+msgstr ""
+"Een gebouw groepeert de verhuureenheden (appartementen, handelszaken, "
+"parkeerplaatsen...) van een adres."
+
+#. module: regie_fonciere
+#: model_terms:ir.actions.act_window,help:regie_fonciere.regie_lease_action
+msgid "A lease rents one or more units to one or more tenants."
+msgstr ""
+"Een huurovereenkomst verhuurt een of meer eenheden aan een of meer huurders."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease.py:0
+msgid "A short-term lease cannot last more than %s months."
+msgstr ""
+"Een huurovereenkomst van korte duur mag niet langer duren dan %s maanden."
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__peb_class__a+
+msgid "A+"
+msgstr "A+"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__peb_class__a++
+msgid "A++"
+msgstr "A++"
+
+#. module: regie_fonciere
+#: model:res.groups,name:regie_fonciere.group_regie_accountant
+msgid "Accountant"
+msgstr "Boekhouder"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.res_config_settings_view_form
+msgid "Accounting"
+msgstr "Boekhouding"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__message_needaction
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__message_needaction
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__message_needaction
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__message_needaction
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__message_needaction
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__message_needaction
+msgid "Action Needed"
+msgstr "Actie vereist"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Activate"
+msgstr "Activeren"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__active
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_category__active
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__active
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__active
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease__state__active
+msgid "Active"
+msgstr "Actief"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__activity_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__activity_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__activity_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__activity_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__activity_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__activity_ids
+msgid "Activities"
+msgstr "Activiteiten"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__activity_exception_decoration
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__activity_exception_decoration
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__activity_exception_decoration
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__activity_exception_decoration
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__activity_exception_decoration
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Activiteit uitzondering decoratie"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__activity_plans_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__activity_plans_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__activity_plans_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__activity_plans_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__activity_plans_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__activity_plans_ids
+msgid "Activity Plans"
+msgstr "Activiteitenplannen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__activity_state
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__activity_state
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__activity_state
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__activity_state
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__activity_state
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__activity_state
+msgid "Activity State"
+msgstr "Status activiteit"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__activity_type_icon
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__activity_type_icon
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__activity_type_icon
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__activity_type_icon
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__activity_type_icon
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Icoon activiteitstype"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__exit_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__exit_date
+msgid "Actual Move-out Date"
+msgstr "Werkelijke vertrekdatum"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__actual_amount
+msgid "Actual Share"
+msgstr "Werkelijk aandeel"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_allocation_key_view_form
+msgid "Add All Units"
+msgstr "Alle eenheden toevoegen"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_building_view_form
+msgid "Address"
+msgstr "Adres"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_cost__method
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__method
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid "Allocation"
+msgstr "Verdeling"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_allocation_key_view_form
+msgid "Allocation Key"
+msgstr "Verdeelsleutel"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_allocation_key_action
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_allocation_key
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_allocation_key_view_list
+msgid "Allocation Keys"
+msgstr "Verdeelsleutels"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease_rent_line__reason__amendment
+msgid "Amendment"
+msgstr "Aanhangsel"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__amount
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_cost_line_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid "Amount"
+msgstr "Bedrag"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unpaid_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unpaid_view_pivot
+msgid "Amount Due"
+msgstr "Verschuldigd bedrag"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__released_amount
+msgid "Amount Returned to the Tenant"
+msgstr "Aan de huurder terugbetaald bedrag"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+msgid "Amount to be paid to the landlord"
+msgstr "Aan de verhuurder te storten bedrag"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+msgid "Amount to be paid to the tenant(s)"
+msgstr "Aan de huurder(s) te storten bedrag"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__analytic_account_id
+msgid "Analytic Account"
+msgstr "Analytische rekening"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__anderlecht
+msgid "Anderlecht"
+msgstr "Anderlecht"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_search
+msgid "Anniversary"
+msgstr "Verjaardag"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__anniversary_date
+msgid "Anniversary Date"
+msgstr "Verjaardatum"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_peb_correction_factor__month
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_search
+msgid "Anniversary Month"
+msgstr "Verjaardagsmaand"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__effective_date
+msgid ""
+"Anniversary date, limited to the retroactivity allowed before the request "
+"date."
+msgstr ""
+"Verjaardatum, beperkt tot de toegestane terugwerkende kracht vóór de datum "
+"van het verzoek."
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__unit_type__apartment
+msgid "Apartment"
+msgstr "Appartement"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_indexation__state__applied
+msgid "Applied"
+msgstr "Toegepast"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_form
+msgid "Apply"
+msgstr "Toepassen"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_statement_view_form
+msgid "Apply Provision"
+msgstr "Provisie toepassen"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_building_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_building_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_search
+msgid "Archived"
+msgstr "Gearchiveerd"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__arrears_invoice_id
+msgid "Arrears Invoice"
+msgstr "Factuur achterstallen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__message_attachment_count
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__message_attachment_count
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__message_attachment_count
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__message_attachment_count
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__message_attachment_count
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__message_attachment_count
+msgid "Attachment Count"
+msgstr "Aantal bijlagen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__auderghem
+msgid "Auderghem"
+msgstr "Oudergem"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__peb_class__b
+msgid "B"
+msgstr "B"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__bank_bic
+msgid "BIC"
+msgstr "BIC"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__balance
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Balance"
+msgstr "Saldo"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid "Balance due by the tenant"
+msgstr "Saldo verschuldigd door de huurder"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid "Balance refunded to the tenant"
+msgstr "Saldo terugbetaald aan de huurder"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__bank_name
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_form
+msgid "Bank or Guarantor"
+msgstr "Bank of borg"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__base_rent
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__base_rent
+msgid "Base Rent"
+msgstr "Basishuur"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_health_index__base_year
+msgid "Base Year"
+msgstr "Basisjaar"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
+msgid "Base rent (at signature)"
+msgstr "Basishuur (bij ondertekening)"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_res_company__regie_index_base_year
+#: model:ir.model.fields,help:regie_fonciere.field_res_config_settings__regie_index_base_year
+msgid "Base year of the health index used for the indexation of the rents."
+msgstr ""
+"Basisjaar van de gezondheidsindex gebruikt voor de indexering van de "
+"huurprijzen."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__bedroom_count
+msgid "Bedrooms"
+msgstr "Slaapkamers"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__berchem_sainte_agathe
+msgid "Berchem-Sainte-Agathe"
+msgstr "Sint-Agatha-Berchem"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_deposit__deposit_type__blocked_account
+msgid "Blocked Account"
+msgstr "Geblokkeerde rekening"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__total_agency
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_cost__agency_amount
+msgid "Borne by the Agency"
+msgstr "Ten laste van de regie"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.res_config_settings_view_form
+msgid "Brussels rules for the indexation of the rents."
+msgstr "Brusselse regels voor de indexering van de huurprijzen."
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_regie_building
+#: model:ir.model.fields,field_description:regie_fonciere.field_account_bank_statement_line__regie_building_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_account_move__regie_building_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key__building_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key_line__building_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__building_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_consumption_reading__building_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__building_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__building_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__building_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__building_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__building_id
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_building_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_consumption_reading_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_schedule_line_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unpaid_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.view_account_invoice_filter_inherit_regie
+msgid "Building"
+msgstr "Gebouw"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__category_amount
+msgid "Building Cost"
+msgstr "Kosten van het gebouw"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid "Building cost"
+msgstr "Kosten van het gebouw"
+
+#. module: regie_fonciere
+#: model:account.analytic.plan,name:regie_fonciere.analytic_plan_buildings
+#: model:ir.actions.act_window,name:regie_fonciere.regie_building_action
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_building
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_building_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_building_view_search
+msgid "Buildings"
+msgstr "Gebouwen"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+msgid "By Building"
+msgstr "Per gebouw"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+msgid "By Tenant"
+msgstr "Per huurder"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__peb_class__c
+msgid "C"
+msgstr "C"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_deposit__deposit_type__cpas
+msgid "CPAS Guarantee"
+msgstr "OCMW-waarborg"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__cadastral_income
+msgid "Cadastral Income"
+msgstr "Kadastraal inkomen"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_form
+msgid "Calculation"
+msgstr "Berekening"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
+msgid "Calculation: base rent × new index / initial index"
+msgstr "Berekening: basishuur × nieuwe index / aanvangsindex"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_charge_statement.py:0
+msgid "Cancel the regularisation invoices of %s first."
+msgstr "Annuleer eerst de regularisatiefacturen van %s."
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease_schedule_line__state__cancelled
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.res_config_settings_view_form
+msgid "Cap of the deposits of housing leases and follow-up of their release."
+msgstr ""
+"Plafond van de waarborgen van woninghuurovereenkomsten en opvolging van hun "
+"vrijgave."
+
+#. module: regie_fonciere
+#: model:regie.charge.category,name:regie_fonciere.charge_category_caretaker
+msgid "Caretaker"
+msgstr "Conciërge"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_consumption_reading_view_search
+msgid "Category"
+msgstr "Categorie"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__unit_type__cellar
+msgid "Cellar"
+msgstr "Kelder"
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_regie_allocation_key
+msgid "Charge Allocation Key"
+msgstr "Verdeelsleutel van de lasten"
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_regie_allocation_key_line
+msgid "Charge Allocation Share"
+msgstr "Aandeel in de verdeling van de lasten"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_charge_category_action
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_charge_category
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_category_view_list
+msgid "Charge Categories"
+msgstr "Lastencategorieën"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_account_move_line__regie_charge_category_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key__category_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_cost__category_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__category_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_consumption_reading__category_id
+msgid "Charge Category"
+msgstr "Lastencategorie"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_charge_cost_line_action
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_charge_cost
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_cost_line_view_list
+msgid "Charge Costs"
+msgstr "Kosten van de lasten"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__charge_mode
+msgid "Charge Mode"
+msgstr "Lastenregeling"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_rent_line__charge_provision
+#: model:product.template,name:regie_fonciere.product_charge_provision_product_template
+msgid "Charge Provision"
+msgstr "Provisie voor lasten"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease_rent_line__reason__provision_adjustment
+msgid "Charge Provision Adjustment"
+msgstr "Aanpassing van de provisies voor lasten"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_company__regie_charge_account_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_config_settings__regie_charge_account_id
+msgid "Charge Provisions Income Account"
+msgstr "Opbrengstenrekening provisies voor lasten"
+
+#. module: regie_fonciere
+#: model:product.template,name:regie_fonciere.product_charge_regularisation_product_template
+msgid "Charge Regularisation"
+msgstr "Regularisatie van de lasten"
+
+#. module: regie_fonciere
+#: model:ir.actions.report,name:regie_fonciere.action_report_charge_statement
+#: model:ir.model,name:regie_fonciere.model_regie_charge_statement
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_statement_view_form
+msgid "Charge Statement"
+msgstr "Afrekening van de lasten"
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_regie_charge_statement_cost
+msgid "Charge Statement Cost"
+msgstr "Kosten van de lastenafrekening"
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_regie_charge_statement_detail
+msgid "Charge Statement Detail"
+msgstr "Detail van de lastenafrekening"
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_regie_charge_statement_lease
+msgid "Charge Statement per Lease"
+msgstr "Lastenafrekening per huurovereenkomst"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_charge_statement_action
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_charge_statement
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_statement_view_list
+msgid "Charge Statements"
+msgstr "Afrekeningen van de lasten"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__charge_category_ids
+msgid ""
+"Charge categories recoverable from the tenant as provided by the lease."
+msgstr ""
+"Categorieën van op de huurder verhaalbare lasten waarin de huurovereenkomst "
+"voorziet."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid "Charge category"
+msgstr "Lastencategorie"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_invoicing.py:0
+msgid "Charge provision %(period)s"
+msgstr "Provisie voor lasten %(period)s"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_charge_statement.py:0
+msgid "Charge statement %(year)s – %(building)s"
+msgstr "Afrekening van de lasten %(year)s – %(building)s"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__total_tenants
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_cost__tenant_amount
+msgid "Charged to Tenants"
+msgstr "Ten laste van de huurders"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__charge_amount
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_charges
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Charges"
+msgstr "Lasten"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__city
+msgid "City"
+msgstr "Stad"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__brussels
+msgid "City of Brussels"
+msgstr "Stad Brussel"
+
+#. module: regie_fonciere
+#: model:regie.charge.category,name:regie_fonciere.charge_category_cleaning
+msgid "Cleaning"
+msgstr "Schoonmaak"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__code
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_category__code
+msgid "Code"
+msgstr "Code"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease__lease_type__commercial
+msgid "Commercial"
+msgstr "Handelshuur"
+
+#. module: regie_fonciere
+#: model:regie.charge.category,name:regie_fonciere.charge_category_common_electricity
+msgid "Common Areas Electricity"
+msgstr "Elektriciteit gemeenschappelijke delen"
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_res_company
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key__company_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key_line__company_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__company_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__company_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_cost__company_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__company_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__company_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_consumption_reading__company_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__company_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__company_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__company_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__company_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_rent_line__company_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__company_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_meter__company_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__company_id
+msgid "Company"
+msgstr "Bedrijf"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_statement_view_form
+msgid "Compute"
+msgstr "Berekenen"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_form
+msgid "Compute Retentions"
+msgstr "Inhoudingen berekenen"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_charge_statement.py:0
+msgid "Compute the statement %s first."
+msgstr "Bereken eerst de afrekening %s."
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_charge_statement__state__computed
+msgid "Computed"
+msgstr "Berekend"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__computed_rent
+msgid "Computed Rent"
+msgstr "Berekende huur"
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_res_config_settings
+msgid "Config Settings"
+msgstr "Configuratie-instellingen"
+
+#. module: regie_fonciere
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_configuration
+msgid "Configuration"
+msgstr "Configuratie"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_invoicing.py:0
+msgid ""
+"Configure the rent and charge provision income accounts of %s (Land Agency "
+"settings)."
+msgstr ""
+"Stel de opbrengstenrekeningen van de huur en van de provisies voor lasten "
+"van %s in (instellingen van de grondregie)."
+
+#. module: regie_fonciere
+#: model:res.company,pay_later_label:regie_fonciere.demo_company
+msgid "Confirm"
+msgstr "Bevestigen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_deposit__state__constituted
+msgid "Constituted"
+msgstr "Gesteld"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__constituted_amount
+msgid "Constituted Amount"
+msgstr "Gesteld bedrag"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+msgid "Constituted deposit"
+msgstr "Gestelde waarborg"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__construction_year
+msgid "Construction Year"
+msgstr "Bouwjaar"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_allocation_key__method__consumption
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_charge_statement_cost__method__consumption
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_charge_statement_detail__method__consumption
+msgid "Consumption"
+msgstr "Verbruik"
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_regie_consumption_reading
+msgid "Consumption Reading"
+msgstr "Verbruiksmeting"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_consumption_reading_action
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_consumption_reading
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_consumption_reading_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_consumption_reading_view_search
+msgid "Consumption Readings"
+msgstr "Verbruiksmetingen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__correction_factor
+msgid "Correction Factor"
+msgstr "Correctiefactor"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_cost__amount
+msgid "Cost"
+msgstr "Kosten"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__cost_line_ids
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_statement_view_form
+msgid "Costs"
+msgstr "Kosten"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__country_id
+msgid "Country"
+msgstr "Land"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form_indexation
+msgid "Create Indexation"
+msgstr "Indexering aanmaken"
+
+#. module: regie_fonciere
+#: model_terms:ir.actions.act_window,help:regie_fonciere.regie_lease_action
+msgid "Create a lease"
+msgstr "Een huurovereenkomst aanmaken"
+
+#. module: regie_fonciere
+#: model_terms:ir.actions.act_window,help:regie_fonciere.regie_unit_action
+msgid "Create a rental unit"
+msgstr "Een verhuureenheid aanmaken"
+
+#. module: regie_fonciere
+#: model_terms:ir.actions.act_window,help:regie_fonciere.regie_charge_statement_action
+msgid "Create the yearly charge statement of a building"
+msgstr "De jaarlijkse lastenafrekening van een gebouw aanmaken"
+
+#. module: regie_fonciere
+#: model_terms:ir.actions.act_window,help:regie_fonciere.regie_building_action
+msgid "Create your first building"
+msgstr "Maak uw eerste gebouw aan"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_building__analytic_account_id
+msgid ""
+"Created automatically; used on rent invoices and charge costs of this "
+"building."
+msgstr ""
+"Automatisch aangemaakt; gebruikt op de huurfacturen en de lastenkosten van "
+"dit gebouw."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key__create_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key_line__create_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__create_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_category__create_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__create_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_cost__create_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__create_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__create_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_consumption_reading__create_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__create_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__create_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_health_index__create_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__create_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__create_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_rent_line__create_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__create_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_meter__create_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_peb_correction_factor__create_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__create_uid
+msgid "Created by"
+msgstr "Aangemaakt door"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key__create_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key_line__create_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__create_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_category__create_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__create_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_cost__create_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__create_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__create_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_consumption_reading__create_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__create_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__create_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_health_index__create_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__create_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__create_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_rent_line__create_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__create_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_meter__create_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_peb_correction_factor__create_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__create_date
+msgid "Created on"
+msgstr "Aangemaakt op"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Credit Note"
+msgstr "Creditnota"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__currency_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__currency_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_cost__currency_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__currency_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__currency_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__currency_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__currency_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__currency_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__currency_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_rent_line__currency_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__currency_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__currency_id
+msgid "Currency"
+msgstr "Valuta"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__current_charge_provision
+msgid "Current Charge Provision"
+msgstr "Huidige provisie voor lasten"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__current_lease_id
+msgid "Current Lease"
+msgstr "Lopende huurovereenkomst"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__current_rent
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__current_rent
+msgid "Current Rent"
+msgstr "Huidige huur"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
+msgid "Current rent"
+msgstr "Huidige huur"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__peb_class__d
+msgid "D"
+msgstr "D"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__damage_amount
+msgid "Damages"
+msgstr "Schade"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_dashboard.py:0
+#: model:ir.actions.server,name:regie_fonciere.action_server_regie_dashboard
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_dashboard
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__date_from
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__date_from
+msgid "Date From"
+msgstr "Begindatum"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__date_to
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__date_to
+msgid "Date To"
+msgstr "Einddatum"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+msgid "Date and signature:"
+msgstr "Datum en handtekening:"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__request_date
+msgid "Date of the written request to the tenant (date the letter is sent)."
+msgstr ""
+"Datum van het schriftelijk verzoek aan de huurder (verzenddatum van de "
+"brief)."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Dates"
+msgstr "Datums"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_res_company__regie_due_day
+#: model:ir.model.fields,help:regie_fonciere.field_res_config_settings__regie_due_day
+msgid "Day of the invoiced month on which the rent is due."
+msgstr "Dag van de gefactureerde maand waarop de huur verschuldigd is."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_res_company__regie_invoice_day
+#: model:ir.model.fields,help:regie_fonciere.field_res_config_settings__regie_invoice_day
+msgid "Day of the month on which the rent invoices of a period are generated."
+msgstr ""
+"Dag van de maand waarop de huurfacturen van een periode worden aangemaakt."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__days
+msgid "Days"
+msgstr "Dagen"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
+msgid "Dear Madam, Dear Sir,"
+msgstr "Mevrouw, Mijnheer,"
+
+#. module: regie_fonciere
+#: model_terms:ir.actions.act_window,help:regie_fonciere.regie_allocation_key_action
+msgid "Define how the charges are split"
+msgstr "Bepaal hoe de lasten worden verdeeld"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_res_company__regie_deposit_return_months
+#: model:ir.model.fields,help:regie_fonciere.field_res_config_settings__regie_deposit_return_months
+msgid "Delay to return the deposit after the move-out."
+msgstr "Termijn voor de teruggave van de waarborg na het vertrek."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_form
+msgid "Deposit"
+msgstr "Waarborg"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_company__regie_deposit_cap_months
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_config_settings__regie_deposit_cap_months
+msgid "Deposit Cap (months of rent)"
+msgstr "Plafond van de waarborg (maanden huur)"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__deposit_count
+msgid "Deposit Count"
+msgstr "Aantal waarborgen"
+
+#. module: regie_fonciere
+#: model:ir.actions.report,name:regie_fonciere.action_report_deposit_release
+msgid "Deposit Release Form"
+msgstr "Formulier voor de vrijgave van de waarborg"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__deposit_release_count
+msgid "Deposit Releases in Progress"
+msgstr "Lopende vrijgaven van waarborgen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_company__regie_deposit_return_months
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_config_settings__regie_deposit_return_months
+msgid "Deposit Return Delay (months)"
+msgstr "Termijn voor de teruggave van de waarborg (maanden)"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.res_config_settings_view_form
+msgid "Deposit Rules"
+msgstr "Regels voor de waarborgen"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_deposit.py:0
+msgid "Deposit release: follow up (%s days after move-out)"
+msgstr "Vrijgave waarborg: opvolging (%s dagen na het vertrek)"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_deposit.py:0
+msgid "Deposit released."
+msgstr "Waarborg vrijgegeven."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__deposit_ids
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form_deposit
+msgid "Deposits"
+msgstr "Waarborgen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_category__description
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_form
+msgid "Description"
+msgstr "Omschrijving"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__detail_ids
+msgid "Detail"
+msgstr "Detail"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__detail_ids
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_statement_view_form
+msgid "Details"
+msgstr "Details"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__sepa_mandate_id
+msgid ""
+"Direct debit mandate of the main tenant used to collect the rent invoices."
+msgstr ""
+"Domiciliëringsmandaat van de hoofdhuurder gebruikt om de huurfacturen te "
+"innen."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_account_move__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_account_move_line__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key_line__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_category__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_cost__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_consumption_reading__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_health_index__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_rent_line__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_meter__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_peb_correction_factor__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_company__display_name
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "Weergavenaam"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_charge_statement__state__draft
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease__state__draft
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_search
+msgid "Draft"
+msgstr "Concept"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_company__regie_due_day
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_config_settings__regie_due_day
+msgid "Due Day"
+msgstr "Vervaldag"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__duration_months
+msgid "Duration (months)"
+msgstr "Duur (maanden)"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_search
+msgid "Dwellings"
+msgstr "Woningen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__peb_class__e
+msgid "E"
+msgstr "E"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_meter__ean_code
+msgid "EAN Code"
+msgstr "EAN-code"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__peb_certificate_number
+msgid "EPC Certificate Number"
+msgstr "Nummer van het EPB-certificaat"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__peb_class
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__peb_class
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_search
+msgid "EPC Class"
+msgstr "EPB-klasse"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_peb_correction_factor__peb_group
+msgid "EPC Classes"
+msgstr "EPB-klassen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__peb_communicated
+msgid "EPC Communicated to the Tenant"
+msgstr "EPB bezorgd aan de huurder"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_company__regie_peb_correction_cutoff_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_config_settings__regie_peb_correction_cutoff_date
+msgid "EPC Correction Cut-off Date"
+msgstr "Grensdatum EPB-correctie"
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_regie_peb_correction_factor
+msgid "EPC Correction Factor"
+msgstr "EPB-correctiefactor"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_peb_correction_factor_action
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_peb_correction_factor
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_peb_correction_factor_view_list
+msgid "EPC Correction Factors"
+msgstr "EPB-correctiefactoren"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_peb_correction_factor__peb_group__e
+msgid "EPC E"
+msgstr "EPB E"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_peb_correction_factor__peb_group__fg
+msgid "EPC F or G"
+msgstr "EPB F of G"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_search
+msgid "EPC Missing or Expired"
+msgstr "EPB ontbrekend of vervallen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__peb_valid_until
+msgid "EPC Valid Until"
+msgstr "EPB geldig tot"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
+msgid "EPC correction factor (EPC class"
+msgstr "EPB-correctiefactor (EPB-klasse"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__effective_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__start_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_rent_line__date_start
+msgid "Effective Date"
+msgstr "Ingangsdatum"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_meter__meter_type__electricity
+msgid "Electricity"
+msgstr "Elektriciteit"
+
+#. module: regie_fonciere
+#: model:regie.charge.category,name:regie_fonciere.charge_category_elevator
+msgid "Elevator"
+msgstr "Lift"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__end_date
+msgid "End Date"
+msgstr "Einddatum"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "End Litigation"
+msgstr "Einde geschil"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_search
+msgid "Ended"
+msgstr "Beëindigd"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_search
+msgid "Ending within 6 Months"
+msgstr "Vervalt binnen 6 maanden"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_form
+msgid "Energy Performance (EPC)"
+msgstr "Energieprestatie (EPB)"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_allocation_key__method__equal
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_charge_statement_cost__method__equal
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_charge_statement_detail__method__equal
+msgid "Equal Parts"
+msgstr "Gelijke delen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__etterbeek
+msgid "Etterbeek"
+msgstr "Etterbeek"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__evere
+msgid "Evere"
+msgstr "Evere"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__exceeds_cap
+msgid "Exceeds Cap"
+msgstr "Overschrijdt het plafond"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__peb_class__f
+msgid "F"
+msgstr "F"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_peb_correction_factor__factor
+msgid "Factor"
+msgstr "Factor"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_company__regie_deposit_reminder_days_1
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_config_settings__regie_deposit_reminder_days_1
+msgid "First Release Reminder (days)"
+msgstr "Eerste herinnering vrijgave (dagen)"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__invoicing_start_date
+msgid ""
+"First day invoiced by the schedule (defaults to the effective date). Use it "
+"to start invoicing later, e.g. for leases taken over from a previous system."
+msgstr ""
+"Eerste dag gefactureerd door de planning (standaard de ingangsdatum). "
+"Gebruik dit om de facturatie later te laten beginnen, bv. voor "
+"huurovereenkomsten overgenomen uit een vorig systeem."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease_schedule_line__period_date
+msgid "First day of the invoiced month."
+msgstr "Eerste dag van de gefactureerde maand."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_health_index__month
+msgid "First day of the month of the index."
+msgstr "Eerste dag van de maand van de index."
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease__charge_mode__flat
+msgid "Flat Rate"
+msgstr "Forfait"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_invoicing.py:0
+msgid "Flat-rate charges %(period)s"
+msgstr "Forfaitaire lasten %(period)s"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__floor
+msgid "Floor"
+msgstr "Verdieping"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__message_follower_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__message_follower_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__message_follower_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__message_follower_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__message_follower_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__message_follower_ids
+msgid "Followers"
+msgstr "Volgers"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__message_partner_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__message_partner_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__message_partner_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__message_partner_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__message_partner_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Volgers (Partners)"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+msgid "For the landlord,"
+msgstr "Voor de verhuurder,"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__forest
+msgid "Forest"
+msgstr "Vorst"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__deposit_type
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_search
+msgid "Form"
+msgstr "Vorm"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+msgid "Form of the deposit"
+msgstr "Vorm van de waarborg"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__state__free
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_search
+msgid "Free"
+msgstr "Vrij"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__free_unit_count
+msgid "Free Unit Count"
+msgstr "Aantal vrije eenheden"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_building_view_list
+msgid "Free Units"
+msgstr "Vrije eenheden"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__housing_category__free
+msgid "Free-market rent"
+msgstr "Vrije huurprijs"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_consumption_reading__date_from
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__date_from
+msgid "From"
+msgstr "Van"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_peb_correction_factor__day_from
+msgid "From Day"
+msgstr "Vanaf dag"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__peb_class__g
+msgid "G"
+msgstr "G"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__ganshoren
+msgid "Ganshoren"
+msgstr "Ganshoren"
+
+#. module: regie_fonciere
+#: model:regie.charge.category,name:regie_fonciere.charge_category_gardens
+msgid "Gardens"
+msgstr "Tuinen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_meter__meter_type__gas
+msgid "Gas"
+msgstr "Gas"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Generate Invoices"
+msgstr "Facturen aanmaken"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_statement_view_form
+msgid "Generate Regularisations"
+msgstr "Regularisaties aanmaken"
+
+#. module: regie_fonciere
+#: model:ir.actions.server,name:regie_fonciere.action_server_regie_lease_generate_schedule
+msgid "Generate Rent Invoices"
+msgstr "Huurfacturen aanmaken"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_res_company__regie_invoice_month_offset
+#: model:ir.model.fields,help:regie_fonciere.field_res_config_settings__regie_invoice_month_offset
+msgid ""
+"Generate the invoice of a period during the previous month (rent paid in "
+"advance) or during the period itself."
+msgstr ""
+"De factuur van een periode aanmaken tijdens de vorige maand (huur vooraf "
+"betaald) of tijdens de periode zelf."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_company__regie_invoice_month_offset
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_config_settings__regie_invoice_month_offset
+msgid "Generation Month"
+msgstr "Maand van aanmaak"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Give Notice"
+msgstr "Opzeg geven"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__guarantor_ids
+msgid "Guarantors"
+msgstr "Borgen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__has_message
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__has_message
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__has_message
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__has_message
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__has_message
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__has_message
+msgid "Has Message"
+msgstr "Heeft bericht"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_health_index_action
+#: model:ir.model,name:regie_fonciere.model_regie_health_index
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_health_index
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_health_index_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_health_index_view_search
+msgid "Health Index"
+msgstr "Gezondheidsindex"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_company__regie_index_base_year
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_config_settings__regie_index_base_year
+msgid "Health Index Base Year"
+msgstr "Basisjaar van de gezondheidsindex"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__initial_index
+msgid ""
+"Health index (base 2013) of the month preceding the signature of the lease."
+msgstr ""
+"Gezondheidsindex (basis 2013) van de maand vóór de ondertekening van de "
+"huurovereenkomst."
+
+#. module: regie_fonciere
+#: model:regie.charge.category,name:regie_fonciere.charge_category_heating
+msgid "Heating"
+msgstr "Verwarming"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__unit_type__house
+msgid "House"
+msgstr "Huis"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_search
+msgid "Housing"
+msgstr "Woning"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__housing_category
+msgid "Housing Category"
+msgstr "Type woning"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_deposit__deposit_type__housing_fund
+msgid "Housing Fund"
+msgstr "Woningfonds"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__account_reference
+msgid "IBAN or Reference"
+msgstr "IBAN of referentie"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+msgid "IBAN or reference"
+msgstr "IBAN of referentie"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_account_move__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_account_move_line__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key_line__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_category__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_cost__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_consumption_reading__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_health_index__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_rent_line__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_meter__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_peb_correction_factor__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_company__id
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_config_settings__id
+msgid "ID"
+msgstr "ID"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__activity_exception_icon
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__activity_exception_icon
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__activity_exception_icon
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__activity_exception_icon
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__activity_exception_icon
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__activity_exception_icon
+msgid "Icon"
+msgstr "Icoon"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_building__activity_exception_icon
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement__activity_exception_icon
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__activity_exception_icon
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__activity_exception_icon
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__activity_exception_icon
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Icoon om een uitzonderingsactiviteit aan te duiden."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_building__message_needaction
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement__message_needaction
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__message_needaction
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__message_needaction
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__message_needaction
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Indien aangevinkt vragen nieuwe berichten uw aandacht."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_building__message_has_error
+#: model:ir.model.fields,help:regie_fonciere.field_regie_building__message_has_sms_error
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement__message_has_error
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement__message_has_sms_error
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__message_has_error
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__message_has_sms_error
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__message_has_error
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__message_has_sms_error
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__message_has_error
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__message_has_sms_error
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__message_has_error
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Indien aangevinkt hebben sommige berichten een leveringsfout."
+
+#. module: regie_fonciere
+#: model_terms:ir.actions.act_window,help:regie_fonciere.regie_consumption_reading_action
+msgid "Import the consumption readings"
+msgstr "Importeer de verbruiksmetingen"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
+msgid ""
+"In accordance with the lease and with article 224 of the Brussels Housing Code, we hereby\n"
+"                    inform you that your rent is indexed at the anniversary date of the lease,"
+msgstr ""
+"Overeenkomstig de huurovereenkomst en artikel 224 van de Brusselse Huisvestingscode\n"
+"                    delen wij u mee dat uw huur geïndexeerd wordt op de verjaardatum van de huurovereenkomst,"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__index_is_provisional
+msgid "Index Is Provisional"
+msgstr "Voorlopige index"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__is_indexable
+msgid "Indexable"
+msgstr "Indexeerbaar"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease_rent_line__reason__indexation
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.res_config_settings_view_form
+msgid "Indexation"
+msgstr "Indexering"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_indexation.py:0
+msgid "Indexation %s"
+msgstr "Indexering %s"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form_indexation
+msgid "Indexation Blocked"
+msgstr "Indexering geblokkeerd"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__indexation_blocking_reason
+msgid "Indexation Blocking Reason"
+msgstr "Reden van de blokkering van de indexering"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__indexation_count
+msgid "Indexation Count"
+msgstr "Aantal indexeringen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__indexation_excluded
+msgid "Indexation Excluded by the Lease"
+msgstr "Indexering uitgesloten door de huurovereenkomst"
+
+#. module: regie_fonciere
+#: model:ir.actions.report,name:regie_fonciere.action_report_indexation_letter
+msgid "Indexation Letter"
+msgstr "Indexeringsbrief"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_company__regie_indexation_notice_days
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_config_settings__regie_indexation_notice_days
+msgid "Indexation Proposal Notice (days)"
+msgstr "Termijn voor het indexeringsvoorstel (dagen)"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_company__regie_indexation_retroactivity_months
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_config_settings__regie_indexation_retroactivity_months
+msgid "Indexation Retroactivity (months)"
+msgstr "Terugwerkende kracht van de indexering (maanden)"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.res_config_settings_view_form
+msgid "Indexation Rules"
+msgstr "Indexeringsregels"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_indexation.py:0
+msgid "Indexation of the rent at %(date)s: new rent %(rent)s."
+msgstr "Indexering van de huur op %(date)s: nieuwe huur %(rent)s."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_indexation.py:0
+msgid "Indexation of your rent – %s"
+msgstr "Indexering van uw huur – %s"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_indexation_action
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__indexation_ids
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_indexation
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form_indexation
+msgid "Indexations"
+msgstr "Indexeringen"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_indexation_this_month_action
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__indexation_month_count
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_report_indexations_month
+msgid "Indexations This Month"
+msgstr "Indexeringen deze maand te behandelen"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_indexation_to_process_action
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_indexation_to_process
+msgid "Indexations to Process"
+msgstr "Te behandelen indexeringen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__indexation_to_validate_count
+msgid "Indexations to Validate"
+msgstr "Te valideren indexeringen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__new_rent
+msgid "Indexed rent proposed (can be lowered)."
+msgstr "Voorgestelde geïndexeerde huur (kan verlaagd worden)."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_building_view_form
+msgid "Information"
+msgstr "Informatie"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__initial_charge_provision
+msgid "Initial Charge Provision"
+msgstr "Initiële provisie voor lasten"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__initial_index
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__initial_index
+msgid "Initial Index"
+msgstr "Aanvangsindex"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease_rent_line__reason__initial
+msgid "Initial Rent"
+msgstr "Initiële huur"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
+msgid "Initial health index (base"
+msgstr "Aanvangsgezondheidsindex (basis"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__invoice_id
+msgid "Invoice"
+msgstr "Factuur"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__invoice_count
+msgid "Invoice Count"
+msgstr "Aantal facturen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_company__regie_invoice_day
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_config_settings__regie_invoice_day
+msgid "Invoice Generation Day"
+msgstr "Dag van aanmaak van de facturen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_charge_statement__state__invoiced
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease_schedule_line__state__invoiced
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_schedule_line_view_search
+msgid "Invoiced"
+msgstr "Gefactureerd"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__invoice_ids
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Invoices"
+msgstr "Facturen"
+
+#. module: regie_fonciere
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_invoicing
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Invoicing"
+msgstr "Facturatie"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_lease_schedule_line_action
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__schedule_line_ids
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_schedule
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_schedule_line_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_schedule_line_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.res_config_settings_view_form
+msgid "Invoicing Schedule"
+msgstr "Facturatieplanning"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__invoicing_start_date
+msgid "Invoicing Start Date"
+msgstr "Begindatum facturatie"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__is_dwelling
+msgid "Is Dwelling"
+msgstr "Is een woning"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__message_is_follower
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__message_is_follower
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__message_is_follower
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__message_is_follower
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__message_is_follower
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__message_is_follower
+msgid "Is Follower"
+msgstr "Is een volger"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__is_housing
+msgid "Is Housing"
+msgstr "Is een woninghuurovereenkomst"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__is_registered
+msgid "Is Registered"
+msgstr "Is geregistreerd"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__ixelles
+msgid "Ixelles"
+msgstr "Elsene"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__jette
+msgid "Jette"
+msgstr "Jette"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__joint_liability
+msgid "Jointly and Severally Liable"
+msgstr "Hoofdelijk aansprakelijk"
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_account_move
+msgid "Journal Entry"
+msgstr "Boeking"
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_account_move_line
+msgid "Journal Item"
+msgstr "Boekingsregel"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.res_config_settings_view_form
+msgid "Journal and income accounts of the rent invoices."
+msgstr "Dagboek en opbrengstenrekeningen van de huurfacturen."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key_line__key_id
+msgid "Key"
+msgstr "Sleutel"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__koekelberg
+msgid "Koekelberg"
+msgstr "Koekelberg"
+
+#. module: regie_fonciere
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_root
+#: model:res.groups.privilege,name:regie_fonciere.res_groups_privilege_regie
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.res_config_settings_view_form
+msgid "Land Agency"
+msgstr "Grondregie"
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_regie_dashboard
+msgid "Land Agency Dashboard"
+msgstr "Dashboard van de grondregie"
+
+#. module: regie_fonciere
+#: model:ir.actions.server,name:regie_fonciere.ir_cron_regie_indexation_proposals_ir_actions_server
+msgid "Land Agency: create indexation proposals"
+msgstr "Grondregie: indexeringsvoorstellen aanmaken"
+
+#. module: regie_fonciere
+#: model:ir.actions.server,name:regie_fonciere.ir_cron_regie_generate_invoices_ir_actions_server
+msgid "Land Agency: generate rent invoices"
+msgstr "Grondregie: huurfacturen aanmaken"
+
+#. module: regie_fonciere
+#: model:ir.actions.server,name:regie_fonciere.ir_cron_regie_lease_states_ir_actions_server
+msgid "Land Agency: update lease statuses"
+msgstr "Grondregie: status van de huurovereenkomsten bijwerken"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+msgid "Landlord"
+msgstr "Verhuurder"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key__write_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key_line__write_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__write_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_category__write_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__write_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_cost__write_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__write_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__write_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_consumption_reading__write_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__write_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__write_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_health_index__write_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__write_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__write_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_rent_line__write_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__write_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_meter__write_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_peb_correction_factor__write_uid
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__write_uid
+msgid "Last Updated by"
+msgstr "Laatst bijgewerkt door"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key__write_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key_line__write_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__write_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_category__write_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__write_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_cost__write_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__write_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__write_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_consumption_reading__write_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__write_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__write_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_health_index__write_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__write_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__write_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_rent_line__write_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__write_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_meter__write_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_peb_correction_factor__write_date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__write_date
+msgid "Last Updated on"
+msgstr "Laatst bijgewerkt op"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_res_company__regie_communication_prefix
+#: model:ir.model.fields,help:regie_fonciere.field_res_config_settings__regie_communication_prefix
+msgid ""
+"Leading digit(s) of the structured communications of the leases, to keep "
+"them apart from the references generated by Odoo for invoices."
+msgstr ""
+"Eerste cijfer(s) van de gestructureerde mededelingen van de "
+"huurovereenkomsten, om ze te onderscheiden van de referenties die Odoo voor "
+"de facturen aanmaakt."
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_regie_lease
+#: model:ir.model.fields,field_description:regie_fonciere.field_account_bank_statement_line__regie_lease_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_account_move__regie_lease_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__lease_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__lease_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__lease_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__lease_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_rent_line__lease_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__lease_id
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_schedule_line_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unpaid_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.view_account_invoice_filter_inherit_regie
+msgid "Lease"
+msgstr "Huurovereenkomst"
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_regie_lease_schedule_line
+msgid "Lease Invoicing Schedule"
+msgstr "Facturatieplanning van de huurovereenkomst"
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_regie_lease_rent_line
+msgid "Lease Rent History"
+msgstr "Huurgeschiedenis"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__lease_state
+msgid "Lease Status"
+msgstr "Status van de huurovereenkomst"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_lease_action
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__lease_line_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__lease_ids
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_lease
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_leases
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_search
+msgid "Leases"
+msgstr "Huurovereenkomsten"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_lease_ending_action
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__ending_lease_count
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_report_ending_leases
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+msgid "Leases Ending within 6 Months"
+msgstr "Huurovereenkomsten die binnen 6 maanden vervallen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__litigation_lease_count
+msgid "Leases in Litigation"
+msgstr "Huurovereenkomsten in geschil"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__cap_amount
+msgid "Legal Cap"
+msgstr "Wettelijk plafond"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__letter_attachment_id
+msgid "Letter Attachment"
+msgstr "Bijgevoegde brief"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease__state__litigation
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_search
+msgid "Litigation"
+msgstr "Geschil"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease__lease_type__main_residence
+msgid "Main Residence"
+msgstr "Hoofdverblijfplaats"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__partner_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__partner_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__partner_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__partner_id
+msgid "Main Tenant"
+msgstr "Hoofdhuurder"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__main_unit_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__main_unit_id
+msgid "Main Unit"
+msgstr "Hoofdeenheid"
+
+#. module: regie_fonciere
+#: model:regie.charge.category,name:regie_fonciere.charge_category_maintenance
+msgid "Maintenance Contracts"
+msgstr "Onderhoudscontracten"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_form
+msgid "Mark as Constituted"
+msgstr "Markeren als gesteld"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_form
+msgid "Mark as Released"
+msgstr "Markeren als vrijgegeven"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Mark as Signed"
+msgstr "Markeren als ondertekend"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_building__activity_type_icon
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement__activity_type_icon
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__activity_type_icon
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__activity_type_icon
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__activity_type_icon
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__activity_type_icon
+msgid "Material Symbols icon e.g. checklist"
+msgstr "Material Symbols-icoon, bv. checklist"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_res_company__regie_deposit_cap_months
+#: model:ir.model.fields,help:regie_fonciere.field_res_config_settings__regie_deposit_cap_months
+msgid ""
+"Maximum deposit of a housing lease, in months of rent excluding charges (0: "
+"no cap). A warning is shown above it."
+msgstr ""
+"Maximale waarborg van een woninghuurovereenkomst, in maanden huur zonder "
+"lasten (0: geen plafond). Daarboven wordt een waarschuwing getoond."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__cap_amount
+msgid ""
+"Maximum deposit of a housing lease: number of months of rent (excluding "
+"charges) set in the company settings."
+msgstr ""
+"Maximale waarborg van een woninghuurovereenkomst: aantal maanden huur "
+"(zonder lasten) ingesteld in de bedrijfsinstellingen."
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__housing_category__medium
+msgid "Medium rent"
+msgstr "Middelgrote huurprijs"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__message_has_error
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__message_has_error
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__message_has_error
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__message_has_error
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__message_has_error
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__message_has_error
+msgid "Message Delivery error"
+msgstr "Fout bij aflevering bericht"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__message_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__message_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__message_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__message_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__message_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__message_ids
+msgid "Messages"
+msgstr "Berichten"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_consumption_reading__meter_id
+msgid "Meter"
+msgstr "Meter"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_meter__name
+msgid "Meter Number"
+msgstr "Meternummer"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__meter_ids
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_form
+msgid "Meters"
+msgstr "Meters"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key__method
+msgid "Method"
+msgstr "Methode"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__housing_category__moderate
+msgid "Moderate rent"
+msgstr "Bescheiden huurprijs"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__molenbeek
+msgid "Molenbeek-Saint-Jean"
+msgstr "Sint-Jans-Molenbeek"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_health_index__month
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_health_index_view_search
+msgid "Month"
+msgstr "Maand"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__new_index_month
+msgid "Month of the new index (month preceding the anniversary)."
+msgstr "Maand van de nieuwe index (maand vóór de verjaardatum)."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid "Monthly charge provision proposed from now on:"
+msgstr "Voorgestelde maandelijkse provisie voor lasten voortaan:"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement_lease__proposed_provision
+msgid "Monthly provision suggested from the actual charges of the year."
+msgstr ""
+"Maandelijkse provisie voorgesteld op basis van de werkelijke lasten van het "
+"jaar."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+msgid "Move-out date"
+msgstr "Vertrekdatum"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__municipality
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_building_view_search
+msgid "Municipality"
+msgstr "Gemeente"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__my_activity_date_deadline
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__my_activity_date_deadline
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__my_activity_date_deadline
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__my_activity_date_deadline
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__my_activity_date_deadline
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Mijn activiteit deadline"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key__name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_category__name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__name
+msgid "Name"
+msgstr "Naam"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__new_index
+msgid "New Index"
+msgstr "Nieuwe index"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__new_index_month
+msgid "New Index Month"
+msgstr "Maand van de nieuwe index"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__new_rent
+msgid "New Rent"
+msgstr "Nieuwe huur"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
+msgid "New health index ("
+msgstr "Nieuwe gezondheidsindex ("
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
+msgid "New rent (excluding charges)"
+msgstr "Nieuwe huur (zonder lasten)"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__activity_date_deadline
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__activity_date_deadline
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__activity_date_deadline
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__activity_date_deadline
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__activity_date_deadline
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Volgende activiteit deadline"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__activity_summary
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__activity_summary
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__activity_summary
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__activity_summary
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__activity_summary
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__activity_summary
+msgid "Next Activity Summary"
+msgstr "Samenvatting volgende activiteit"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__activity_type_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__activity_type_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__activity_type_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__activity_type_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__activity_type_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__activity_type_id
+msgid "Next Activity Type"
+msgstr "Type volgende activiteit"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__next_anniversary_date
+msgid "Next Anniversary Date"
+msgstr "Volgende verjaardatum"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__next_anniversary_date
+msgid "Next anniversary of the effective date (today or later)."
+msgstr "Volgende verjaardag van de ingangsdatum (vandaag of later)."
+
+#. module: regie_fonciere
+#: model:res.groups.privilege,placeholder:regie_fonciere.res_groups_privilege_regie
+msgid "No"
+msgstr "Nee"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_indexation.py:0
+msgid "No health index found for %s."
+msgstr "Geen gezondheidsindex gevonden voor %s."
+
+#. module: regie_fonciere
+#: model_terms:ir.actions.act_window,help:regie_fonciere.regie_indexation_to_process_action
+msgid "No indexation to process"
+msgstr "Geen indexering te behandelen"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_invoicing.py:0
+msgid "No sales journal found for %s."
+msgstr "Geen verkoopdagboek gevonden voor %s."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_search
+msgid "Not Constituted"
+msgstr "Niet gesteld"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_search
+msgid "Not Registered"
+msgstr "Niet geregistreerd"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_rent_line__note
+msgid "Note"
+msgstr "Opmerking"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key__notes
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__notes
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__notes
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__notes
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__notes
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__notes
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_meter__notes
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__notes
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_building_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_form
+msgid "Notes"
+msgstr "Notities"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_statement_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_form
+msgid "Notes..."
+msgstr "Notities..."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__notice_date
+msgid "Notice Date"
+msgstr "Datum van de opzeg"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease__state__notice
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_search
+msgid "Notice Given"
+msgstr "Opzeg gegeven"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__message_needaction_counter
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__message_needaction_counter
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__message_needaction_counter
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__message_needaction_counter
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__message_needaction_counter
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Aantal acties"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_res_company__regie_indexation_notice_days
+#: model:ir.model.fields,help:regie_fonciere.field_res_config_settings__regie_indexation_notice_days
+msgid ""
+"Number of days before the anniversary of the lease at which the indexation "
+"proposal is created."
+msgstr ""
+"Aantal dagen vóór de verjaardatum van de huurovereenkomst waarop het "
+"indexeringsvoorstel wordt aangemaakt."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__message_has_error_counter
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__message_has_error_counter
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__message_has_error_counter
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__message_has_error_counter
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__message_has_error_counter
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__message_has_error_counter
+msgid "Number of errors"
+msgstr "Aantal fouten"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_building__message_needaction_counter
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement__message_needaction_counter
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__message_needaction_counter
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__message_needaction_counter
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__message_needaction_counter
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Aantal berichten die actie vereisen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_building__message_has_error_counter
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement__message_has_error_counter
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__message_has_error_counter
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__message_has_error_counter
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__message_has_error_counter
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Aantal berichten met leveringsfout"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+msgid "Occupancy"
+msgstr "Bezetting"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__occupancy_rate
+msgid "Occupancy Rate (%)"
+msgstr "Bezettingsgraad (%)"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__unit_type__office
+msgid "Office"
+msgstr "Kantoor"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "One-off Invoice"
+msgstr "Losse factuur"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_deposit.py:0
+msgid "Only a constituted deposit can be released (%s)."
+msgstr "Alleen een gestelde waarborg kan vrijgegeven worden (%s)."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_charge_statement.py:0
+msgid "Only a supervisor can apply a provision adjustment."
+msgstr ""
+"Alleen een verantwoordelijke kan een aanpassing van de provisie toepassen."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_indexation.py:0
+msgid "Only a supervisor can validate or apply an indexation."
+msgstr ""
+"Alleen een verantwoordelijke kan een indexering valideren of toepassen."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease.py:0
+msgid "Only draft leases can be deleted."
+msgstr "Alleen huurovereenkomsten in concept kunnen verwijderd worden."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__open_balance
+msgid "Open Balance"
+msgstr "Openstaand saldo"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__unpaid_amount
+msgid "Open Rent Balance"
+msgstr "Openstaand huursaldo"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__vat_option
+msgid "Opt for VAT on this commercial lease."
+msgstr "Opteren voor btw op deze handelshuurovereenkomst."
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_deposit__deposit_type__other
+msgid "Other"
+msgstr "Andere"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__overdue_amount
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unpaid_view_search
+msgid "Overdue"
+msgstr "Achterstallig"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__overdue_invoice_count
+msgid "Overdue Invoices"
+msgstr "Achterstallige facturen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease__lease_type__parking
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__unit_type__parking
+msgid "Parking"
+msgstr "Parkeerplaats"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_deposit__state__partial
+msgid "Partially Constituted"
+msgstr "Gedeeltelijk gesteld"
+
+#. module: regie_fonciere
+#: model:res.company,pay_now_label:regie_fonciere.demo_company
+msgid "Pay now"
+msgstr "Nu betalen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__payment_state
+msgid "Payment Status"
+msgstr "Betalingsstatus"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_search
+msgid ""
+"Pending proposals whose anniversary is before the end of next month (the "
+"letter must be sent this month)"
+msgstr ""
+"Openstaande voorstellen met een verjaardatum vóór het einde van volgende "
+"maand (de brief moet deze maand vertrekken)"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__period_date
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_consumption_reading_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_schedule_line_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid "Period"
+msgstr "Periode"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid "Please pay this balance before"
+msgstr "Gelieve dit saldo te betalen vóór"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement_lease__balance
+msgid ""
+"Positive: the tenant owes the difference; negative: refund to the tenant."
+msgstr ""
+"Positief: de huurder is het verschil verschuldigd; negatief: terugbetaling "
+"aan de huurder."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_statement_view_form
+msgid "Post the regularisation invoices and credit notes of this statement?"
+msgstr "De regularisatiefacturen en -creditnota's van deze afrekening boeken?"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease__lease_type__precarious
+msgid "Precarious Occupancy"
+msgstr "Precaire bezetting"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__res_company__regie_invoice_month_offset__previous
+msgid "Previous Month"
+msgstr "Vorige maand"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_statement_view_form
+msgid "Print"
+msgstr "Afdrukken"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_statement_view_form
+msgid "Print Statements"
+msgstr "Afrekeningen afdrukken"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_deposit__deposit_type__bank_guarantee
+msgid "Progressive Bank Guarantee"
+msgstr "Progressieve bankwaarborg"
+
+#. module: regie_fonciere
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_properties
+msgid "Properties"
+msgstr "Panden"
+
+#. module: regie_fonciere
+#: model:res.groups,name:regie_fonciere.group_regie_property_manager
+msgid "Property Manager"
+msgstr "Beheerder"
+
+#. module: regie_fonciere
+#: model_terms:ir.actions.act_window,help:regie_fonciere.regie_indexation_to_process_action
+msgid ""
+"Proposals are created automatically before the anniversary of the leases "
+"that can be indexed."
+msgstr ""
+"De voorstellen worden automatisch aangemaakt vóór de verjaardatum van de "
+"huurovereenkomsten die geïndexeerd kunnen worden."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__proposed_provision
+msgid "Proposed Provision"
+msgstr "Voorgestelde provisie"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__prorata
+msgid "Prorata"
+msgstr "Prorata"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__provision_rent_line_id
+msgid "Provision Adjustment"
+msgstr "Aanpassing van de provisie"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_search
+msgid "Provisional Index"
+msgstr "Voorlopige index"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease__charge_mode__provisions
+msgid "Provisions"
+msgstr "Provisies"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__provisions_amount
+msgid "Provisions Called"
+msgstr "Gevraagde provisies"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__charge_mode
+msgid "Provisions are regularised by a yearly statement; a flat rate is not."
+msgstr ""
+"Provisies worden geregulariseerd door een jaarlijkse afrekening; een forfait"
+" niet."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid "Provisions called for the year"
+msgstr "Gevraagde provisies voor het jaar"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_consumption_reading__quantity
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__rating_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__rating_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__rating_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__rating_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__rating_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__rating_ids
+msgid "Ratings"
+msgstr "Beoordelingen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_rent_line__reason
+msgid "Reason"
+msgstr "Reden"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_statement_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_form
+msgid "Recompute"
+msgstr "Herberekenen"
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_regie_charge_category
+msgid "Recoverable Charge Category"
+msgstr "Categorie van verhaalbare lasten"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__charge_category_ids
+msgid "Recoverable Charges"
+msgstr "Verhaalbare lasten"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_account_move_line__regie_charge_category_id
+msgid ""
+"Recoverable charge category of this cost, used by the yearly charge "
+"statements of the building set in the analytic distribution."
+msgstr ""
+"Categorie van verhaalbare lasten van deze kost, gebruikt door de jaarlijkse "
+"afrekeningen van het gebouw vermeld in de analytische verdeling."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__name
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__name
+msgid "Reference"
+msgstr "Referentie"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__reference_rent
+msgid "Reference Rent"
+msgstr "Referentiehuurprijs"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__reference_rent
+msgid ""
+"Reference rent of the Brussels regional grid (mandatory mention in housing "
+"leases)."
+msgstr ""
+"Referentiehuurprijs van het Brusselse gewestelijke rooster (verplichte "
+"vermelding in woninghuurovereenkomsten)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__refusal_reason
+msgid "Refusal Reason"
+msgstr "Reden van de weigering"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_form
+msgid "Refuse"
+msgstr "Weigeren"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_indexation__state__refused
+msgid "Refused"
+msgstr "Geweigerd"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Registration"
+msgstr "Registratie"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Registration & Indexation"
+msgstr "Registratie & indexering"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__registration_date
+msgid "Registration Date"
+msgstr "Registratiedatum"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__registration_document
+msgid "Registration Document"
+msgstr "Registratiedocument"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__registration_document_name
+msgid "Registration Document Name"
+msgstr "Naam van het registratiedocument"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__registration_reference
+msgid "Registration Reference"
+msgstr "Registratiereferentie"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__invoice_id
+msgid "Regularisation"
+msgstr "Regularisatie"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_form
+msgid "Release"
+msgstr "Vrijgave"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__release_date
+msgid "Release Date"
+msgstr "Datum van vrijgave"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_form
+msgid "Release Form"
+msgstr "Vrijgaveformulier"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__release_request_date
+msgid "Release Request Date"
+msgstr "Datum van het verzoek tot vrijgave"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_deposit__state__release_requested
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_search
+msgid "Release Requested"
+msgstr "Vrijgave aangevraagd"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+msgid "Release of the rental deposit"
+msgstr "Vrijgave van de huurwaarborg"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_deposit__state__released
+msgid "Released"
+msgstr "Vrijgegeven"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_search
+msgid "Released or Retained"
+msgstr "Vrijgegeven of ingehouden"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_rent_line__rent
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__rent_amount
+#: model:product.template,name:regie_fonciere.product_rent_product_template
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Rent"
+msgstr "Huur"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_invoicing.py:0
+msgid "Rent %(period)s – %(units)s"
+msgstr "Huur %(period)s – %(units)s"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__rent_line_ids
+msgid "Rent History"
+msgstr "Huurgeschiedenis"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_company__regie_rent_account_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_config_settings__regie_rent_account_id
+msgid "Rent Income Account"
+msgstr "Opbrengstenrekening huur"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__rent_increase
+msgid "Rent Increase"
+msgstr "Huurverhoging"
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_regie_indexation
+msgid "Rent Indexation"
+msgstr "Indexering van de huur"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_rent_invoice_action
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_rent_invoice
+msgid "Rent Invoices"
+msgstr "Huurfacturen"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.res_config_settings_view_form
+msgid "Rent Invoicing"
+msgstr "Facturatie van de huur"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_company__regie_rent_journal_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_config_settings__regie_rent_journal_id
+msgid "Rent Journal"
+msgstr "Huurdagboek"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__rent_line_id
+msgid "Rent Line"
+msgstr "Huurregel"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__base_rent
+msgid "Rent at signature, basis of the indexation formula."
+msgstr "Huur bij ondertekening, basis van de indexeringsformule."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__current_rent
+msgid "Rent in force before the anniversary."
+msgstr "Huur van kracht vóór de verjaardatum."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_indexation.py:0
+msgid "Rent indexation arrears since %s"
+msgstr "Achterstallige indexering van de huur sinds %s"
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_regie_deposit
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_form
+msgid "Rental Deposit"
+msgstr "Huurwaarborg"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_deposit_action
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_deposit
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.res_config_settings_view_form
+msgid "Rental Deposits"
+msgstr "Huurwaarborgen"
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_regie_unit
+msgid "Rental Unit"
+msgstr "Verhuureenheid"
+
+#. module: regie_fonciere
+#: model:ir.module.module,summary:base.module_regie_fonciere
+msgid ""
+"Rental management for a Brussels municipal land agency (régie foncière)"
+msgstr "Verhuurbeheer voor een Brusselse gemeentelijke grondregie"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__state__rented
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_search
+msgid "Rented"
+msgstr "Verhuurd"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+msgid "Rented property"
+msgstr "Gehuurd goed"
+
+#. module: regie_fonciere
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_reporting
+msgid "Reporting"
+msgstr "Rapportering"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__date
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__request_date
+msgid "Request Date"
+msgstr "Datum van het verzoek"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_form
+msgid "Request Release"
+msgstr "Vrijgave aanvragen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_deposit__state__requested
+msgid "Requested"
+msgstr "Aangevraagd"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Rescind"
+msgstr "Ontbinden"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Rescind this lease? The move-out date must be set."
+msgstr "Deze huurovereenkomst ontbinden? De vertrekdatum moet ingevuld zijn."
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease__state__rescinded
+msgid "Rescinded"
+msgstr "Ontbonden"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_form
+msgid "Reset"
+msgstr "Herstellen"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_statement_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Reset to Draft"
+msgstr "Terugzetten naar concept"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__activity_user_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__activity_user_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__activity_user_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__activity_user_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__activity_user_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__activity_user_id
+msgid "Responsible User"
+msgstr "Verantwoordelijke gebruiker"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__computed_rent
+msgid "Result of the indexation formula."
+msgstr "Resultaat van de indexeringsformule."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_statement_view_form
+msgid "Results per Lease"
+msgstr "Resultaten per huurovereenkomst"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__unit_type__retail
+msgid "Retail"
+msgstr "Handelszaak"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_deposit__state__retained
+msgid "Retained"
+msgstr "Ingehouden"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__retained_amount
+msgid "Retained Amount"
+msgstr "Ingehouden bedrag"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__retention_reason
+msgid "Retention Reason"
+msgstr "Reden van de inhouding"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+msgid "Retention – damages"
+msgstr "Inhouding – schade"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+msgid "Retention – unpaid charges"
+msgstr "Inhouding – onbetaalde lasten"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+msgid "Retention – unpaid rents"
+msgstr "Inhouding – onbetaalde huur"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease_rent_line__reason__revision
+msgid "Revision"
+msgstr "Herziening"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_search
+msgid "Running"
+msgstr "Lopend"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__running_lease_count
+msgid "Running Leases"
+msgstr "Lopende huurovereenkomsten"
+
+#. module: regie_fonciere
+#: model:ir.module.module,shortdesc:base.module_regie_fonciere
+msgid "Régie foncière"
+msgstr "Grondregie"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__sepa_mandate_id
+msgid "SEPA Mandate"
+msgstr "SEPA-mandaat"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__message_has_sms_error
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__message_has_sms_error
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__message_has_sms_error
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__message_has_sms_error
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__message_has_sms_error
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Fout bij verzending sms"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__saint_gilles
+msgid "Saint-Gilles"
+msgstr "Sint-Gillis"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__saint_josse
+msgid "Saint-Josse-ten-Noode"
+msgstr "Sint-Joost-ten-Node"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_res_company__regie_rent_journal_id
+#: model:ir.model.fields,help:regie_fonciere.field_res_config_settings__regie_rent_journal_id
+msgid "Sales journal of the rent invoices (default: the first sales journal)."
+msgstr ""
+"Verkoopdagboek van de huurfacturen (standaard: het eerste verkoopdagboek)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__res_company__regie_invoice_month_offset__current
+msgid "Same Month"
+msgstr "Dezelfde maand"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__schaerbeek
+msgid "Schaerbeek"
+msgstr "Schaarbeek"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_company__regie_deposit_reminder_days_2
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_config_settings__regie_deposit_reminder_days_2
+msgid "Second Release Reminder (days)"
+msgstr "Tweede herinnering vrijgave (dagen)"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+msgid "See the Deposits"
+msgstr "Waarborgen bekijken"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+msgid "See the Leases"
+msgstr "Huurovereenkomsten bekijken"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_form
+msgid "Send Letter"
+msgstr "Brief verzenden"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_indexation__state__sent
+msgid "Sent"
+msgstr "Verzonden"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_category__sequence
+msgid "Sequence"
+msgstr "Reeks"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease.py:0
+msgid "Set the actual move-out date of lease %s first."
+msgstr "Vul eerst de werkelijke vertrekdatum van huurovereenkomst %s in."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_deposit.py:0
+msgid "Set the move-out date of lease %s first."
+msgstr "Vul eerst de vertrekdatum van huurovereenkomst %s in."
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_config_settings_action
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_settings
+msgid "Settings"
+msgstr "Instellingen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__amount
+msgid "Share"
+msgstr "Aandeel"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease_schedule_line__prorata
+msgid "Share of the month invoiced (occupied days / days of the month)."
+msgstr "Gefactureerd deel van de maand (bewoonde dagen / dagen van de maand)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease__lease_type__shared
+msgid "Shared Housing"
+msgstr "Medehuur"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key__line_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key_line__shares
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_allocation_key__method__shares
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_charge_statement_cost__method__shares
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_charge_statement_detail__method__shares
+msgid "Shares"
+msgstr "Aandelen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease__lease_type__short_term
+msgid "Short Term"
+msgstr "Korte duur"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_building__code
+msgid "Short internal reference of the building."
+msgstr "Korte interne referentie van het gebouw."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__signature_date
+msgid "Signature Date"
+msgstr "Datum van ondertekening"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease__state__signed
+msgid "Signed"
+msgstr "Ondertekend"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_cost__statement_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__statement_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__statement_id
+msgid "Statement"
+msgstr "Afrekening"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid "Statement of the charges"
+msgstr "Afrekening van de lasten"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__state
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__state
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_indexation__state
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__state
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__state
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__state
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_search
+msgid "Status"
+msgstr "Status"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_building__activity_state
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement__activity_state
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__activity_state
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__activity_state
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__activity_state
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Status gebaseerd op activiteiten\n"
+"Te laat: vervaldatum is al verstreken\n"
+"Vandaag: activiteitsdatum is vandaag\n"
+"Gepland: toekomstige activiteiten."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__street
+msgid "Street"
+msgstr "Straat"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__street2
+msgid "Street2"
+msgstr "Straat 2"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__structured_communication
+msgid "Structured Communication"
+msgstr "Gestructureerde mededeling"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_company__regie_communication_prefix
+#: model:ir.model.fields,field_description:regie_fonciere.field_res_config_settings__regie_communication_prefix
+msgid "Structured Communication Prefix"
+msgstr "Prefix van de gestructureerde mededeling"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease__lease_type__student
+msgid "Student"
+msgstr "Student"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__housing_category__student
+msgid "Student housing"
+msgstr "Studentenhuisvesting"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__unit_type__studio
+msgid "Studio"
+msgstr "Studio"
+
+#. module: regie_fonciere
+#: model:res.groups,name:regie_fonciere.group_regie_supervisor
+msgid "Supervisor"
+msgstr "Verantwoordelijke"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_allocation_key__method__surface
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_charge_statement_cost__method__surface
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_charge_statement_detail__method__surface
+msgid "Surface"
+msgstr "Oppervlakte"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__surface
+msgid "Surface (m²)"
+msgstr "Oppervlakte (m²)"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__tax_ids
+msgid "Taxes"
+msgstr "Btw"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__partner_id
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unpaid_view_search
+msgid "Tenant"
+msgstr "Huurder"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement_lease__partner_id
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__partner_id
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__partner_id
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease_schedule_line__partner_id
+msgid "Tenant to whom the rent invoices are addressed."
+msgstr "Huurder aan wie de huurfacturen gericht worden."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+msgid "Tenant(s)"
+msgstr "Huurder(s)"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__tenant_ids
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Tenants"
+msgstr "Huurders"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__overdue_tenant_count
+msgid "Tenants with Overdue Invoices"
+msgstr "Huurders met achterstallige facturen"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Terminate"
+msgstr "Beëindigen"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "Terminate this lease? The move-out date must be set."
+msgstr "Deze huurovereenkomst beëindigen? De vertrekdatum moet ingevuld zijn."
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease__state__terminated
+msgid "Terminated"
+msgstr "Beëindigd"
+
+#. module: regie_fonciere
+#: model_terms:res.company,sign_terms:regie_fonciere.demo_company
+#: model_terms:res.company,sign_terms_html:regie_fonciere.demo_company
+msgid "Terms &amp; Conditions"
+msgstr "Algemene voorwaarden"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_meter.py:0
+msgid "The EAN code %s must contain 18 digits."
+msgstr "De EAN-code %s moet 18 cijfers bevatten."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__peb_is_valid
+msgid "The EPC certificate exists and is valid today."
+msgstr "Het EPB-certificaat bestaat en is vandaag geldig."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_indexation.py:0
+msgid "The EPC certificate of %s is missing or expired."
+msgstr "Het EPB-certificaat van %s ontbreekt of is vervallen."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__peb_communicated
+msgid "The EPC certificate of the unit was handed over to the tenant."
+msgstr "Het EPB-certificaat van de eenheid werd aan de huurder overhandigd."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_indexation.py:0
+msgid "The EPC certificate was not communicated to the tenant."
+msgstr "Het EPB-certificaat werd niet aan de huurder bezorgd."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_res_company__regie_peb_correction_cutoff_date
+#: model:ir.model.fields,help:regie_fonciere.field_res_config_settings__regie_peb_correction_cutoff_date
+msgid ""
+"The EPC correction factor applies to housing leases that took effect before "
+"this date."
+msgstr ""
+"De EPB-correctiefactor geldt voor woninghuurovereenkomsten die vóór deze "
+"datum in werking traden."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease.py:0
+msgid "The base rent of lease %s must be positive."
+msgstr "De basishuur van huurovereenkomst %s moet positief zijn."
+
+#. module: regie_fonciere
+#: model:ir.model.constraint,message:regie_fonciere.constraint_regie_building_code_company_unique
+msgid "The building code must be unique per company."
+msgstr "De code van het gebouw moet uniek zijn per bedrijf."
+
+#. module: regie_fonciere
+#: model:ir.model.constraint,message:regie_fonciere.constraint_regie_charge_category_code_unique
+msgid "The charge category code must be unique."
+msgstr "De code van de lastencategorie moet uniek zijn."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_allocation_key_view_form
+msgid ""
+"The consumptions are read in Charges &gt; Consumption Readings (CSV import of the readings\n"
+"                        per unit and period)."
+msgstr ""
+"De verbruiken worden gelezen in Lasten &gt; Verbruiksmetingen (CSV-import van de metingen\n"
+"                        per eenheid en per periode)."
+
+#. module: regie_fonciere
+#: model_terms:ir.actions.act_window,help:regie_fonciere.regie_charge_statement_action
+msgid ""
+"The costs are the posted vendor bill lines with a charge category, "
+"analytically on the building."
+msgstr ""
+"De kosten zijn de geboekte lijnen van aankoopfacturen met een "
+"lastencategorie, analytisch op het gebouw."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_form
+msgid ""
+"The deposit exceeds the legal cap of a housing lease\n"
+"                    ("
+msgstr ""
+"De waarborg overschrijdt het wettelijke plafond van een woninghuurovereenkomst\n"
+"                    ("
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_deposit.py:0
+msgid "The deposit must be returned within %s months after the move-out."
+msgstr ""
+"De waarborg moet binnen %s maanden na het vertrek terugbetaald worden."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease.py:0
+msgid "The end date of lease %s is before its effective date."
+msgstr "De einddatum van huurovereenkomst %s ligt vóór de ingangsdatum."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
+msgid "The energy performance certificate (EPC) of the dwelling, class"
+msgstr "Het energieprestatiecertificaat (EPB) van de woning, klasse"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_form
+msgid ""
+"The index of the month preceding the anniversary is not published yet: the last published\n"
+"                    index is used. Recompute the proposal once it is available."
+msgstr ""
+"De index van de maand vóór de verjaardatum is nog niet gepubliceerd: de laatst gepubliceerde\n"
+"                    index wordt gebruikt. Herbereken het voorstel zodra hij beschikbaar is."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__index_is_provisional
+msgid ""
+"The index of the month preceding the anniversary is not published yet: the "
+"last published index is used. Recompute the proposal once it is available."
+msgstr ""
+"De index van de maand vóór de verjaardatum is nog niet gepubliceerd: de "
+"laatst gepubliceerde index wordt gebruikt. Herbereken het voorstel zodra hij"
+" beschikbaar is."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_res_company__regie_indexation_retroactivity_months
+#: model:ir.model.fields,help:regie_fonciere.field_res_config_settings__regie_indexation_retroactivity_months
+msgid ""
+"The indexation applies at most this number of months before the written "
+"request."
+msgstr ""
+"De indexering geldt hoogstens dit aantal maanden vóór het schriftelijke "
+"verzoek."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_indexation.py:0
+msgid "The indexation is disabled on this lease."
+msgstr "De indexering is uitgeschakeld op deze huurovereenkomst."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_indexation.py:0
+msgid ""
+"The indexation of %(lease)s is not allowed:\n"
+"%(reasons)s"
+msgstr ""
+"De indexering van %(lease)s is niet toegestaan:\n"
+"%(reasons)s"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_indexation.py:0
+msgid "The initial index of the lease is missing."
+msgstr "De aanvangsindex van de huurovereenkomst ontbreekt."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__indexation_excluded
+msgid "The lease contains a clause excluding the indexation of the rent."
+msgstr ""
+"De huurovereenkomst bevat een clausule die de indexering van de huur "
+"uitsluit."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_indexation.py:0
+msgid "The lease contains a clause excluding the indexation."
+msgstr "De huurovereenkomst bevat een clausule die de indexering uitsluit."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_indexation.py:0
+msgid "The lease is not a written lease."
+msgstr "De huurovereenkomst is geen schriftelijke huurovereenkomst."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_indexation.py:0
+msgid "The lease is not registered."
+msgstr "De huurovereenkomst is niet geregistreerd."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease.py:0
+msgid "The main tenant must be one of the tenants of the lease."
+msgstr ""
+"De hoofdhuurder moet een van de huurders van de huurovereenkomst zijn."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease.py:0
+msgid "The main unit must be one of the units of the lease."
+msgstr ""
+"De hoofdeenheid moet een van de eenheden van de huurovereenkomst zijn."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_health_index.py:0
+msgid "The month of a health index must be the first day of the month."
+msgstr ""
+"De maand van een gezondheidsindex moet de eerste dag van de maand zijn."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease.py:0
+msgid "The move-out date of lease %s is before its effective date."
+msgstr "De vertrekdatum van huurovereenkomst %s ligt vóór de ingangsdatum."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
+msgid "The new rent applies from"
+msgstr "De nieuwe huur geldt vanaf"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease.py:0
+msgid ""
+"The reference rent is a mandatory mention of housing leases (lease %s)."
+msgstr ""
+"De referentiehuurprijs is een verplichte vermelding in "
+"woninghuurovereenkomsten (huurovereenkomst %s)."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+msgid "The reference rent is a mandatory mention of housing leases."
+msgstr ""
+"De referentiehuurprijs is een verplichte vermelding in "
+"woninghuurovereenkomsten."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_indexation.py:0
+msgid ""
+"The rent of %(lease)s cannot be indexed:\n"
+"%(reasons)s"
+msgstr ""
+"De huur van %(lease)s kan niet geïndexeerd worden:\n"
+"%(reasons)s"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_charge_statement.py:0
+msgid "The statement %s is already invoiced."
+msgstr "De afrekening %s is al gefactureerd."
+
+#. module: regie_fonciere
+#: model:ir.model.constraint,message:regie_fonciere.constraint_regie_lease_structured_communication_unique
+msgid "The structured communication must be unique."
+msgstr "De gestructureerde mededeling moet uniek zijn."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid ""
+"The supporting documents of the charges can be consulted at our offices. The statement can be\n"
+"                    rectified within two years."
+msgstr ""
+"De bewijsstukken van de lasten kunnen in onze kantoren ingekeken worden. De afrekening kan\n"
+"                    gedurende twee jaar rechtgezet worden."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+msgid "The tenant(s)"
+msgstr "De huurder(s)"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__joint_liability
+msgid ""
+"The tenants are jointly and severally liable for the obligations of the "
+"lease."
+msgstr ""
+"De huurders zijn hoofdelijk en ondeelbaar gehouden tot de verplichtingen van"
+" de huurovereenkomst."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_deposit_release_document
+msgid ""
+"The undersigned agree to the release of the rental deposit as detailed above and ask the bank or\n"
+"                    the guarantor to pay the amounts to the parties accordingly."
+msgstr ""
+"Ondergetekenden stemmen in met de vrijgave van de huurwaarborg zoals hierboven beschreven en vragen de bank of\n"
+"                    de borg de bedragen dienovereenkomstig aan de partijen te storten."
+
+#. module: regie_fonciere
+#: model:ir.model.constraint,message:regie_fonciere.constraint_regie_unit_name_building_unique
+msgid "The unit reference must be unique within a building."
+msgstr "De referentie van de eenheid moet uniek zijn binnen een gebouw."
+
+#. module: regie_fonciere
+#: model:ir.model.constraint,message:regie_fonciere.constraint_regie_charge_statement_building_year_unique
+msgid "There is already a charge statement for this building and year."
+msgstr "Er bestaat al een lastenafrekening voor dit gebouw en dit jaar."
+
+#. module: regie_fonciere
+#: model:ir.model.constraint,message:regie_fonciere.constraint_regie_health_index_month_base_unique
+msgid "There is already a health index for this month and base year."
+msgstr "Er bestaat al een gezondheidsindex voor deze maand en dit basisjaar."
+
+#. module: regie_fonciere
+#: model:ir.model.constraint,message:regie_fonciere.constraint_regie_lease_rent_line_lease_date_unique
+msgid "There is already a rent change at this date for this lease."
+msgstr ""
+"Er bestaat al een huurwijziging op deze datum voor deze huurovereenkomst."
+
+#. module: regie_fonciere
+#: model:ir.model.constraint,message:regie_fonciere.constraint_regie_allocation_key_building_category_unique
+msgid ""
+"There is already an allocation key for this building and charge category."
+msgstr ""
+"Er bestaat al een verdeelsleutel voor dit gebouw en deze lastencategorie."
+
+#. module: regie_fonciere
+#: model:ir.model.constraint,message:regie_fonciere.constraint_regie_indexation_lease_anniversary_unique
+msgid "There is already an indexation for this lease and anniversary."
+msgstr ""
+"Er bestaat al een indexering voor deze huurovereenkomst en deze "
+"verjaardatum."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+msgid "This Month"
+msgstr "Deze maand"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid "This amount is refunded to you (credit note"
+msgstr "Dit bedrag wordt u terugbetaald (creditnota"
+
+#. module: regie_fonciere
+#: model:ir.model.constraint,message:regie_fonciere.constraint_regie_lease_schedule_line_lease_period_unique
+msgid "This period is already scheduled for this lease."
+msgstr "Deze periode is al gepland voor deze huurovereenkomst."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_consumption_reading__date_to
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__date_to
+msgid "To"
+msgstr "Tot"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_peb_correction_factor__day_to
+msgid "To Day"
+msgstr "Tot dag"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease_schedule_line__state__to_invoice
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_schedule_line_view_search
+msgid "To Invoice"
+msgstr "Te factureren"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_search
+msgid "To Process"
+msgstr "Te behandelen"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_search
+msgid "To Process This Month"
+msgstr "Deze maand te behandelen"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_indexation__state__to_validate
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_search
+msgid "To Validate"
+msgstr "Te valideren"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__amount_total
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_allocation_key_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_building_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_cost_line_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_statement_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_charge_statement_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_consumption_reading_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_deposit_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_schedule_line_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unpaid_view_list
+msgid "Total"
+msgstr "Totaal"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__total_cost
+msgid "Total Cost"
+msgstr "Totale kosten"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__total_surface
+msgid "Total Surface (m²)"
+msgstr "Totale oppervlakte (m²)"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__total_weight
+msgid "Total Weight"
+msgstr "Totaal gewicht"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_lease__lease_type__transit
+msgid "Transit Housing"
+msgstr "Transitwoning"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__housing_category__transit
+msgid "Transit housing"
+msgstr "Transitwoning"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__lease_type
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_meter__meter_type
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__unit_type
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_lease_view_search
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_search
+msgid "Type"
+msgstr "Type"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_building__activity_exception_decoration
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement__activity_exception_decoration
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__activity_exception_decoration
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__activity_exception_decoration
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__activity_exception_decoration
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Type van de uitzonderingsactiviteit op het record."
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__uccle
+msgid "Uccle"
+msgstr "Ukkel"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__under_works
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_unit__state__works
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_search
+msgid "Under Works"
+msgstr "In werken"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_allocation_key_line__unit_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__unit_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_consumption_reading__unit_id
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_meter__unit_id
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid "Unit"
+msgstr "Eenheid"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__unit_count
+msgid "Unit Count"
+msgstr "Aantal eenheden"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_consumption_reading__uom
+msgid "Unit of Measure"
+msgstr "Maateenheid"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_unit_action
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__unit_ids
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__unit_count
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__unit_ids
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_unit
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_building_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_building_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_search
+msgid "Units"
+msgstr "Eenheden"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__unpaid_charges_amount
+msgid "Unpaid Charges"
+msgstr "Onbetaalde lasten"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_deposit__unpaid_rent_amount
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unpaid_view_list
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unpaid_view_pivot
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unpaid_view_search
+msgid "Unpaid Rents"
+msgstr "Onbetaalde huur"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_unpaid_by_building_action
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_report_unpaid_building
+msgid "Unpaid by Building"
+msgstr "Onbetaald per gebouw"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_unpaid_by_tenant_action
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_report_unpaid_tenant
+msgid "Unpaid by Tenant"
+msgstr "Onbetaald per huurder"
+
+#. module: regie_fonciere
+#: model_terms:ir.actions.act_window,help:regie_fonciere.regie_consumption_reading_action
+msgid ""
+"Use the Import button with a CSV file: unit, charge category, from, to, "
+"quantity."
+msgstr ""
+"Gebruik de knop Importeren met een CSV-bestand: eenheid, lastencategorie, "
+"van, tot, hoeveelheid."
+
+#. module: regie_fonciere
+#: model:ir.model,name:regie_fonciere.model_regie_meter
+msgid "Utility Meter"
+msgstr "Meter"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__vat_option
+msgid "VAT Option"
+msgstr "Btw-optie"
+
+#. module: regie_fonciere
+#: model:ir.actions.act_window,name:regie_fonciere.regie_unit_vacant_action
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_dashboard__vacant_unit_count
+#: model:ir.ui.menu,name:regie_fonciere.menu_regie_report_vacant_units
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+msgid "Vacant Units"
+msgstr "Leegstaande eenheden"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement_cost__agency_amount
+msgid "Vacant units, categories not provided by the leases, flat-rate leases."
+msgstr ""
+"Leegstaande eenheden, categorieën waarin de huurovereenkomsten niet "
+"voorzien, forfaitaire huurovereenkomsten."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_unit__peb_is_valid
+msgid "Valid EPC"
+msgstr "Geldig EPB"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_indexation_view_form
+msgid "Validate"
+msgstr "Valideren"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_indexation__state__validated
+msgid "Validated"
+msgstr "Gevalideerd"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_health_index__value
+msgid "Value"
+msgstr "Waarde"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_meter__meter_type__water
+#: model:regie.charge.category,name:regie_fonciere.charge_category_water
+msgid "Water"
+msgstr "Water"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__watermael_boitsfort
+msgid "Watermael-Boitsfort"
+msgstr "Watermaal-Bosvoorde"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
+msgid "We remain at your disposal for any further information."
+msgstr "Wij blijven ter beschikking voor verdere inlichtingen."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_detail__weight
+msgid "Weight"
+msgstr "Gewicht"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.res_config_settings_view_form
+msgid "When the rent invoices are generated and when they are due."
+msgstr ""
+"Wanneer de huurfacturen aangemaakt worden en wanneer ze verschuldigd zijn."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__indexation_blocking_reason
+msgid "Why the rent cannot be indexed today (Brussels conditions)."
+msgstr ""
+"Waarom de huur vandaag niet geïndexeerd kan worden (Brusselse voorwaarden)."
+
+#. module: regie_fonciere
+#: model_terms:ir.actions.act_window,help:regie_fonciere.regie_allocation_key_action
+msgid "Without a key, the costs of a charge category are split by surface."
+msgstr ""
+"Zonder sleutel worden de kosten van een lastencategorie verdeeld volgens de "
+"oppervlakte."
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__woluwe_saint_lambert
+msgid "Woluwe-Saint-Lambert"
+msgstr "Sint-Lambrechts-Woluwe"
+
+#. module: regie_fonciere
+#: model:ir.model.fields.selection,name:regie_fonciere.selection__regie_building__municipality__woluwe_saint_pierre
+msgid "Woluwe-Saint-Pierre"
+msgstr "Sint-Pieters-Woluwe"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__is_written
+msgid "Written Lease"
+msgstr "Schriftelijke huurovereenkomst"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement__year
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_charge_statement_lease__year
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_health_index_view_search
+msgid "Year"
+msgstr "Jaar"
+
+#. module: regie_fonciere
+#: model_terms:res.company,sign_terms:regie_fonciere.demo_company
+#: model_terms:res.company,sign_terms_html:regie_fonciere.demo_company
+msgid "Your conditions..."
+msgstr "Uw voorwaarden..."
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid "Your share"
+msgstr "Uw aandeel"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid "Your share of the actual charges"
+msgstr "Uw aandeel in de werkelijke lasten"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
+msgid "Yours faithfully,"
+msgstr "Met vriendelijke groeten,"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_building__zip
+msgid "Zip"
+msgstr "Postcode"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid "d.)"
+msgstr "d.)"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_unit_view_form
+msgid "e.g. A.1.2"
+msgstr "bv. A.1.2"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_building_view_form
+msgid "e.g. Résidence des Tilleuls"
+msgstr "bv. Residentie De Linden"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_consumption_reading__uom
+msgid "e.g. kWh, m³, heat cost allocator units"
+msgstr "bv. kWh, m³, eenheden kostenverdelers"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+msgid "in litigation"
+msgstr "in geschil"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+msgid "open"
+msgstr "openstaand"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+msgid "overdue, out of"
+msgstr "achterstallig, op"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+msgid "release(s) in progress"
+msgstr "lopende vrijgave(n)"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+msgid "running lease(s),"
+msgstr "lopende huurovereenkomst(en),"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+msgid "tenant(s) with overdue invoices"
+msgstr "huurder(s) met achterstallige facturen"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+msgid "to process this month"
+msgstr "deze maand te behandelen"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+msgid "to validate"
+msgstr "te valideren"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.regie_dashboard_view_form
+msgid "vacant unit(s) out of"
+msgstr "leegstaande eenhe(i)d(en) op"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_charge_statement_document
+msgid "with the structured communication"
+msgstr "met de gestructureerde mededeling"
+
+#. module: regie_fonciere
+#: model_terms:ir.ui.view,arch_db:regie_fonciere.report_indexation_letter_document
+msgid "× EPC correction factor"
+msgstr "× EPB-correctiefactor"
