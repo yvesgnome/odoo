@@ -19,6 +19,13 @@
     <menuitem id="menu_regie_rent_invoice" action="regie_rent_invoice_action" parent="menu_regie_invoicing" sequence="10"/>
     <menuitem id="menu_regie_schedule" action="regie_lease_schedule_line_action" parent="menu_regie_invoicing" sequence="20"/>
 
+    <menuitem id="menu_regie_charges" name="Charges" parent="menu_regie_root" sequence="50"
+              groups="group_regie_accountant"/>
+    <menuitem id="menu_regie_charge_statement" action="regie_charge_statement_action" parent="menu_regie_charges" sequence="10"/>
+    <menuitem id="menu_regie_charge_cost" action="regie_charge_cost_line_action" parent="menu_regie_charges" sequence="20"/>
+    <menuitem id="menu_regie_allocation_key" action="regie_allocation_key_action" parent="menu_regie_charges" sequence="30"/>
+    <menuitem id="menu_regie_consumption_reading" action="regie_consumption_reading_action" parent="menu_regie_charges" sequence="40"/>
+
     <menuitem id="menu_regie_reporting" name="Reporting" parent="menu_regie_root" sequence="80"/>
     <menuitem id="menu_regie_report_vacant_units" action="regie_unit_vacant_action" parent="menu_regie_reporting" sequence="20"/>
     <menuitem id="menu_regie_report_ending_leases" action="regie_lease_ending_action" parent="menu_regie_reporting" sequence="30"/>

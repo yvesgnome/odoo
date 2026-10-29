@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Fictitious suppliers of the charges of the Résidence du Héron Cendré -->
+    <record id="demo_supplier_heating" model="res.partner">
+        <field name="name">Chauffage Lumière SRL (démo)</field>
+        <field name="is_company" eval="True"/>
+        <field name="company_id" ref="demo_company"/>
+        <field name="city">Bruxelles</field>
+        <field name="country_id" ref="base.be"/>
+    </record>
+    <record id="demo_supplier_water" model="res.partner">
+        <field name="name">Distribution d'eau du Canal (démo)</field>
+        <field name="is_company" eval="True"/>
+        <field name="company_id" ref="demo_company"/>
+        <field name="city">Bruxelles</field>
+        <field name="country_id" ref="base.be"/>
+    </record>
+    <record id="demo_supplier_energy" model="res.partner">
+        <field name="name">Stroom &amp; Co BV (demo)</field>
+        <field name="is_company" eval="True"/>
+        <field name="company_id" ref="demo_company"/>
+        <field name="city">Brussel</field>
+        <field name="country_id" ref="base.be"/>
+    </record>
+    <record id="demo_supplier_cleaning" model="res.partner">
+        <field name="name">Net &amp; Propre SRL (démo)</field>
+        <field name="is_company" eval="True"/>
+        <field name="company_id" ref="demo_company"/>
+        <field name="city">Anderlecht</field>
+        <field name="country_id" ref="base.be"/>
+    </record>
+    <record id="demo_supplier_elevator" model="res.partner">
+        <field name="name">Liftservice Zenne NV (demo)</field>
+        <field name="is_company" eval="True"/>
+        <field name="company_id" ref="demo_company"/>
+        <field name="city">Vilvoorde</field>
+        <field name="country_id" ref="base.be"/>
+    </record>
+
+    <!-- 2025 vendor bills, allocation keys, readings and the 2025 statement with regularisations -->
+    <function model="regie.charge.statement" name="_regie_demo_charge_statement"/>
+</odoo>

@@ -119,6 +119,15 @@ missing `pdfminer.six`, missing `markdown2`.
 Future household income data (income-based rents, out of scope) must be restricted to
 `group_regie_supervisor` (field-level `groups=` attribute + dedicated model access).
 
+## Plan
+
+Sections of the specification, in order: 6.1 properties, 6.2 leases, 6.3 rent invoicing,
+6.4 indexation, 6.5 deposits, 6.6 charges, 6.7 reports, 8 security, **8b: translate the whole
+module into French and Dutch** (`i18n/fr.po` and `i18n/nl.po` both complete — requested on
+2026-10-29, replaces "nl.po prepared"), 9 demo data (**texts in French**; translatable fields of demo/data
+records filled in English, French and Dutch — requested on 2026-10-29), 10 tests. One commit per section, committed
+and pushed without asking (user request of 2026-10-29).
+
 ## Zones
 
 1. **Properties** (`regie.building`, `regie.unit`, `regie.meter`): building analytic account created
@@ -219,3 +228,20 @@ Future household income data (income-based rents, out of scope) must be restrict
      *Request Release* schedules activities at move-out + 30 and + 50 days (settings) for a return
      expected within 2 months; PDF *Deposit Release Form* (`report/regie_deposit_release.xml`, French).
    - Letters to tenants use `res.company._regie_get_letter_lang()` (fr_BE, else fr_FR).
+6. **Charges** (`models/regie_charge.py`, `models/regie_charge_statement.py`):
+   - Actual costs = posted vendor bill lines with a **charge category** (`regie_charge_category_id`
+     on `account.move.line`, column on the bill lines) and the building analytic account in their
+     analytic distribution (only the building's percentage is counted).
+   - **Allocation keys** per building and category: surface (default when no key), shares
+     (quotités), equal parts, consumption (`regie.consumption.reading`, CSV import per unit and
+     period; a reading counts for the year in which its period ends).
+   - **Yearly statement per building** (calendar year): each unit's share is split by **day of
+     occupation** between the leases; vacant days, categories not provided by the lease and
+     flat-rate leases are **borne by the agency**. Per lease: provisions called (invoiced schedule
+     lines of the year — "provisions payées" of the specification is read as *provisions called*:
+     unpaid provisions remain in the open balance), actual share, balance.
+   - *Generate Regularisations*: posted invoice (balance due) or credit note (refund), due in 30
+     days, product *Charge Regularisation* on the charge provision account, lease taxes with the
+     VAT option. PDF statement per lease detailed by category (`report/regie_charge_statement_report.xml`).
+   - Provision adjustment: proposed monthly provision = actual share annualised / 12; *Apply
+     Provision* (Supervisor) adds a rent history line from the next month.

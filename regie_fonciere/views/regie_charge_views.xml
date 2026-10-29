@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Charge category on the vendor bill lines -->
+    <record id="view_move_form_inherit_regie_charge" model="ir.ui.view">
+        <field name="name">account.move.form.inherit.regie.charge</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_line_ids']/list/field[@name='analytic_distribution']" position="after">
+                <field name="regie_charge_category_id" optional="show"
+                       column_invisible="parent.move_type not in ('in_invoice', 'in_refund', 'in_receipt')"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="regie_charge_cost_line_view_list" model="ir.ui.view">
+        <field name="name">account.move.line.list.regie.charge</field>
+        <field name="model">account.move.line</field>
+        <field name="arch" type="xml">
+            <list string="Charge Costs" create="0" edit="0">
+                <field name="date"/>
+                <field name="move_id"/>
+                <field name="partner_id"/>
+                <field name="name"/>
+                <field name="regie_charge_category_id"/>
+                <field name="analytic_distribution" widget="analytic_distribution"/>
+                <field name="balance" string="Amount" sum="Total"/>
+                <field name="company_currency_id" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="regie_charge_cost_line_action" model="ir.actions.act_window">
+        <field name="name">Charge Costs</field>
+        <field name="res_model">account.move.line</field>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="regie_charge_cost_line_view_list"/>
+        <field name="domain">[('regie_charge_category_id', '!=', False), ('parent_state', '=', 'posted')]</field>
+        <field name="context">{'search_default_group_by_account': 0}</field>
+    </record>
+
+    <!-- Allocation keys -->
+    <record id="regie_allocation_key_view_list" model="ir.ui.view">
+        <field name="name">regie.allocation.key.list</field>
+        <field name="model">regie.allocation.key</field>
+        <field name="arch" type="xml">
+            <list string="Allocation Keys">
+                <field name="building_id"/>
+                <field name="category_id"/>
+                <field name="method"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="regie_allocation_key_view_form" model="ir.ui.view">
+        <field name="name">regie.allocation.key.form</field>
+        <field name="model">regie.allocation.key</field>
+        <field name="arch" type="xml">
+            <form string="Allocation Key">
+                <header>
+                    <button name="action_fill_units" string="Add All Units" type="object"
+                            invisible="method != 'shares'"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="building_id"/>
+                            <field name="category_id"/>
+                            <field name="method"/>
+                        </group>
+                        <group>
+                            <field name="notes"/>
+                        </group>
+                    </group>
+                    <field name="line_ids" invisible="method != 'shares'">
+                        <list editable="bottom">
+                            <field name="building_id" column_invisible="1"/>
+                            <field name="unit_id"/>
+                            <field name="shares" sum="Total"/>
+                        </list>
+                    </field>
+                    <div invisible="method != 'consumption'" class="text-muted">
+                        The consumptions are read in Charges > Consumption Readings (CSV import of the readings
+                        per unit and period).
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="regie_allocation_key_action" model="ir.actions.act_window">
+        <field name="name">Allocation Keys</field>
+        <field name="res_model">regie.allocation.key</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Define how the charges are split</p>
+            <p>Without a key, the costs of a charge category are split by surface.</p>
+        </field>
+    </record>
+
+    <!-- Consumption readings -->
+    <record id="regie_consumption_reading_view_list" model="ir.ui.view">
+        <field name="name">regie.consumption.reading.list</field>
+        <field name="model">regie.consumption.reading</field>
+        <field name="arch" type="xml">
+            <list string="Consumption Readings" editable="bottom">
+                <field name="building_id" optional="show"/>
+                <field name="unit_id"/>
+                <field name="category_id"/>
+                <field name="meter_id" optional="hide"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="quantity" sum="Total"/>
+                <field name="uom"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="regie_consumption_reading_view_search" model="ir.ui.view">
+        <field name="name">regie.consumption.reading.search</field>
+        <field name="model">regie.consumption.reading</field>
+        <field name="arch" type="xml">
+            <search string="Consumption Readings">
+                <field name="unit_id"/>
+                <field name="building_id"/>
+                <field name="category_id"/>
+                <filter name="period" string="Period" date="date_to"/>
+                <filter name="group_building" string="Building" context="{'group_by': 'building_id'}"/>
+                <filter name="group_category" string="Category" context="{'group_by': 'category_id'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="regie_consumption_reading_action" model="ir.actions.act_window">
+        <field name="name">Consumption Readings</field>
+        <field name="res_model">regie.consumption.reading</field>
+        <field name="view_mode">list</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Import the consumption readings</p>
+            <p>Use the Import button with a CSV file: unit, charge category, from, to, quantity.</p>
+        </field>
+    </record>
+
+    <!-- Charge statements -->
+    <record id="regie_charge_statement_view_list" model="ir.ui.view">
+        <field name="name">regie.charge.statement.list</field>
+        <field name="model">regie.charge.statement</field>
+        <field name="arch" type="xml">
+            <list string="Charge Statements">
+                <field name="building_id"/>
+                <field name="year" options="{'format': false}"/>
+                <field name="total_cost" sum="Total"/>
+                <field name="total_tenants" sum="Total"/>
+                <field name="total_agency" sum="Total"/>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="state" widget="badge" decoration-success="state == 'invoiced'" decoration-info="state == 'computed'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="regie_charge_statement_view_form" model="ir.ui.view">
+        <field name="name">regie.charge.statement.form</field>
+        <field name="model">regie.charge.statement</field>
+        <field name="arch" type="xml">
+            <form string="Charge Statement">
+                <header>
+                    <button name="action_compute" string="Compute" type="object" class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <button name="action_compute" string="Recompute" type="object"
+                            invisible="state != 'computed'"/>
+                    <button name="action_generate_invoices" string="Generate Regularisations" type="object"
+                            class="btn-primary" invisible="state != 'computed'"
+                            confirm="Post the regularisation invoices and credit notes of this statement?"/>
+                    <button name="action_print_statements" string="Print Statements" type="object"
+                            invisible="state == 'draft'"/>
+                    <button name="action_reset_to_draft" string="Reset to Draft" type="object"
+                            invisible="state == 'draft'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <field name="currency_id" invisible="1"/>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="building_id" readonly="state != 'draft'"/>
+                            <field name="year" options="{'format': false}" readonly="state != 'draft'"/>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+                        <group>
+                            <field name="total_cost"/>
+                            <field name="total_tenants"/>
+                            <field name="total_agency"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Results per Lease" name="leases">
+                            <field name="lease_line_ids" readonly="state == 'invoiced'">
+                                <list editable="bottom" create="0" delete="0">
+                                    <field name="lease_id" readonly="1"/>
+                                    <field name="partner_id"/>
+                                    <field name="provisions_amount" sum="Total" readonly="1"/>
+                                    <field name="actual_amount" sum="Total" readonly="1"/>
+                                    <field name="balance" sum="Total"
+                                           decoration-danger="balance &gt; 0" decoration-success="balance &lt; 0"/>
+                                    <field name="invoice_id" readonly="1"/>
+                                    <field name="proposed_provision"/>
+                                    <field name="provision_rent_line_id" optional="hide"/>
+                                    <field name="currency_id" column_invisible="1"/>
+                                    <button name="action_apply_provision" type="object" string="Apply Provision"
+                                            icon="fa-check" groups="regie_fonciere.group_regie_supervisor"
+                                            invisible="provision_rent_line_id or not proposed_provision"/>
+                                    <button name="action_print" type="object" string="Print" icon="fa-print"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Costs" name="costs">
+                            <field name="cost_line_ids" readonly="1">
+                                <list>
+                                    <field name="category_id"/>
+                                    <field name="method"/>
+                                    <field name="amount" sum="Total"/>
+                                    <field name="tenant_amount" sum="Total"/>
+                                    <field name="agency_amount" sum="Total"/>
+                                    <field name="currency_id" column_invisible="1"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Details" name="details">
+                            <field name="detail_ids" readonly="1">
+                                <list>
+                                    <field name="lease_id"/>
+                                    <field name="unit_id"/>
+                                    <field name="category_id"/>
+                                    <field name="method"/>
+                                    <field name="category_amount"/>
+                                    <field name="weight"/>
+                                    <field name="total_weight"/>
+                                    <field name="days"/>
+                                    <field name="amount" sum="Total"/>
+                                    <field name="currency_id" column_invisible="1"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                    <field name="notes" placeholder="Notes..."/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="regie_charge_statement_action" model="ir.actions.act_window">
+        <field name="name">Charge Statements</field>
+        <field name="res_model">regie.charge.statement</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create the yearly charge statement of a building</p>
+            <p>The costs are the posted vendor bill lines with a charge category, analytically on the building.</p>
+        </field>
+    </record>
+</odoo>

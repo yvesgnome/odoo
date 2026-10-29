@@ -29,3 +29,24 @@ regie_indexation_company_rule,Indexation multi-company,regie.indexation,,crud,"[
 access_regie_deposit_property_manager,regie.deposit property manager,regie.deposit,group_regie_property_manager,crud,
 access_regie_deposit_accountant,regie.deposit accountant,regie.deposit,group_regie_accountant,r,
 regie_deposit_company_rule,Deposit multi-company,regie.deposit,,crud,"[('company_id', 'in', company_ids)]"
+access_regie_allocation_key_property_manager,regie.allocation.key property manager,regie.allocation.key,group_regie_property_manager,r,
+access_regie_allocation_key_accountant,regie.allocation.key accountant,regie.allocation.key,group_regie_accountant,crud,
+regie_allocation_key_company_rule,Allocation key multi-company,regie.allocation.key,,crud,"[('company_id', 'in', company_ids)]"
+access_regie_allocation_key_line_property_manager,regie.allocation.key.line property manager,regie.allocation.key.line,group_regie_property_manager,r,
+access_regie_allocation_key_line_accountant,regie.allocation.key.line accountant,regie.allocation.key.line,group_regie_accountant,crud,
+regie_allocation_key_line_company_rule,Allocation share multi-company,regie.allocation.key.line,,crud,"[('company_id', 'in', company_ids)]"
+access_regie_consumption_reading_property_manager,regie.consumption.reading property manager,regie.consumption.reading,group_regie_property_manager,crud,
+access_regie_consumption_reading_accountant,regie.consumption.reading accountant,regie.consumption.reading,group_regie_accountant,crud,
+regie_consumption_reading_company_rule,Consumption reading multi-company,regie.consumption.reading,,crud,"[('company_id', 'in', company_ids)]"
+access_regie_charge_statement_property_manager,regie.charge.statement property manager,regie.charge.statement,group_regie_property_manager,r,
+access_regie_charge_statement_accountant,regie.charge.statement accountant,regie.charge.statement,group_regie_accountant,crud,
+regie_charge_statement_company_rule,Charge statement multi-company,regie.charge.statement,,crud,"[('company_id', 'in', company_ids)]"
+access_regie_charge_statement_cost_property_manager,regie.charge.statement.cost property manager,regie.charge.statement.cost,group_regie_property_manager,r,
+access_regie_charge_statement_cost_accountant,regie.charge.statement.cost accountant,regie.charge.statement.cost,group_regie_accountant,crud,
+regie_charge_statement_cost_company_rule,Charge statement cost multi-company,regie.charge.statement.cost,,crud,"[('company_id', 'in', company_ids)]"
+access_regie_charge_statement_detail_property_manager,regie.charge.statement.detail property manager,regie.charge.statement.detail,group_regie_property_manager,r,
+access_regie_charge_statement_detail_accountant,regie.charge.statement.detail accountant,regie.charge.statement.detail,group_regie_accountant,crud,
+regie_charge_statement_detail_company_rule,Charge statement detail multi-company,regie.charge.statement.detail,,crud,"[('company_id', 'in', company_ids)]"
+access_regie_charge_statement_lease_property_manager,regie.charge.statement.lease property manager,regie.charge.statement.lease,group_regie_property_manager,r,
+access_regie_charge_statement_lease_accountant,regie.charge.statement.lease accountant,regie.charge.statement.lease,group_regie_accountant,crud,
+regie_charge_statement_lease_company_rule,Charge statement lease multi-company,regie.charge.statement.lease,,crud,"[('company_id', 'in', company_ids)]"

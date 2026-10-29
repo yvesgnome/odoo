@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_charge_statement" model="ir.actions.report">
+        <field name="name">Charge Statement</field>
+        <field name="model">regie.charge.statement.lease</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">regie_fonciere.report_charge_statement</field>
+        <field name="print_report_name">'Charge statement %s - %s' % (object.year, (object.lease_id.name or '').replace('/', '-'))</field>
+        <field name="binding_model_id" ref="model_regie_charge_statement_lease"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_charge_statement">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="regie_fonciere.report_charge_statement_document" t-lang="o.company_id._regie_get_letter_lang(o.partner_id)"/>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_charge_statement_document">
+        <t t-set="lease" t-value="o.lease_id"/>
+        <t t-set="address">
+            <t t-foreach="lease.tenant_ids" t-as="tenant">
+                <div t-field="tenant.name"/>
+            </t>
+            <div t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}'/>
+        </t>
+        <t t-call="web.external_layout" company="o.company_id.sudo()" address="address">
+            <div class="page">
+                <h3>Statement of the charges <span t-out="o.year"/></h3>
+                <p>
+                    Lease <strong t-out="lease.name"/> –
+                    <span t-out="', '.join(lease.unit_ids.mapped('name'))"/>,
+                    <span t-out="lease.building_id.name"/>, <span t-out="lease.building_id.street"/>,
+                    <span t-out="lease.building_id.zip"/> <span t-out="lease.building_id.city"/>
+                </p>
+                <table class="table table-sm o_main_table mt-3">
+                    <thead>
+                        <tr>
+                            <th>Charge category</th>
+                            <th>Unit</th>
+                            <th class="text-end">Building cost</th>
+                            <th>Allocation</th>
+                            <th class="text-end">Your share</th>
+                            <th>Period</th>
+                            <th class="text-end">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="o.detail_ids" t-as="detail">
+                            <td><span t-field="detail.category_id"/></td>
+                            <td><span t-field="detail.unit_id"/></td>
+                            <td class="text-end"><span t-field="detail.category_amount"/></td>
+                            <td><span t-field="detail.method"/></td>
+                            <td class="text-end">
+                                <span t-out="'%.2f' % (detail.weight / detail.total_weight * 100 if detail.total_weight else 0)"/> %
+                            </td>
+                            <td>
+                                <span t-out="detail.date_from" t-options="{'widget': 'date'}"/> –
+                                <span t-out="detail.date_to" t-options="{'widget': 'date'}"/>
+                                (<span t-out="detail.days"/> d.)
+                            </td>
+                            <td class="text-end"><span t-field="detail.amount"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-sm mt-3 w-50 ms-auto">
+                    <tbody>
+                        <tr><td>Your share of the actual charges</td><td class="text-end"><span t-field="o.actual_amount"/></td></tr>
+                        <tr><td>Provisions called for the year</td><td class="text-end"><span t-field="o.provisions_amount"/></td></tr>
+                        <tr class="fw-bold">
+                            <td t-if="o.balance &gt;= 0">Balance due by the tenant</td>
+                            <td t-else="">Balance refunded to the tenant</td>
+                            <td class="text-end"><span t-out="abs(o.balance)" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p t-if="o.invoice_id">
+                    <t t-if="o.balance &gt; 0">
+                        Please pay this balance before <strong t-out="o.invoice_id.invoice_date_due" t-options="{'widget': 'date'}"/>
+                        with the structured communication <strong t-out="lease.structured_communication"/>
+                        (invoice <span t-out="o.invoice_id.name"/>).
+                    </t>
+                    <t t-else="">
+                        This amount is refunded to you (credit note <span t-out="o.invoice_id.name"/>).
+                    </t>
+                </p>
+                <p t-if="o.proposed_provision">
+                    Monthly charge provision proposed from now on:
+                    <strong t-out="o.proposed_provision" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>.
+                </p>
+                <p class="small text-muted">
+                    The supporting documents of the charges can be consulted at our offices. The statement can be
+                    rectified within two years.
+                </p>
+            </div>
+        </t>
+    </template>
+</odoo>
