@@ -205,7 +205,7 @@
                                     <field name="actual_amount" sum="Total" readonly="1"/>
                                     <field name="balance" sum="Total"
                                            decoration-danger="balance &gt; 0" decoration-success="balance &lt; 0"/>
-                                    <field name="invoice_id" readonly="1"/>
+                                    <field name="invoice_id" readonly="1" groups="account.group_account_invoice"/>
                                     <field name="proposed_provision"/>
                                     <field name="provision_rent_line_id" optional="hide"/>
                                     <field name="currency_id" column_invisible="1"/>

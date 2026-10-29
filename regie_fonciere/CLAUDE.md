@@ -116,6 +116,21 @@ missing `pdfminer.six`, missing `markdown2`.
 | `group_regie_accountant` | Comptable | invoicing, charges, charge statements (implies *Invoicing*) |
 | `group_regie_supervisor` | Responsable | validations, configuration; implies both groups above |
 
+Rights per model (`security/ir.access.csv`):
+- Property Manager: CRUD buildings, units, meters, leases, rent history, deposits, indexation
+  proposals, consumption readings; read schedule, allocation keys and charge statements. No
+  access to invoices (lease balance and overdue count are computed with `sudo` and visible to all).
+- Accountant: CRUD schedule, allocation keys, charge statements; read buildings, units, leases,
+  deposits, indexations. Implies *Invoicing* (posts the rent invoices).
+- Supervisor: both + validation and application of indexations and provision adjustments
+  (checked in code), CRUD of the configuration tables (health index, EPC factors, charge
+  categories).
+- Company settings (Land Agency settings, `res.config.settings`) need the Odoo *Settings* (admin)
+  right, as for every Odoo setting; the menu is restricted to `base.group_system`.
+- Every model with a company has an `ir.access` multi-company restriction
+  `[('company_id', 'in', company_ids)]`; health index, EPC factors and charge categories are shared.
+- Tests: `tests/test_security.py` (property manager, accountant, multi-company isolation).
+
 Future household income data (income-based rents, out of scope) must be restricted to
 `group_regie_supervisor` (field-level `groups=` attribute + dedicated model access).
 

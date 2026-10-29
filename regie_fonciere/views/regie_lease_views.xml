@@ -107,7 +107,7 @@
                             <field name="reference_rent" required="is_housing and state != 'draft'"/>
                             <field name="charge_mode"/>
                         </group>
-                        <group string="Balance" groups="account.group_account_invoice">
+                        <group string="Balance">
                             <field name="open_balance"/>
                             <field name="overdue_invoice_count" decoration-danger="overdue_invoice_count > 0"/>
                         </group>

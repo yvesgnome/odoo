@@ -39,7 +39,8 @@
 
     <menuitem id="menu_regie_configuration" name="Configuration" parent="menu_regie_root" sequence="90"
               groups="group_regie_supervisor"/>
-    <menuitem id="menu_regie_settings" action="regie_config_settings_action" parent="menu_regie_configuration" sequence="10"/>
+    <menuitem id="menu_regie_settings" action="regie_config_settings_action" parent="menu_regie_configuration" sequence="10"
+              groups="base.group_system"/>
     <menuitem id="menu_regie_charge_category" action="regie_charge_category_action" parent="menu_regie_configuration" sequence="20"/>
     <menuitem id="menu_regie_health_index" action="regie_health_index_action" parent="menu_regie_configuration" sequence="30"/>
     <menuitem id="menu_regie_peb_correction_factor" action="regie_peb_correction_factor_action" parent="menu_regie_configuration" sequence="40"/>

@@ -52,3 +52,4 @@ access_regie_charge_statement_lease_accountant,regie.charge.statement.lease acco
 regie_charge_statement_lease_company_rule,Charge statement lease multi-company,regie.charge.statement.lease,,crud,"[('company_id', 'in', company_ids)]"
 access_regie_dashboard_property_manager,regie.dashboard property manager,regie.dashboard,group_regie_property_manager,crud,
 access_regie_dashboard_accountant,regie.dashboard accountant,regie.dashboard,group_regie_accountant,crud,
+regie_dashboard_company_rule,Dashboard multi-company,regie.dashboard,,crud,"[('company_id', 'in', company_ids)]"

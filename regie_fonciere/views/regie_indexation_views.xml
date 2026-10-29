@@ -89,7 +89,7 @@
                         <group>
                             <field name="letter_attachment_id" invisible="not letter_attachment_id"/>
                             <field name="rent_line_id" invisible="not rent_line_id"/>
-                            <field name="arrears_invoice_id" invisible="not arrears_invoice_id"/>
+                            <field name="arrears_invoice_id" invisible="not arrears_invoice_id" groups="account.group_account_invoice"/>
                         </group>
                         <group>
                             <field name="refusal_reason" invisible="state != 'refused'"/>

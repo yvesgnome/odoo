@@ -5,3 +5,4 @@ from . import test_indexation
 from . import test_deposit
 from . import test_charge
 from . import test_report
+from . import test_security
