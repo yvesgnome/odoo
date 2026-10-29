@@ -7,7 +7,10 @@ CHECK_TOOLTIP_JS = """
     for (let i = 0; i < 100; i++) {
         const icon = document.querySelector('.o_regie_info_tooltip');
         if (icon) {
-            if (icon.dataset.tooltip && icon.dataset.tooltip.includes('800')) {
+            const box = icon.getBoundingClientRect();
+            if (!box.width || !box.height || getComputedStyle(icon, '::before').content === 'none') {
+                console.error('the info icon is not visible');
+            } else if (icon.dataset.tooltip && icon.dataset.tooltip.includes('800')) {
                 console.log('test successful');
             } else {
                 console.error('the info icon has no explanation: ' + icon.dataset.tooltip);
