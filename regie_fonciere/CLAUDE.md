@@ -17,7 +17,9 @@ First draft = demo for the agency; business rules are working assumptions, kept 
 | Custom addons repo | `C:\Odoo\wb\odoo.20` (git, branch `main`) |
 | VS Code helpers | `C:\Odoo\wb\settings\.vscode\run_odoo*.bat` |
 
-Never use a remote database, Odoo.sh, staging or production. Never `git push`.
+Never use a remote database, Odoo.sh, staging or production. Git: one commit per section, committed
+and pushed to `origin/main` without asking (user request of 2026-10-29); English messages, no
+tool attribution.
 
 ### Commands (run from `C:\Odoo\20`)
 
@@ -39,8 +41,12 @@ MSYS_NO_PATHCONV=1 venv/Scripts/python.exe odoo-bin -c wb.conf -d wb_dev -u regi
 venv/Scripts/python.exe odoo-bin module uninstall -c wb.conf -d wb_dev regie_fonciere
 venv/Scripts/python.exe odoo-bin -c wb.conf -d wb_dev -i regie_fonciere --stop-after-init
 
-# export translations (template / French / Dutch)
-venv/Scripts/python.exe odoo-bin i18n export -c wb.conf -d wb_dev -l pot -o ../wb/odoo.20/regie_fonciere/i18n/regie_fonciere.pot regie_fonciere
+# load the interface languages
+venv/Scripts/python.exe odoo-bin i18n loadlang -c wb.conf -d wb_dev -l fr_BE nl_BE
+
+# export the translation template (see Translations), reload the .po files
+venv/Scripts/python.exe odoo-bin i18n export -c wb.conf -d wb_dev -l pot -o <scratch>/regie_fonciere.pot regie_fonciere
+venv/Scripts/python.exe odoo-bin -c wb.conf -d wb_dev -u regie_fonciere --i18n-overwrite --stop-after-init
 
 # run the server
 venv/Scripts/python.exe odoo-bin -c wb.conf -d wb_dev --dev=xml
@@ -79,8 +85,8 @@ missing `pdfminer.six`, missing `markdown2`.
 
 ## Module conventions
 
-- Code, field names, comments: **English**. UI tested in French; `i18n/fr.po` complete,
-  `i18n/nl.po` prepared (Dutch translations to be completed later).
+- Code, field names, comments: **English**. UI tested in French; `i18n/fr.po` and `i18n/nl.po`
+  complete (see Translations).
 - Model prefix `regie.`; XML ids prefixed by model (`regie_lease_view_form`...); demo XML ids `demo_*`.
 - No `x_` fields (no Studio), no dependency on `sale_subscription`, `documents`, `sign`,
   `industry_real_estate`.
@@ -107,6 +113,60 @@ missing `pdfminer.six`, missing `markdown2`.
   assertion. `tests/common.py` skips the test GC on Windows. If an Odoo log shows
   `_file_gc could not unlink`, the leftovers (unreferenced by definition) can be removed with
   `find /c/Odoo/20/data/filestore/wb_dev -name "*__gc" -exec chmod u+w {} + -exec rm -f {} +`.
+
+## Brussels rules (to be confirmed by the agency's legal department)
+
+Every figure is a company setting (Land Agency settings) or an editable table:
+
+| Rule | Implementation | Setting / data |
+| --- | --- | --- |
+| Indexation once a year at the anniversary of the effective date, on written request | proposals created before the anniversary, letter = written request | `regie_indexation_notice_days` (45) |
+| New index = health index of the month preceding the anniversary; initial index = month preceding the signature | `regie.health.index` (Statbel, base 2013) | `regie_index_base_year` (2013) |
+| Lease must be written and registered, no exclusion clause, indexation not disabled | blocking reasons on the lease | lease fields |
+| Valid EPC certificate at the request date, communicated to the tenant (dwellings) | blocking reasons | unit EPC fields, `peb_communicated` |
+| EPC correction factor for leases in force before 14/10/2022, EPC E, F or G (art. 224/2 Housing Code, ordinance 13/10/2023) | factor by anniversary month, October split on the 14th | `regie_peb_correction_cutoff_date` (14/10/2022), table `regie.peb.correction.factor` |
+| Retroactivity limited before the written request | effective date = max(anniversary, request − N months) | `regie_indexation_retroactivity_months` (3) |
+| Rental deposit of a housing lease: max. 2 months of rent excluding charges (since 1/11/2024) | non-blocking warning | `regie_deposit_cap_months` (2) |
+| Deposit on an account in the tenant's name, returned within 2 months after the move-out | follow-up outside the accounting, activities at +30 / +50 days | `regie_deposit_return_months` (2), `regie_deposit_reminder_days_1/2` (30, 50) |
+| Recoverable charges: limitative list in the lease | categories per lease; others borne by the agency | `charge_category_ids` on the lease |
+| Yearly statement of the charges, distinct from the rent | calendar-year statement per building | — |
+| Statement can be rectified for 2 years | mention in the statement PDF; statement can be reset to draft and recomputed | — |
+| Reference rent: mandatory mention in housing leases | required to sign a housing lease | `reference_rent` |
+
+## Working assumptions of this first draft (to validate with the agency)
+
+- Rent paid in advance: invoice generated on the 20th of the previous month, due on the 1st
+  (`regie_invoice_day`, `regie_invoice_month_offset`, `regie_due_day`); one invoice per month,
+  dated on the generation day (also for caught-up months).
+- Prorata per calendar day of the month for the first and last month.
+- Rent and provisions read at the first invoiced day of the month (a change during a month applies
+  from the next month).
+- Income accounts 700100 (rents) and 743100 (charge provisions) — to confirm with the accountant.
+- Charge statement: *provisions called* (invoiced) are compared to the actual share; flat-rate
+  leases are not regularised; costs without allocation key are split by surface.
+- Letters to the tenants in French (Brussels language legislation may require the tenant's
+  language — `res.company._regie_get_letter_lang` is the single place to change).
+- Indexation proposal created 45 days before the anniversary with the last published index when
+  the right one is not available yet (flagged *provisional*).
+- Arrears invoice for the months already invoiced when an indexation is applied (not in the
+  specification, added so that retroactivity is actually invoiced).
+- Company settings are edited by Odoo administrators; supervisors maintain the tables.
+
+## Tests (`tests/`, 44 tests, `--test-tags /regie_fonciere`)
+
+| Requirement | Test |
+| --- | --- |
+| Monthly generation without duplicate, catch-up of a missed month | `test_invoicing.test_monthly_generation_without_duplicate`, `test_missed_months_are_caught_up` |
+| Rent change during the year taken over by the schedule | `test_invoicing.test_rent_change_during_the_year` |
+| Prorata at entry and exit | `test_invoicing.test_prorata_entry_and_exit` |
+| Normal indexation | `test_indexation.test_normal_indexation` |
+| Correction factor E / F-G, anniversary before and after 14 October | `test_indexation.test_correction_factor_epc_e_before_october_14`, `test_correction_factor_epc_f_after_october_14`, `test_correction_factor_epc_g_and_classes` |
+| Unregistered lease, expired EPC | `test_indexation.test_unregistered_lease_blocked`, `test_expired_peb_blocked` |
+| Retroactivity | `test_indexation.test_retroactivity_limited_to_three_months` |
+| Deposit cap warning | `test_deposit.test_cap_warning_housing_lease`, `test_no_cap_for_commercial_lease` |
+| Charge allocation with vacant unit and departure during the year | `test_charge.test_allocation_with_vacant_unit_and_departure` |
+| Valid structured communication | `test_lease.test_structured_communication_format`, `test_structured_communication_unique_per_lease` |
+| Also | lifecycle, VAT option, apply + arrears, cron proposals, provisional index, letter, release + reminders, allocation keys, regularisation moves, dashboard, security and multi-company |
 
 ## Security groups
 
