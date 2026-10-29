@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_deposit_release" model="ir.actions.report">
+        <field name="name">Deposit Release Form</field>
+        <field name="model">regie.deposit</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">regie_fonciere.report_deposit_release</field>
+        <field name="print_report_name">'Deposit release - %s' % (object.name or '').replace('/', '-')</field>
+        <field name="binding_model_id" ref="model_regie_deposit"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_deposit_release">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="regie_fonciere.report_deposit_release_document" t-lang="o.company_id._regie_get_letter_lang(o.partner_id)"/>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_deposit_release_document">
+        <t t-set="lease" t-value="o.lease_id"/>
+        <t t-set="address">
+            <div t-out="o.bank_name or ''"/>
+            <div t-if="o.bank_bic" t-out="o.bank_bic"/>
+        </t>
+        <t t-call="web.external_layout" company="o.company_id.sudo()" address="address">
+            <div class="page">
+                <h3>Release of the rental deposit</h3>
+                <table class="table table-sm o_main_table mt-3">
+                    <tbody>
+                        <tr><td>Lease</td><td><span t-out="lease.name"/></td></tr>
+                        <tr>
+                            <td>Rented property</td>
+                            <td>
+                                <span t-out="', '.join(lease.unit_ids.mapped('name'))"/> –
+                                <span t-out="lease.building_id.street"/>, <span t-out="lease.building_id.zip"/> <span t-out="lease.building_id.city"/>
+                            </td>
+                        </tr>
+                        <tr><td>Landlord</td><td><span t-out="o.company_id.name"/></td></tr>
+                        <tr><td>Tenant(s)</td><td><span t-out="', '.join(lease.tenant_ids.mapped('name'))"/></td></tr>
+                        <tr><td>Form of the deposit</td><td><span t-field="o.deposit_type"/></td></tr>
+                        <tr><td>IBAN or reference</td><td><span t-out="o.account_reference or ''"/></td></tr>
+                        <tr><td>Move-out date</td><td><span t-out="lease.exit_date" t-options="{'widget': 'date'}"/></td></tr>
+                    </tbody>
+                </table>
+                <table class="table table-sm o_main_table mt-3">
+                    <tbody>
+                        <tr><td>Constituted deposit</td><td class="text-end"><span t-field="o.constituted_amount"/></td></tr>
+                        <tr t-if="o.unpaid_rent_amount"><td>Retention – unpaid rents</td><td class="text-end"><span t-field="o.unpaid_rent_amount"/></td></tr>
+                        <tr t-if="o.unpaid_charges_amount"><td>Retention – unpaid charges</td><td class="text-end"><span t-field="o.unpaid_charges_amount"/></td></tr>
+                        <tr t-if="o.damage_amount"><td>Retention – damages</td><td class="text-end"><span t-field="o.damage_amount"/></td></tr>
+                        <tr class="fw-bold"><td>Amount to be paid to the landlord</td><td class="text-end"><span t-field="o.retained_amount"/></td></tr>
+                        <tr class="fw-bold"><td>Amount to be paid to the tenant(s)</td><td class="text-end"><span t-field="o.released_amount"/></td></tr>
+                    </tbody>
+                </table>
+                <p t-if="o.retention_reason"><strong>Reasons of the retentions:</strong> <span t-out="o.retention_reason"/></p>
+                <p>
+                    The undersigned agree to the release of the rental deposit as detailed above and ask the bank or
+                    the guarantor to pay the amounts to the parties accordingly.
+                </p>
+                <div class="row mt-5">
+                    <div class="col-6">
+                        <p>For the landlord, <span t-out="o.company_id.name"/></p>
+                        <p class="mt-5">Date and signature:</p>
+                    </div>
+                    <div class="col-6">
+                        <p>The tenant(s)</p>
+                        <p class="mt-5">Date and signature:</p>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

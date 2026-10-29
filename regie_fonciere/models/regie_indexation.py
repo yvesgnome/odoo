@@ -147,9 +147,8 @@ class RegieIndexation(models.Model):
             indexation.state = 'validated'
 
     def _get_letter_lang(self):
-        """ The indexation letter is written in French. """
-        langs = self.env['res.lang'].search([('code', 'in', ('fr_BE', 'fr_FR')), ('active', '=', True)])
-        return (langs.filtered(lambda l: l.code == 'fr_BE') or langs)[:1].code or self.partner_id.lang or self.env.lang
+        self.ensure_one()
+        return self.company_id._regie_get_letter_lang(self.partner_id)
 
     def action_send(self):
         """ Written request: PDF letter sent by email to the tenants from the lease chatter and

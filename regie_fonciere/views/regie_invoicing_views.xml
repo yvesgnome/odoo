@@ -135,6 +135,29 @@
                             </div>
                         </setting>
                     </block>
+                    <block title="Rental Deposits" name="regie_deposit_settings">
+                        <setting id="regie_deposit_rules" string="Deposit Rules" company_dependent="1"
+                                 help="Cap of the deposits of housing leases and follow-up of their release.">
+                            <div class="content-group">
+                                <div class="row mt8">
+                                    <label for="regie_deposit_cap_months" class="col-lg-5 o_light_label"/>
+                                    <field name="regie_deposit_cap_months"/>
+                                </div>
+                                <div class="row">
+                                    <label for="regie_deposit_return_months" class="col-lg-5 o_light_label"/>
+                                    <field name="regie_deposit_return_months"/>
+                                </div>
+                                <div class="row">
+                                    <label for="regie_deposit_reminder_days_1" class="col-lg-5 o_light_label"/>
+                                    <field name="regie_deposit_reminder_days_1"/>
+                                </div>
+                                <div class="row">
+                                    <label for="regie_deposit_reminder_days_2" class="col-lg-5 o_light_label"/>
+                                    <field name="regie_deposit_reminder_days_2"/>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
                 </app>
             </xpath>
         </field>

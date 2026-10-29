@@ -8,6 +8,7 @@
     <menuitem id="menu_regie_lease" action="regie_lease_action" parent="menu_regie_leases" sequence="10"/>
     <menuitem id="menu_regie_indexation_to_process" action="regie_indexation_to_process_action" parent="menu_regie_leases" sequence="20"/>
     <menuitem id="menu_regie_indexation" action="regie_indexation_action" parent="menu_regie_leases" sequence="30"/>
+    <menuitem id="menu_regie_deposit" action="regie_deposit_action" parent="menu_regie_leases" sequence="40"/>
 
     <menuitem id="menu_regie_properties" name="Properties" parent="menu_regie_root" sequence="20"/>
     <menuitem id="menu_regie_building" action="regie_building_action" parent="menu_regie_properties" sequence="10"/>

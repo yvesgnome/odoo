@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Fictitious banks. Blocked account, 2 months of rent -->
+    <record id="demo_deposit_01" model="regie.deposit">
+        <field name="lease_id" ref="demo_lease_01"/>
+        <field name="deposit_type">blocked_account</field>
+        <field name="date">2019-11-12</field>
+        <field name="amount">1360</field>
+        <field name="constituted_amount">1360</field>
+        <field name="state">constituted</field>
+        <field name="bank_name">Banque du Canal (démo)</field>
+        <field name="bank_bic">CANLBEBBXXX</field>
+        <field name="account_reference">BE30001000000111</field>
+    </record>
+    <!-- Above the legal cap of 2 months (warning) -->
+    <record id="demo_deposit_02" model="regie.deposit">
+        <field name="lease_id" ref="demo_lease_02"/>
+        <field name="deposit_type">blocked_account</field>
+        <field name="date">2020-10-20</field>
+        <field name="amount">1860</field>
+        <field name="constituted_amount">1860</field>
+        <field name="state">constituted</field>
+        <field name="bank_name">Zennebank (demo)</field>
+        <field name="bank_bic">ZENNBE22XXX</field>
+        <field name="account_reference">BE52096011784209</field>
+    </record>
+    <!-- Progressive bank guarantee, partially constituted -->
+    <record id="demo_deposit_03" model="regie.deposit">
+        <field name="lease_id" ref="demo_lease_03"/>
+        <field name="deposit_type">bank_guarantee</field>
+        <field name="date">2023-08-10</field>
+        <field name="amount">1700</field>
+        <field name="constituted_amount">1050</field>
+        <field name="state">partial</field>
+        <field name="bank_name">Banque du Canal (démo)</field>
+        <field name="bank_bic">CANLBEBBXXX</field>
+        <field name="account_reference">GAR-2023-0458</field>
+    </record>
+    <!-- CPAS guarantee for the shared housing -->
+    <record id="demo_deposit_07" model="regie.deposit">
+        <field name="lease_id" ref="demo_lease_07"/>
+        <field name="deposit_type">cpas</field>
+        <field name="date">2024-10-25</field>
+        <field name="amount">2300</field>
+        <field name="constituted_amount">2300</field>
+        <field name="state">constituted</field>
+        <field name="account_reference">CPAS Ixelles – décision 2024/1187</field>
+    </record>
+    <!-- Brussels Housing Fund, requested for the short-term lease -->
+    <record id="demo_deposit_06" model="regie.deposit">
+        <field name="lease_id" ref="demo_lease_06"/>
+        <field name="deposit_type">housing_fund</field>
+        <field name="date">2025-08-18</field>
+        <field name="amount">1040</field>
+        <field name="state">requested</field>
+        <field name="account_reference">FDL-2025-30422</field>
+    </record>
+    <!-- Lease in notice -->
+    <record id="demo_deposit_10" model="regie.deposit">
+        <field name="lease_id" ref="demo_lease_10"/>
+        <field name="deposit_type">blocked_account</field>
+        <field name="date">2022-05-10</field>
+        <field name="amount">1960</field>
+        <field name="constituted_amount">1960</field>
+        <field name="state">constituted</field>
+        <field name="bank_name">Zennebank (demo)</field>
+        <field name="bank_bic">ZENNBE22XXX</field>
+        <field name="account_reference">BE71096123456769</field>
+    </record>
+    <!-- Terminated lease: release requested with retentions (see _regie_demo_process_deposits) -->
+    <record id="demo_deposit_11" model="regie.deposit">
+        <field name="lease_id" ref="demo_lease_11"/>
+        <field name="deposit_type">blocked_account</field>
+        <field name="date">2023-02-20</field>
+        <field name="amount">900</field>
+        <field name="constituted_amount">900</field>
+        <field name="state">constituted</field>
+        <field name="bank_name">Banque du Canal (démo)</field>
+        <field name="bank_bic">CANLBEBBXXX</field>
+        <field name="account_reference">BE83001000000222</field>
+    </record>
+    <!-- Litigation: deposit retained for unpaid rents -->
+    <record id="demo_deposit_12" model="regie.deposit">
+        <field name="lease_id" ref="demo_lease_12"/>
+        <field name="deposit_type">other</field>
+        <field name="date">2021-09-10</field>
+        <field name="amount">2500</field>
+        <field name="constituted_amount">2500</field>
+        <field name="state">constituted</field>
+        <field name="account_reference">Garantie notariale – Me Exemple</field>
+    </record>
+    <!-- Commercial lease: no cap -->
+    <record id="demo_deposit_08" model="regie.deposit">
+        <field name="lease_id" ref="demo_lease_08"/>
+        <field name="deposit_type">bank_guarantee</field>
+        <field name="date">2018-03-20</field>
+        <field name="amount">5000</field>
+        <field name="constituted_amount">5000</field>
+        <field name="state">constituted</field>
+        <field name="bank_name">Zennebank (demo)</field>
+        <field name="bank_bic">ZENNBE22XXX</field>
+        <field name="account_reference">GAR-COM-2018-0012</field>
+    </record>
+
+    <function model="regie.deposit" name="_regie_demo_process_deposits"/>
+</odoo>

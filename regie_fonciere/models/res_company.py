@@ -57,6 +57,25 @@ class ResCompany(models.Model):
         help="The EPC correction factor applies to housing leases that took effect before this date.",
     )
 
+    # Rental deposits (Brussels rules)
+    regie_deposit_cap_months = fields.Integer(
+        string="Deposit Cap (months of rent)", default=2,
+        help="Maximum deposit of a housing lease, in months of rent excluding charges (0: no cap). "
+             "A warning is shown above it.",
+    )
+    regie_deposit_return_months = fields.Integer(
+        string="Deposit Return Delay (months)", default=2,
+        help="Delay to return the deposit after the move-out.",
+    )
+    regie_deposit_reminder_days_1 = fields.Integer(string="First Release Reminder (days)", default=30)
+    regie_deposit_reminder_days_2 = fields.Integer(string="Second Release Reminder (days)", default=50)
+
+    def _regie_get_letter_lang(self, partner=None):
+        """ Letters to the tenants (indexation, deposit release, charge statement) are in French. """
+        langs = self.env['res.lang'].search([('code', 'in', ('fr_BE', 'fr_FR')), ('active', '=', True)])
+        lang = (langs.filtered(lambda l: l.code == 'fr_BE') or langs)[:1].code
+        return lang or (partner and partner.lang) or self.env.lang
+
     def _regie_get_rent_journal(self):
         self.ensure_one()
         return self.regie_rent_journal_id or self.env['account.journal'].search([

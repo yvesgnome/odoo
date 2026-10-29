@@ -26,3 +26,6 @@ access_regie_peb_correction_factor_supervisor,regie.peb.correction.factor superv
 access_regie_indexation_property_manager,regie.indexation property manager,regie.indexation,group_regie_property_manager,crud,
 access_regie_indexation_accountant,regie.indexation accountant,regie.indexation,group_regie_accountant,r,
 regie_indexation_company_rule,Indexation multi-company,regie.indexation,,crud,"[('company_id', 'in', company_ids)]"
+access_regie_deposit_property_manager,regie.deposit property manager,regie.deposit,group_regie_property_manager,crud,
+access_regie_deposit_accountant,regie.deposit accountant,regie.deposit,group_regie_accountant,r,
+regie_deposit_company_rule,Deposit multi-company,regie.deposit,,crud,"[('company_id', 'in', company_ids)]"

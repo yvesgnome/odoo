@@ -16,3 +16,7 @@ class ResConfigSettings(models.TransientModel):
     regie_indexation_retroactivity_months = fields.Integer(
         related='company_id.regie_indexation_retroactivity_months', readonly=False)
     regie_peb_correction_cutoff_date = fields.Date(related='company_id.regie_peb_correction_cutoff_date', readonly=False)
+    regie_deposit_cap_months = fields.Integer(related='company_id.regie_deposit_cap_months', readonly=False)
+    regie_deposit_return_months = fields.Integer(related='company_id.regie_deposit_return_months', readonly=False)
+    regie_deposit_reminder_days_1 = fields.Integer(related='company_id.regie_deposit_reminder_days_1', readonly=False)
+    regie_deposit_reminder_days_2 = fields.Integer(related='company_id.regie_deposit_reminder_days_2', readonly=False)

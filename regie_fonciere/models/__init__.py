@@ -12,3 +12,5 @@ from . import res_config_settings
 from . import regie_health_index
 from . import regie_indexation
 from . import regie_lease_indexation
+from . import regie_deposit
+from . import regie_lease_deposit

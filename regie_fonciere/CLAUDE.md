@@ -206,3 +206,16 @@ Future household income data (income-based rents, out of scope) must be restrict
      Reporting > Indexations This Month.
    - QWeb in Odoo 20: variables such as `address` must be set **before** `t-call="web.external_layout"`
      and passed as attributes (`address="address"`).
+5. **Rental deposits** (`regie.deposit`, outside the accounting):
+   - Forms: blocked account, progressive bank guarantee, CPAS, Housing Fund, other; amount,
+     constituted amount, bank (text: Odoo 20 has no `res.bank` model any more), IBAN or reference.
+   - States: requested → partially constituted / constituted → release requested → released or
+     retained.
+   - **Cap** (housing leases only): `regie_deposit_cap_months` (default 2) × rent excluding charges
+     in force at the deposit date; non-blocking warning banner above it. No cap for commercial and
+     parking leases.
+   - Release: *Compute Retentions* reads the open balance of the lease invoices (split rent /
+     charges), damages are encoded by hand, retained amount capped at the constituted amount;
+     *Request Release* schedules activities at move-out + 30 and + 50 days (settings) for a return
+     expected within 2 months; PDF *Deposit Release Form* (`report/regie_deposit_release.xml`, French).
+   - Letters to tenants use `res.company._regie_get_letter_lang()` (fr_BE, else fr_FR).
