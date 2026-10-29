@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- Archive the demo company left behind by a previous uninstall (see CLAUDE.md). -->
+    <function model="res.company" name="_regie_demo_archive_previous_company"/>
+
     <!-- All the demo data of the module belongs to this company. -->
     <record id="demo_company" model="res.company">
         <field name="name">Régie foncière (démo)</field>

@@ -73,6 +73,8 @@ class RegieUnit(models.Model):
     )
     cadastral_income = fields.Monetary(tracking=True)
     meter_ids = fields.One2many('regie.meter', 'unit_id', string="Meters")
+    lease_ids = fields.Many2many('regie.lease', 'regie_lease_unit_rel', 'unit_id', 'lease_id', string="Leases")
+    current_lease_id = fields.Many2one('regie.lease', compute='_compute_current_lease_id', string="Current Lease")
     under_works = fields.Boolean(string="Under Works", tracking=True)
     state = fields.Selection(
         [('free', 'Free'), ('rented', 'Rented'), ('works', 'Under Works')],
@@ -107,7 +109,21 @@ class RegieUnit(models.Model):
         ])
         return valid_domain if True in value else ~valid_domain
 
-    @api.depends('under_works')
+    @api.depends('under_works', 'lease_ids.state')
     def _compute_state(self):
+        # The lease states are kept up to date by a daily cron, so the unit status can be stored.
         for unit in self:
-            unit.state = 'works' if unit.under_works else 'free'
+            if unit._get_current_lease():
+                unit.state = 'rented'
+            else:
+                unit.state = 'works' if unit.under_works else 'free'
+
+    @api.depends('lease_ids.state')
+    def _compute_current_lease_id(self):
+        for unit in self:
+            unit.current_lease_id = unit._get_current_lease()
+
+    def _get_current_lease(self):
+        self.ensure_one()
+        occupied_states = self.env['regie.lease']._get_occupied_states()
+        return self.lease_ids.filtered(lambda l: l.state in occupied_states)[:1]

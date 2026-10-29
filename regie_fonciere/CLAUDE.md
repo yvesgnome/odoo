@@ -90,8 +90,14 @@ missing `pdfminer.six`, missing `markdown2`.
 - Business values (deadlines, caps, days, factors) are **company settings or data tables**, never
   hard-coded in the logic.
 - Demo data that needs code (generated invoices, computed statements) is produced by
-  `_regie_demo_*` methods called from demo XML (`<function>`); they must be **idempotent**
-  because `<function>` tags run again on every module update.
+  `_regie_demo_*` methods called from demo XML (`<function>`); keep them idempotent.
+- **Demo files are loaded in `noupdate` mode**: on `-u`, existing demo records are not updated
+  and demo `<function>` tags are **not executed** (only at install). New demo records are created.
+  To check demo changes, uninstall and reinstall the module (see commands).
+- After an uninstall, the demo company (it has a chart of accounts) and its partners cannot be
+  deleted; their xml ids survive, so a reinstall reuses them. `_regie_demo_archive_previous_company`
+  archives and renames a leftover demo company that lost its xml id. Building analytic accounts
+  are reused by code (plan *Buildings*) instead of being duplicated.
 
 ## Security groups
 
@@ -107,4 +113,25 @@ Future household income data (income-based rents, out of scope) must be restrict
 ## Zones
 
 1. **Properties** (`regie.building`, `regie.unit`, `regie.meter`): building analytic account created
-   automatically in the analytic plan *Buildings*; unit status computed (free / rented / under works).
+   automatically in the analytic plan *Buildings*; unit status computed (free / rented / under works),
+   stored, recomputed from the lease states.
+2. **Leases** (`regie.lease`, `regie.lease.rent.line`, `regie.charge.category`):
+   - one or more units (`unit_ids`) with a main unit; one or more tenants (`tenant_ids`) with a
+     main tenant (`partner_id`, the invoiced one), joint liability flag, guarantors.
+   - States: draft → signed → active → notice → terminated; rescinded; litigation. A daily cron
+     (`_cron_update_states`) activates signed leases on their effective date and terminates
+     leases the day after the move-out date. Units are *rented* while a lease is active, in notice
+     or in litigation.
+   - **Rent history**: every change (initial, indexation, revision, amendment, provision adjustment)
+     is a dated line; `_get_rent_at(date)` returns the (rent, provision) in force at a date.
+   - Default durations per type in `LEASE_TYPE_DEFAULT_DURATION`, short-term ≤ 36 months
+     (`SHORT_TERM_MAX_DURATION`). Housing = all types except commercial and parking.
+   - Reference rent mandatory to sign a housing lease.
+   - **Structured communication** unique per lease: company prefix (`regie_communication_prefix`,
+     default `9`, keeps it apart from Odoo's invoice-based references) + lease id on 10 digits,
+     check digits = modulo 97 (97 when 0) — `tools.format_structured_communication`.
+   - `invoicing_start_date`: first day invoiced by the schedule (defaults to the effective date;
+     used to take over existing leases).
+   - Open balance / overdue invoices from `account.move.regie_lease_id`; buttons for a one-off
+     invoice or credit note.
+   - Lease numbers `BAIL/<year of the effective date>/NNNN`.

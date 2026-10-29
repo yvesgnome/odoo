@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="seq_regie_lease" model="ir.sequence">
+        <field name="name">Lease</field>
+        <field name="code">regie.lease</field>
+        <field name="prefix">BAIL/%(year)s/</field>
+        <field name="padding">4</field>
+        <field name="use_date_range" eval="True"/>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <!-- Recoverable charge categories (Brussels: limitative list in the lease). -->
+    <record id="charge_category_heating" model="regie.charge.category">
+        <field name="name">Heating</field>
+        <field name="code">HEAT</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="charge_category_water" model="regie.charge.category">
+        <field name="name">Water</field>
+        <field name="code">WATER</field>
+        <field name="sequence">20</field>
+    </record>
+    <record id="charge_category_common_electricity" model="regie.charge.category">
+        <field name="name">Common Areas Electricity</field>
+        <field name="code">ELEC</field>
+        <field name="sequence">30</field>
+    </record>
+    <record id="charge_category_cleaning" model="regie.charge.category">
+        <field name="name">Cleaning</field>
+        <field name="code">CLEAN</field>
+        <field name="sequence">40</field>
+    </record>
+    <record id="charge_category_elevator" model="regie.charge.category">
+        <field name="name">Elevator</field>
+        <field name="code">LIFT</field>
+        <field name="sequence">50</field>
+    </record>
+    <record id="charge_category_caretaker" model="regie.charge.category">
+        <field name="name">Caretaker</field>
+        <field name="code">CARE</field>
+        <field name="sequence">60</field>
+    </record>
+    <record id="charge_category_gardens" model="regie.charge.category">
+        <field name="name">Gardens</field>
+        <field name="code">GARDEN</field>
+        <field name="sequence">70</field>
+    </record>
+    <record id="charge_category_maintenance" model="regie.charge.category">
+        <field name="name">Maintenance Contracts</field>
+        <field name="code">MAINT</field>
+        <field name="sequence">80</field>
+    </record>
+
+    <record id="ir_cron_regie_lease_states" model="ir.cron">
+        <field name="name">Land Agency: update lease statuses</field>
+        <field name="model_id" ref="model_regie_lease"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_update_states()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="nextcall" eval="(DateTime.now() + timedelta(days=1)).strftime('%Y-%m-%d 01:00:00')"/>
+    </record>
+</odoo>

@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ================= Tenants and guarantors (fictitious) ================= -->
+    <record id="demo_partner_marc_dubois" model="res.partner">
+        <field name="name">Marc Dubois</field>
+        <field name="company_id" ref="demo_company"/>
+        <field name="street">Rue du Héron Cendré 14, bte 1.1</field>
+        <field name="zip">1060</field>
+        <field name="city">Saint-Gilles</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="email">marc.dubois@example.com</field>
+    </record>
+    <record id="demo_partner_sofie_peeters" model="res.partner">
+        <field name="name">Sofie Peeters</field>
+        <field name="company_id" ref="demo_company"/>
+        <field name="street">Rue du Héron Cendré 14, bte 1.2</field>
+        <field name="zip">1060</field>
+        <field name="city">Saint-Gilles</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="email">sofie.peeters@example.com</field>
+    </record>
+    <record id="demo_partner_youssef_benali" model="res.partner">
+        <field name="name">Youssef Benali</field>
+        <field name="company_id" ref="demo_company"/>
+        <field name="street">Rue du Héron Cendré 14, bte 2.1</field>
+        <field name="zip">1060</field>
+        <field name="city">Saint-Gilles</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="email">youssef.benali@example.com</field>
+    </record>
+    <record id="demo_partner_jan_vermeulen" model="res.partner">
+        <field name="name">Jan Vermeulen</field>
+        <field name="company_id" ref="demo_company"/>
+        <field name="street">Rue du Héron Cendré 14, bte 3.2</field>
+        <field name="zip">1060</field>
+        <field name="city">Saint-Gilles</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="email">jan.vermeulen@example.com</field>
+    </record>
+    <record id="demo_partner_camille_lambert" model="res.partner">
+        <field name="name">Camille Lambert</field>
+        <field name="company_id" ref="demo_company"/>
+        <field name="street">Rue du Héron Cendré 14, bte 4.1</field>
+        <field name="zip">1060</field>
+        <field name="city">Saint-Gilles</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="email">camille.lambert@example.com</field>
+    </record>
+    <record id="demo_partner_lotte_janssens" model="res.partner">
+        <field name="name">Lotte Janssens</field>
+        <field name="company_id" ref="demo_company"/>
+        <field name="street">Rue du Héron Cendré 14, bte 2.2</field>
+        <field name="zip">1060</field>
+        <field name="city">Saint-Gilles</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="email">lotte.janssens@example.com</field>
+    </record>
+    <record id="demo_partner_pieter_desmet" model="res.partner">
+        <field name="name">Pieter De Smet</field>
+        <field name="company_id" ref="demo_company"/>
+        <field name="street">Avenue des Saules Pleureurs 27, bte 2.1</field>
+        <field name="zip">1050</field>
+        <field name="city">Ixelles</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="email">pieter.desmet@example.com</field>
+    </record>
+    <record id="demo_partner_thomas_maes" model="res.partner">
+        <field name="name">Thomas Maes</field>
+        <field name="company_id" ref="demo_company"/>
+        <field name="street">Avenue des Saules Pleureurs 27, bte 2.1</field>
+        <field name="zip">1050</field>
+        <field name="city">Ixelles</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="email">thomas.maes@example.com</field>
+    </record>
+    <record id="demo_partner_hilde_desmet" model="res.partner">
+        <field name="name">Hilde De Smet</field>
+        <field name="company_id" ref="demo_company"/>
+        <field name="street">Kerkstraat 101</field>
+        <field name="zip">9000</field>
+        <field name="city">Gent</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="email">hilde.desmet@example.com</field>
+    </record>
+    <record id="demo_partner_fournil" model="res.partner">
+        <field name="name">Le Fournil du Héron SRL</field>
+        <field name="is_company" eval="True"/>
+        <field name="company_id" ref="demo_company"/>
+        <field name="street">Rue du Héron Cendré 14</field>
+        <field name="zip">1060</field>
+        <field name="city">Saint-Gilles</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="email">contact@fournil-heron.example.com</field>
+    </record>
+    <record id="demo_partner_elise_wouters" model="res.partner">
+        <field name="name">Elise Wouters</field>
+        <field name="company_id" ref="demo_company"/>
+        <field name="street">Avenue des Saules Pleureurs 31</field>
+        <field name="zip">1050</field>
+        <field name="city">Ixelles</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="email">elise.wouters@example.com</field>
+    </record>
+    <record id="demo_partner_nathalie_lefebvre" model="res.partner">
+        <field name="name">Nathalie Lefebvre</field>
+        <field name="company_id" ref="demo_company"/>
+        <field name="street">Avenue des Saules Pleureurs 27, bte 1.1</field>
+        <field name="zip">1050</field>
+        <field name="city">Ixelles</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="email">nathalie.lefebvre@example.com</field>
+    </record>
+    <record id="demo_partner_koen_claes" model="res.partner">
+        <field name="name">Koen Claes</field>
+        <field name="company_id" ref="demo_company"/>
+        <field name="street">Rue des Peupliers Bleus 3</field>
+        <field name="zip">1080</field>
+        <field name="city">Molenbeek-Saint-Jean</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="email">koen.claes@example.com</field>
+    </record>
+    <record id="demo_partner_amelie_fontaine" model="res.partner">
+        <field name="name">Amélie Fontaine</field>
+        <field name="company_id" ref="demo_company"/>
+        <field name="street">Rue des Trois Lanternes 9</field>
+        <field name="zip">1030</field>
+        <field name="city">Schaerbeek</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="email">amelie.fontaine@example.com</field>
+    </record>
+
+    <!-- ================= Leases ================= -->
+
+    <!-- L01: old main residence (before 14/10/2022), EPC F -> indexation with correction factor -->
+    <record id="demo_lease_01" model="regie.lease">
+        <field name="company_id" ref="demo_company"/>
+        <field name="lease_type">main_residence</field>
+        <field name="state">active</field>
+        <field name="main_unit_id" ref="demo_unit_her_11"/>
+        <field name="unit_ids" eval="[(6, 0, [ref('demo_unit_her_11')])]"/>
+        <field name="partner_id" ref="demo_partner_marc_dubois"/>
+        <field name="signature_date">2019-11-12</field>
+        <field name="start_date">2019-12-01</field>
+        <field name="end_date">2028-11-30</field>
+        <field name="base_rent">680</field>
+        <field name="initial_charge_provision">90</field>
+        <field name="initial_index">108.98</field>
+        <field name="reference_rent">745</field>
+        <field name="registration_date">2019-12-09</field>
+        <field name="registration_reference">REG-2019-118842</field>
+        <field name="peb_communicated" eval="True"/>
+        <field name="invoicing_start_date">2025-01-01</field>
+        <field name="charge_category_ids" eval="[(6, 0, [ref('charge_category_heating'), ref('charge_category_water'), ref('charge_category_common_electricity'), ref('charge_category_cleaning'), ref('charge_category_elevator'), ref('charge_category_maintenance')])]"/>
+    </record>
+    <record id="demo_lease_01_rent_2024" model="regie.lease.rent.line">
+        <field name="lease_id" ref="demo_lease_01"/>
+        <field name="date_start">2024-12-01</field>
+        <field name="rent">751.41</field>
+        <field name="charge_provision">90</field>
+        <field name="reason">indexation</field>
+    </record>
+    <record id="demo_lease_01_rent_2025" model="regie.lease.rent.line">
+        <field name="lease_id" ref="demo_lease_01"/>
+        <field name="date_start">2025-12-01</field>
+        <field name="rent">769.86</field>
+        <field name="charge_provision">90</field>
+        <field name="reason">indexation</field>
+    </record>
+
+    <!-- L02: old main residence, EPC E -->
+    <record id="demo_lease_02" model="regie.lease">
+        <field name="company_id" ref="demo_company"/>
+        <field name="lease_type">main_residence</field>
+        <field name="state">active</field>
+        <field name="main_unit_id" ref="demo_unit_her_12"/>
+        <field name="unit_ids" eval="[(6, 0, [ref('demo_unit_her_12')])]"/>
+        <field name="partner_id" ref="demo_partner_sofie_peeters"/>
+        <field name="signature_date">2020-10-20</field>
+        <field name="start_date">2020-11-01</field>
+        <field name="end_date">2029-10-31</field>
+        <field name="base_rent">620</field>
+        <field name="initial_charge_provision">80</field>
+        <field name="initial_index">109.78</field>
+        <field name="reference_rent">690</field>
+        <field name="registration_date">2020-11-05</field>
+        <field name="registration_reference">REG-2020-207731</field>
+        <field name="peb_communicated" eval="True"/>
+        <field name="invoicing_start_date">2025-01-01</field>
+        <field name="charge_category_ids" eval="[(6, 0, [ref('charge_category_heating'), ref('charge_category_water'), ref('charge_category_common_electricity'), ref('charge_category_cleaning'), ref('charge_category_elevator'), ref('charge_category_maintenance')])]"/>
+    </record>
+    <record id="demo_lease_02_rent_2024" model="regie.lease.rent.line">
+        <field name="lease_id" ref="demo_lease_02"/>
+        <field name="date_start">2024-11-01</field>
+        <field name="rent">709.88</field>
+        <field name="charge_provision">80</field>
+        <field name="reason">indexation</field>
+    </record>
+    <record id="demo_lease_02_rent_2025" model="regie.lease.rent.line">
+        <field name="lease_id" ref="demo_lease_02"/>
+        <field name="date_start">2025-11-01</field>
+        <field name="rent">724.83</field>
+        <field name="charge_provision">80</field>
+        <field name="reason">indexation</field>
+    </record>
+
+    <!-- L03: recent main residence (EPC C) -> normal indexation; SEPA direct debit -->
+    <record id="demo_lease_03" model="regie.lease">
+        <field name="company_id" ref="demo_company"/>
+        <field name="lease_type">main_residence</field>
+        <field name="state">active</field>
+        <field name="main_unit_id" ref="demo_unit_her_21"/>
+        <field name="unit_ids" eval="[(6, 0, [ref('demo_unit_her_21')])]"/>
+        <field name="partner_id" ref="demo_partner_youssef_benali"/>
+        <field name="signature_date">2023-08-10</field>
+        <field name="start_date">2023-09-01</field>
+        <field name="end_date">2032-08-31</field>
+        <field name="base_rent">850</field>
+        <field name="initial_charge_provision">95</field>
+        <field name="initial_index">128.22</field>
+        <field name="reference_rent">870</field>
+        <field name="registration_date">2023-08-28</field>
+        <field name="registration_reference">REG-2023-552014</field>
+        <field name="peb_communicated" eval="True"/>
+        <field name="invoicing_start_date">2025-01-01</field>
+        <field name="charge_category_ids" eval="[(6, 0, [ref('charge_category_heating'), ref('charge_category_water'), ref('charge_category_common_electricity'), ref('charge_category_cleaning'), ref('charge_category_elevator'), ref('charge_category_maintenance')])]"/>
+    </record>
+    <record id="demo_lease_03_rent_2024" model="regie.lease.rent.line">
+        <field name="lease_id" ref="demo_lease_03"/>
+        <field name="date_start">2024-09-01</field>
+        <field name="rent">881.29</field>
+        <field name="charge_provision">95</field>
+        <field name="reason">indexation</field>
+    </record>
+    <record id="demo_lease_03_rent_2025" model="regie.lease.rent.line">
+        <field name="lease_id" ref="demo_lease_03"/>
+        <field name="date_start">2025-09-01</field>
+        <field name="rent">899.19</field>
+        <field name="charge_provision">95</field>
+        <field name="reason">indexation</field>
+    </record>
+
+    <!-- L04: lease NOT registered -> indexation blocked -->
+    <record id="demo_lease_04" model="regie.lease">
+        <field name="company_id" ref="demo_company"/>
+        <field name="lease_type">main_residence</field>
+        <field name="state">active</field>
+        <field name="main_unit_id" ref="demo_unit_her_32"/>
+        <field name="unit_ids" eval="[(6, 0, [ref('demo_unit_her_32')])]"/>
+        <field name="partner_id" ref="demo_partner_jan_vermeulen"/>
+        <field name="signature_date">2021-03-15</field>
+        <field name="start_date">2021-04-01</field>
+        <field name="end_date">2030-03-31</field>
+        <field name="base_rent">590</field>
+        <field name="initial_charge_provision">70</field>
+        <field name="initial_index">110.39</field>
+        <field name="reference_rent">640</field>
+        <field name="peb_communicated" eval="True"/>
+        <field name="invoicing_start_date">2025-01-01</field>
+        <field name="charge_category_ids" eval="[(6, 0, [ref('charge_category_heating'), ref('charge_category_water'), ref('charge_category_common_electricity'), ref('charge_category_cleaning'), ref('charge_category_elevator')])]"/>
+    </record>
+
+    <!-- L05: EPC certificate expired -> indexation blocked -->
+    <record id="demo_lease_05" model="regie.lease">
+        <field name="company_id" ref="demo_company"/>
+        <field name="lease_type">main_residence</field>
+        <field name="state">active</field>
+        <field name="main_unit_id" ref="demo_unit_her_41"/>
+        <field name="unit_ids" eval="[(6, 0, [ref('demo_unit_her_41')])]"/>
+        <field name="partner_id" ref="demo_partner_camille_lambert"/>
+        <field name="signature_date">2022-01-20</field>
+        <field name="start_date">2022-02-01</field>
+        <field name="end_date">2031-01-31</field>
+        <field name="base_rent">700</field>
+        <field name="initial_charge_provision">85</field>
+        <field name="initial_index">115.60</field>
+        <field name="reference_rent">760</field>
+        <field name="registration_date">2022-02-03</field>
+        <field name="registration_reference">REG-2022-030918</field>
+        <field name="peb_communicated" eval="True"/>
+        <field name="invoicing_start_date">2025-01-01</field>
+        <field name="charge_category_ids" eval="[(6, 0, [ref('charge_category_heating'), ref('charge_category_water'), ref('charge_category_common_electricity'), ref('charge_category_cleaning'), ref('charge_category_elevator'), ref('charge_category_maintenance')])]"/>
+    </record>
+    <record id="demo_lease_05_rent_2025" model="regie.lease.rent.line">
+        <field name="lease_id" ref="demo_lease_05"/>
+        <field name="date_start">2025-02-01</field>
+        <field name="rent">820.62</field>
+        <field name="charge_provision">85</field>
+        <field name="reason">indexation</field>
+    </record>
+
+    <!-- L06: short-term lease, started mid-month (prorated first month), flat-rate charges -->
+    <record id="demo_lease_06" model="regie.lease">
+        <field name="company_id" ref="demo_company"/>
+        <field name="lease_type">short_term</field>
+        <field name="state">active</field>
+        <field name="main_unit_id" ref="demo_unit_her_22"/>
+        <field name="unit_ids" eval="[(6, 0, [ref('demo_unit_her_22')])]"/>
+        <field name="partner_id" ref="demo_partner_lotte_janssens"/>
+        <field name="signature_date">2025-08-18</field>
+        <field name="start_date">2025-09-15</field>
+        <field name="end_date">2027-09-14</field>
+        <field name="base_rent">520</field>
+        <field name="initial_charge_provision">60</field>
+        <field name="charge_mode">flat</field>
+        <field name="initial_index">135.60</field>
+        <field name="reference_rent">540</field>
+        <field name="registration_date">2025-09-01</field>
+        <field name="registration_reference">REG-2025-771203</field>
+        <field name="peb_communicated" eval="True"/>
+    </record>
+
+    <!-- L07: shared housing, 2 jointly liable tenants and a guarantor -->
+    <record id="demo_lease_07" model="regie.lease">
+        <field name="company_id" ref="demo_company"/>
+        <field name="lease_type">shared</field>
+        <field name="state">active</field>
+        <field name="main_unit_id" ref="demo_unit_sau_21"/>
+        <field name="unit_ids" eval="[(6, 0, [ref('demo_unit_sau_21')])]"/>
+        <field name="partner_id" ref="demo_partner_pieter_desmet"/>
+        <field name="tenant_ids" eval="[(6, 0, [ref('demo_partner_pieter_desmet'), ref('demo_partner_thomas_maes')])]"/>
+        <field name="guarantor_ids" eval="[(6, 0, [ref('demo_partner_hilde_desmet')])]"/>
+        <field name="signature_date">2024-10-25</field>
+        <field name="start_date">2024-11-01</field>
+        <field name="end_date">2033-10-31</field>
+        <field name="base_rent">1150</field>
+        <field name="initial_charge_provision">140</field>
+        <field name="initial_index">132.41</field>
+        <field name="reference_rent">1180</field>
+        <field name="registration_date">2024-11-04</field>
+        <field name="registration_reference">REG-2024-640577</field>
+        <field name="peb_communicated" eval="True"/>
+        <field name="invoicing_start_date">2025-01-01</field>
+        <field name="charge_category_ids" eval="[(6, 0, [ref('charge_category_water'), ref('charge_category_common_electricity'), ref('charge_category_cleaning'), ref('charge_category_gardens')])]"/>
+    </record>
+    <record id="demo_lease_07_rent_2025" model="regie.lease.rent.line">
+        <field name="lease_id" ref="demo_lease_07"/>
+        <field name="date_start">2025-11-01</field>
+        <field name="rent">1179.10</field>
+        <field name="charge_provision">140</field>
+        <field name="reason">indexation</field>
+    </record>
+
+    <!-- L08: commercial lease with VAT option (tax set by _regie_demo_setup_leases) -->
+    <record id="demo_lease_08" model="regie.lease">
+        <field name="company_id" ref="demo_company"/>
+        <field name="lease_type">commercial</field>
+        <field name="state">active</field>
+        <field name="main_unit_id" ref="demo_unit_her_shop"/>
+        <field name="unit_ids" eval="[(6, 0, [ref('demo_unit_her_shop')])]"/>
+        <field name="partner_id" ref="demo_partner_fournil"/>
+        <field name="signature_date">2018-03-20</field>
+        <field name="start_date">2018-04-01</field>
+        <field name="end_date">2027-03-31</field>
+        <field name="base_rent">1400</field>
+        <field name="initial_charge_provision">100</field>
+        <field name="initial_index">106.54</field>
+        <field name="registration_date">2018-03-28</field>
+        <field name="registration_reference">REG-2018-094410</field>
+        <field name="vat_option" eval="True"/>
+        <field name="invoicing_start_date">2025-01-01</field>
+        <field name="charge_category_ids" eval="[(6, 0, [ref('charge_category_water'), ref('charge_category_common_electricity'), ref('charge_category_cleaning')])]"/>
+    </record>
+    <record id="demo_lease_08_rent_2025" model="regie.lease.rent.line">
+        <field name="lease_id" ref="demo_lease_08"/>
+        <field name="date_start">2025-04-01</field>
+        <field name="rent">1785.94</field>
+        <field name="charge_provision">100</field>
+        <field name="reason">indexation</field>
+    </record>
+
+    <!-- L09: parking only -->
+    <record id="demo_lease_09" model="regie.lease">
+        <field name="company_id" ref="demo_company"/>
+        <field name="lease_type">parking</field>
+        <field name="state">active</field>
+        <field name="main_unit_id" ref="demo_unit_sau_p1"/>
+        <field name="unit_ids" eval="[(6, 0, [ref('demo_unit_sau_p1')])]"/>
+        <field name="partner_id" ref="demo_partner_elise_wouters"/>
+        <field name="signature_date">2024-07-15</field>
+        <field name="start_date">2024-08-01</field>
+        <field name="end_date">2027-07-31</field>
+        <field name="base_rent">85</field>
+        <field name="initial_charge_provision">0</field>
+        <field name="charge_mode">flat</field>
+        <field name="initial_index">131.92</field>
+        <field name="registration_date">2024-07-30</field>
+        <field name="registration_reference">REG-2024-588120</field>
+        <field name="invoicing_start_date">2025-01-01</field>
+    </record>
+    <record id="demo_lease_09_rent_2025" model="regie.lease.rent.line">
+        <field name="lease_id" ref="demo_lease_09"/>
+        <field name="date_start">2025-08-01</field>
+        <field name="rent">87.37</field>
+        <field name="charge_provision">0</field>
+        <field name="reason">indexation</field>
+    </record>
+
+    <!-- L10: apartment + parking (2 units), notice given -->
+    <record id="demo_lease_10" model="regie.lease">
+        <field name="company_id" ref="demo_company"/>
+        <field name="lease_type">main_residence</field>
+        <field name="state">notice</field>
+        <field name="main_unit_id" ref="demo_unit_sau_11"/>
+        <field name="unit_ids" eval="[(6, 0, [ref('demo_unit_sau_11'), ref('demo_unit_sau_p2')])]"/>
+        <field name="partner_id" ref="demo_partner_nathalie_lefebvre"/>
+        <field name="signature_date">2022-05-10</field>
+        <field name="start_date">2022-06-01</field>
+        <field name="end_date">2031-05-31</field>
+        <field name="notice_date">2026-08-28</field>
+        <field name="exit_date">2026-11-30</field>
+        <field name="base_rent">980</field>
+        <field name="initial_charge_provision">110</field>
+        <field name="initial_index">119.59</field>
+        <field name="reference_rent">1010</field>
+        <field name="registration_date">2022-06-02</field>
+        <field name="registration_reference">REG-2022-301456</field>
+        <field name="peb_communicated" eval="True"/>
+        <field name="invoicing_start_date">2025-01-01</field>
+        <field name="charge_category_ids" eval="[(6, 0, [ref('charge_category_water'), ref('charge_category_common_electricity'), ref('charge_category_cleaning'), ref('charge_category_gardens')])]"/>
+    </record>
+    <record id="demo_lease_10_rent_2025" model="regie.lease.rent.line">
+        <field name="lease_id" ref="demo_lease_10"/>
+        <field name="date_start">2025-06-01</field>
+        <field name="rent">1102.51</field>
+        <field name="charge_provision">110</field>
+        <field name="reason">indexation</field>
+    </record>
+
+    <!-- L11: transit housing, terminated (move-out mid-month), deposit being released -->
+    <record id="demo_lease_11" model="regie.lease">
+        <field name="company_id" ref="demo_company"/>
+        <field name="lease_type">transit</field>
+        <field name="state">terminated</field>
+        <field name="main_unit_id" ref="demo_unit_sau_01"/>
+        <field name="unit_ids" eval="[(6, 0, [ref('demo_unit_sau_01')])]"/>
+        <field name="partner_id" ref="demo_partner_koen_claes"/>
+        <field name="signature_date">2023-02-20</field>
+        <field name="start_date">2023-03-01</field>
+        <field name="end_date">2026-08-31</field>
+        <field name="notice_date">2026-05-25</field>
+        <field name="exit_date">2026-08-20</field>
+        <field name="base_rent">450</field>
+        <field name="initial_charge_provision">60</field>
+        <field name="initial_index">128.00</field>
+        <field name="reference_rent">520</field>
+        <field name="registration_date">2023-02-27</field>
+        <field name="registration_reference">REG-2023-120933</field>
+        <field name="peb_communicated" eval="True"/>
+        <field name="invoicing_start_date">2025-01-01</field>
+        <field name="charge_category_ids" eval="[(6, 0, [ref('charge_category_water'), ref('charge_category_common_electricity'), ref('charge_category_cleaning'), ref('charge_category_gardens')])]"/>
+    </record>
+    <record id="demo_lease_11_rent_2025" model="regie.lease.rent.line">
+        <field name="lease_id" ref="demo_lease_11"/>
+        <field name="date_start">2025-03-01</field>
+        <field name="rent">477.39</field>
+        <field name="charge_provision">60</field>
+        <field name="reason">indexation</field>
+    </record>
+
+    <!-- L12: house, litigation (unpaid rents) -->
+    <record id="demo_lease_12" model="regie.lease">
+        <field name="company_id" ref="demo_company"/>
+        <field name="lease_type">main_residence</field>
+        <field name="state">litigation</field>
+        <field name="main_unit_id" ref="demo_unit_lan_house"/>
+        <field name="unit_ids" eval="[(6, 0, [ref('demo_unit_lan_house')])]"/>
+        <field name="partner_id" ref="demo_partner_amelie_fontaine"/>
+        <field name="signature_date">2021-09-10</field>
+        <field name="start_date">2021-10-01</field>
+        <field name="end_date">2030-09-30</field>
+        <field name="base_rent">1250</field>
+        <field name="initial_charge_provision">0</field>
+        <field name="charge_mode">flat</field>
+        <field name="initial_index">112.74</field>
+        <field name="reference_rent">1320</field>
+        <field name="registration_date">2021-09-20</field>
+        <field name="registration_reference">REG-2021-418806</field>
+        <field name="peb_communicated" eval="True"/>
+        <field name="invoicing_start_date">2025-01-01</field>
+    </record>
+    <record id="demo_lease_12_rent_2024" model="regie.lease.rent.line">
+        <field name="lease_id" ref="demo_lease_12"/>
+        <field name="date_start">2024-10-01</field>
+        <field name="rent">1468.09</field>
+        <field name="charge_provision">0</field>
+        <field name="reason">indexation</field>
+    </record>
+
+    <function model="regie.lease" name="_regie_demo_setup_leases"/>
+</odoo>

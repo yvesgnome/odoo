@@ -49,3 +49,24 @@ class RegieTestCommon(AccountTestInvoicingCommon):
                 'peb_valid_until': '2035-12-31',
             },
         ])
+        cls.tenant = cls.env['res.partner'].create({'name': "Tenant One", 'email': 'tenant1@example.com'})
+        cls.tenant_2 = cls.env['res.partner'].create({'name': "Tenant Two", 'email': 'tenant2@example.com'})
+
+    @classmethod
+    def _create_lease(cls, unit=None, **vals):
+        unit = unit or cls.unit_a
+        return cls.env['regie.lease'].create({
+            'lease_type': 'main_residence',
+            'main_unit_id': unit.id,
+            'partner_id': cls.tenant.id,
+            'signature_date': '2024-12-15',
+            'start_date': '2025-01-01',
+            'end_date': '2033-12-31',
+            'base_rent': 800.0,
+            'initial_charge_provision': 100.0,
+            'initial_index': 133.73,
+            'reference_rent': 850.0,
+            'registration_date': '2025-01-10',
+            'peb_communicated': True,
+            **vals,
+        })

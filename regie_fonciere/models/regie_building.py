@@ -84,8 +84,17 @@ class RegieBuilding(models.Model):
 
     def _create_analytic_accounts(self):
         plan = self.env.ref('regie_fonciere.analytic_plan_buildings')
+        Analytic = self.env['account.analytic.account'].sudo()
         for building in self.filtered(lambda b: not b.analytic_account_id):
-            building.analytic_account_id = self.env['account.analytic.account'].sudo().create({
+            # Reuse an account of the plan with the same code not linked to a building (e.g. after a
+            # reinstall), so that costs already booked on it stay attached to the building.
+            account = building.code and Analytic.search([
+                ('plan_id', '=', plan.id),
+                ('company_id', '=', building.company_id.id),
+                ('code', '=', building.code),
+                ('id', 'not in', self.sudo().search([('analytic_account_id', '!=', False)]).analytic_account_id.ids),
+            ], limit=1)
+            building.analytic_account_id = account or Analytic.create({
                 'name': building.name,
                 'code': building.code,
                 'plan_id': plan.id,

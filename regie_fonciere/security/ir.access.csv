@@ -8,3 +8,11 @@ regie_unit_company_rule,Unit multi-company,regie.unit,,crud,"[('company_id', 'in
 access_regie_meter_property_manager,regie.meter property manager,regie.meter,group_regie_property_manager,crud,
 access_regie_meter_accountant,regie.meter accountant,regie.meter,group_regie_accountant,r,
 regie_meter_company_rule,Meter multi-company,regie.meter,,crud,"[('company_id', 'in', company_ids)]"
+access_regie_charge_category_user,regie.charge.category user,regie.charge.category,base.group_user,r,
+access_regie_charge_category_supervisor,regie.charge.category supervisor,regie.charge.category,group_regie_supervisor,crud,
+access_regie_lease_property_manager,regie.lease property manager,regie.lease,group_regie_property_manager,crud,
+access_regie_lease_accountant,regie.lease accountant,regie.lease,group_regie_accountant,r,
+regie_lease_company_rule,Lease multi-company,regie.lease,,crud,"[('company_id', 'in', company_ids)]"
+access_regie_lease_rent_line_property_manager,regie.lease.rent.line property manager,regie.lease.rent.line,group_regie_property_manager,crud,
+access_regie_lease_rent_line_accountant,regie.lease.rent.line accountant,regie.lease.rent.line,group_regie_accountant,r,
+regie_lease_rent_line_company_rule,Lease rent history multi-company,regie.lease.rent.line,,crud,"[('company_id', 'in', company_ids)]"
