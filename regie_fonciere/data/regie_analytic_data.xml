@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- One analytic account per building is created in this plan. -->
+    <record id="analytic_plan_buildings" model="account.analytic.plan">
+        <field name="name">Buildings</field>
+        <field name="default_applicability">optional</field>
+    </record>
+</odoo>

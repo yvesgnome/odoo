@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_regie_root" name="Land Agency" sequence="45"
+              web_icon="regie_fonciere,static/description/icon.png"
+              groups="group_regie_property_manager,group_regie_accountant"/>
+
+    <menuitem id="menu_regie_properties" name="Properties" parent="menu_regie_root" sequence="20"/>
+    <menuitem id="menu_regie_building" action="regie_building_action" parent="menu_regie_properties" sequence="10"/>
+    <menuitem id="menu_regie_unit" action="regie_unit_action" parent="menu_regie_properties" sequence="20"/>
+
+    <menuitem id="menu_regie_reporting" name="Reporting" parent="menu_regie_root" sequence="80"/>
+    <menuitem id="menu_regie_report_vacant_units" action="regie_unit_vacant_action" parent="menu_regie_reporting" sequence="20"/>
+
+    <menuitem id="menu_regie_configuration" name="Configuration" parent="menu_regie_root" sequence="90"
+              groups="group_regie_supervisor"/>
+</odoo>

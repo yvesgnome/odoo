@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Fictitious addresses. -->
+
+    <!-- ============ Building 1: 8 apartments + 1 shop on the ground floor ============ -->
+    <record id="demo_building_heron" model="regie.building">
+        <field name="name">Résidence du Héron Cendré</field>
+        <field name="code">HER</field>
+        <field name="company_id" ref="demo_company"/>
+        <field name="street">Rue du Héron Cendré 14</field>
+        <field name="zip">1060</field>
+        <field name="city">Saint-Gilles</field>
+        <field name="municipality">saint_gilles</field>
+        <field name="construction_year">1931</field>
+    </record>
+
+    <record id="demo_unit_her_shop" model="regie.unit">
+        <field name="building_id" ref="demo_building_heron"/>
+        <field name="name">HER-RDC</field>
+        <field name="unit_type">retail</field>
+        <field name="floor">0</field>
+        <field name="surface">85</field>
+        <field name="peb_class">d</field>
+        <field name="peb_certificate_number">PEB-T-20210487</field>
+        <field name="peb_valid_until" eval="(DateTime.today() + relativedelta(years=5)).strftime('%Y-%m-%d')"/>
+        <field name="cadastral_income">1850</field>
+    </record>
+    <record id="demo_unit_her_11" model="regie.unit">
+        <field name="building_id" ref="demo_building_heron"/>
+        <field name="name">HER-1.1</field>
+        <field name="unit_type">apartment</field>
+        <field name="housing_category">moderate</field>
+        <field name="floor">1</field>
+        <field name="surface">72</field>
+        <field name="bedroom_count">2</field>
+        <field name="peb_class">f</field>
+        <field name="peb_certificate_number">20170512-0000412345-01-1</field>
+        <field name="peb_valid_until" eval="(DateTime.today() + relativedelta(years=1, months=6)).strftime('%Y-%m-%d')"/>
+        <field name="cadastral_income">920</field>
+    </record>
+    <record id="demo_unit_her_12" model="regie.unit">
+        <field name="building_id" ref="demo_building_heron"/>
+        <field name="name">HER-1.2</field>
+        <field name="unit_type">apartment</field>
+        <field name="housing_category">moderate</field>
+        <field name="floor">1</field>
+        <field name="surface">64</field>
+        <field name="bedroom_count">1</field>
+        <field name="peb_class">e</field>
+        <field name="peb_certificate_number">20180223-0000418877-01-4</field>
+        <field name="peb_valid_until" eval="(DateTime.today() + relativedelta(years=2, months=3)).strftime('%Y-%m-%d')"/>
+        <field name="cadastral_income">810</field>
+    </record>
+    <record id="demo_unit_her_21" model="regie.unit">
+        <field name="building_id" ref="demo_building_heron"/>
+        <field name="name">HER-2.1</field>
+        <field name="unit_type">apartment</field>
+        <field name="housing_category">medium</field>
+        <field name="floor">2</field>
+        <field name="surface">78</field>
+        <field name="bedroom_count">2</field>
+        <field name="peb_class">c</field>
+        <field name="peb_certificate_number">20230105-0000521166-01-7</field>
+        <field name="peb_valid_until" eval="(DateTime.today() + relativedelta(years=6)).strftime('%Y-%m-%d')"/>
+        <field name="cadastral_income">980</field>
+    </record>
+    <record id="demo_unit_her_22" model="regie.unit">
+        <field name="building_id" ref="demo_building_heron"/>
+        <field name="name">HER-2.2</field>
+        <field name="unit_type">studio</field>
+        <field name="housing_category">student</field>
+        <field name="floor">2</field>
+        <field name="surface">34</field>
+        <field name="bedroom_count">0</field>
+        <field name="peb_class">d</field>
+        <field name="peb_certificate_number">20200918-0000477120-01-2</field>
+        <field name="peb_valid_until" eval="(DateTime.today() + relativedelta(years=4)).strftime('%Y-%m-%d')"/>
+        <field name="cadastral_income">450</field>
+    </record>
+    <record id="demo_unit_her_31" model="regie.unit">
+        <field name="building_id" ref="demo_building_heron"/>
+        <field name="name">HER-3.1</field>
+        <field name="unit_type">apartment</field>
+        <field name="housing_category">moderate</field>
+        <field name="floor">3</field>
+        <field name="surface">88</field>
+        <field name="bedroom_count">3</field>
+        <field name="peb_class">b</field>
+        <field name="peb_certificate_number">20240311-0000560032-01-9</field>
+        <field name="peb_valid_until" eval="(DateTime.today() + relativedelta(years=7)).strftime('%Y-%m-%d')"/>
+        <field name="cadastral_income">1050</field>
+    </record>
+    <record id="demo_unit_her_32" model="regie.unit">
+        <field name="building_id" ref="demo_building_heron"/>
+        <field name="name">HER-3.2</field>
+        <field name="unit_type">apartment</field>
+        <field name="housing_category">free</field>
+        <field name="floor">3</field>
+        <field name="surface">58</field>
+        <field name="bedroom_count">1</field>
+        <field name="peb_class">g</field>
+        <field name="peb_certificate_number">20160704-0000390051-01-3</field>
+        <field name="peb_valid_until" eval="(DateTime.today() + relativedelta(months=8)).strftime('%Y-%m-%d')"/>
+        <field name="cadastral_income">700</field>
+    </record>
+    <!-- Expired EPC certificate -->
+    <record id="demo_unit_her_41" model="regie.unit">
+        <field name="building_id" ref="demo_building_heron"/>
+        <field name="name">HER-4.1</field>
+        <field name="unit_type">apartment</field>
+        <field name="housing_category">moderate</field>
+        <field name="floor">4</field>
+        <field name="surface">70</field>
+        <field name="bedroom_count">2</field>
+        <field name="peb_class">d</field>
+        <field name="peb_certificate_number">20140620-0000301278-01-5</field>
+        <field name="peb_valid_until" eval="(DateTime.today() - relativedelta(months=4)).strftime('%Y-%m-%d')"/>
+        <field name="cadastral_income">890</field>
+    </record>
+    <record id="demo_unit_her_42" model="regie.unit">
+        <field name="building_id" ref="demo_building_heron"/>
+        <field name="name">HER-4.2</field>
+        <field name="unit_type">apartment</field>
+        <field name="housing_category">medium</field>
+        <field name="floor">4</field>
+        <field name="surface">66</field>
+        <field name="bedroom_count">2</field>
+        <field name="peb_class">c</field>
+        <field name="peb_certificate_number">20220830-0000509943-01-8</field>
+        <field name="peb_valid_until" eval="(DateTime.today() + relativedelta(years=5, months=10)).strftime('%Y-%m-%d')"/>
+        <field name="cadastral_income">860</field>
+    </record>
+
+    <record id="demo_meter_her_11_elec" model="regie.meter">
+        <field name="unit_id" ref="demo_unit_her_11"/>
+        <field name="meter_type">electricity</field>
+        <field name="name">1SAG1100042311</field>
+        <field name="ean_code">541448820044123456</field>
+    </record>
+    <record id="demo_meter_her_11_gas" model="regie.meter">
+        <field name="unit_id" ref="demo_unit_her_11"/>
+        <field name="meter_type">gas</field>
+        <field name="name">G4-0099127</field>
+        <field name="ean_code">541448860009912700</field>
+    </record>
+    <record id="demo_meter_her_11_water" model="regie.meter">
+        <field name="unit_id" ref="demo_unit_her_11"/>
+        <field name="meter_type">water</field>
+        <field name="name">VIV-17-552310</field>
+    </record>
+    <record id="demo_meter_her_12_elec" model="regie.meter">
+        <field name="unit_id" ref="demo_unit_her_12"/>
+        <field name="meter_type">electricity</field>
+        <field name="name">1SAG1100042312</field>
+        <field name="ean_code">541448820044123463</field>
+    </record>
+
+    <!-- ============ Building 2: 4 apartments + 4 parkings ============ -->
+    <record id="demo_building_saules" model="regie.building">
+        <field name="name">Clos des Saules Pleureurs</field>
+        <field name="code">SAU</field>
+        <field name="company_id" ref="demo_company"/>
+        <field name="street">Avenue des Saules Pleureurs 27</field>
+        <field name="zip">1050</field>
+        <field name="city">Ixelles</field>
+        <field name="municipality">ixelles</field>
+        <field name="construction_year">2008</field>
+    </record>
+
+    <record id="demo_unit_sau_01" model="regie.unit">
+        <field name="building_id" ref="demo_building_saules"/>
+        <field name="name">SAU-0.1</field>
+        <field name="unit_type">apartment</field>
+        <field name="housing_category">transit</field>
+        <field name="floor">0</field>
+        <field name="surface">55</field>
+        <field name="bedroom_count">1</field>
+        <field name="peb_class">e</field>
+        <field name="peb_certificate_number">20190402-0000441002-01-6</field>
+        <field name="peb_valid_until" eval="(DateTime.today() + relativedelta(years=3)).strftime('%Y-%m-%d')"/>
+        <field name="cadastral_income">690</field>
+    </record>
+    <record id="demo_unit_sau_11" model="regie.unit">
+        <field name="building_id" ref="demo_building_saules"/>
+        <field name="name">SAU-1.1</field>
+        <field name="unit_type">apartment</field>
+        <field name="housing_category">medium</field>
+        <field name="floor">1</field>
+        <field name="surface">82</field>
+        <field name="bedroom_count">2</field>
+        <field name="peb_class">c</field>
+        <field name="peb_certificate_number">20210115-0000480210-01-1</field>
+        <field name="peb_valid_until" eval="(DateTime.today() + relativedelta(years=4, months=2)).strftime('%Y-%m-%d')"/>
+        <field name="cadastral_income">1120</field>
+    </record>
+    <record id="demo_unit_sau_21" model="regie.unit">
+        <field name="building_id" ref="demo_building_saules"/>
+        <field name="name">SAU-2.1</field>
+        <field name="unit_type">apartment</field>
+        <field name="housing_category">medium</field>
+        <field name="floor">2</field>
+        <field name="surface">95</field>
+        <field name="bedroom_count">3</field>
+        <field name="peb_class">b</field>
+        <field name="peb_certificate_number">20220601-0000501133-01-0</field>
+        <field name="peb_valid_until" eval="(DateTime.today() + relativedelta(years=5, months=7)).strftime('%Y-%m-%d')"/>
+        <field name="cadastral_income">1310</field>
+    </record>
+    <record id="demo_unit_sau_31" model="regie.unit">
+        <field name="building_id" ref="demo_building_saules"/>
+        <field name="name">SAU-3.1</field>
+        <field name="unit_type">apartment</field>
+        <field name="housing_category">free</field>
+        <field name="floor">3</field>
+        <field name="surface">101</field>
+        <field name="bedroom_count">3</field>
+        <field name="peb_class">a</field>
+        <field name="peb_certificate_number">20250210-0000590087-01-2</field>
+        <field name="peb_valid_until" eval="(DateTime.today() + relativedelta(years=8, months=4)).strftime('%Y-%m-%d')"/>
+        <field name="cadastral_income">1420</field>
+    </record>
+    <record id="demo_unit_sau_p1" model="regie.unit">
+        <field name="building_id" ref="demo_building_saules"/>
+        <field name="name">SAU-P1</field>
+        <field name="unit_type">parking</field>
+        <field name="floor">-1</field>
+        <field name="surface">13</field>
+        <field name="cadastral_income">110</field>
+    </record>
+    <record id="demo_unit_sau_p2" model="regie.unit">
+        <field name="building_id" ref="demo_building_saules"/>
+        <field name="name">SAU-P2</field>
+        <field name="unit_type">parking</field>
+        <field name="floor">-1</field>
+        <field name="surface">13</field>
+        <field name="cadastral_income">110</field>
+    </record>
+    <record id="demo_unit_sau_p3" model="regie.unit">
+        <field name="building_id" ref="demo_building_saules"/>
+        <field name="name">SAU-P3</field>
+        <field name="unit_type">parking</field>
+        <field name="floor">-1</field>
+        <field name="surface">13</field>
+        <field name="cadastral_income">110</field>
+    </record>
+    <record id="demo_unit_sau_p4" model="regie.unit">
+        <field name="building_id" ref="demo_building_saules"/>
+        <field name="name">SAU-P4</field>
+        <field name="unit_type">parking</field>
+        <field name="floor">-1</field>
+        <field name="surface">13</field>
+        <field name="cadastral_income">110</field>
+    </record>
+
+    <!-- ============ Building 3: single-family house ============ -->
+    <record id="demo_building_lanternes" model="regie.building">
+        <field name="name">Maison des Trois Lanternes</field>
+        <field name="code">LAN</field>
+        <field name="company_id" ref="demo_company"/>
+        <field name="street">Rue des Trois Lanternes 9</field>
+        <field name="zip">1030</field>
+        <field name="city">Schaerbeek</field>
+        <field name="municipality">schaerbeek</field>
+        <field name="construction_year">1912</field>
+    </record>
+    <record id="demo_unit_lan_house" model="regie.unit">
+        <field name="building_id" ref="demo_building_lanternes"/>
+        <field name="name">LAN-MAISON</field>
+        <field name="unit_type">house</field>
+        <field name="housing_category">moderate</field>
+        <field name="floor">0</field>
+        <field name="surface">135</field>
+        <field name="bedroom_count">4</field>
+        <field name="peb_class">d</field>
+        <field name="peb_certificate_number">20230927-0000533470-01-6</field>
+        <field name="peb_valid_until" eval="(DateTime.today() + relativedelta(years=6, months=11)).strftime('%Y-%m-%d')"/>
+        <field name="cadastral_income">1640</field>
+    </record>
+</odoo>

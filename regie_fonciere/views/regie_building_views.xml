@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="regie_building_view_list" model="ir.ui.view">
+        <field name="name">regie.building.list</field>
+        <field name="model">regie.building</field>
+        <field name="arch" type="xml">
+            <list string="Buildings">
+                <field name="code" optional="show"/>
+                <field name="name"/>
+                <field name="street"/>
+                <field name="municipality"/>
+                <field name="construction_year" optional="hide"/>
+                <field name="unit_count" string="Units"/>
+                <field name="free_unit_count" string="Free Units"/>
+                <field name="total_surface" optional="show"/>
+                <field name="company_id" groups="base.group_multi_company" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="regie_building_view_form" model="ir.ui.view">
+        <field name="name">regie.building.form</field>
+        <field name="model">regie.building</field>
+        <field name="arch" type="xml">
+            <form string="Building">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_units" type="object" class="oe_stat_button" icon="fa-home">
+                            <field name="unit_count" string="Units" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <field name="active" invisible="1"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="e.g. Résidence des Tilleuls"/></h1>
+                    </div>
+                    <group>
+                        <group string="Address">
+                            <field name="code"/>
+                            <field name="street"/>
+                            <field name="street2"/>
+                            <field name="zip"/>
+                            <field name="city"/>
+                            <field name="municipality"/>
+                            <field name="country_id"/>
+                        </group>
+                        <group string="Information">
+                            <field name="construction_year" options="{'format': false}"/>
+                            <field name="total_surface"/>
+                            <field name="free_unit_count"/>
+                            <field name="analytic_account_id"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Units" name="units">
+                            <field name="unit_ids" context="{'default_building_id': id}">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="unit_type"/>
+                                    <field name="floor"/>
+                                    <field name="surface" sum="Total"/>
+                                    <field name="bedroom_count"/>
+                                    <field name="peb_class"/>
+                                    <field name="state" widget="badge"
+                                           decoration-success="state == 'rented'"
+                                           decoration-info="state == 'free'"
+                                           decoration-warning="state == 'works'"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="regie_building_view_search" model="ir.ui.view">
+        <field name="name">regie.building.search</field>
+        <field name="model">regie.building</field>
+        <field name="arch" type="xml">
+            <search string="Buildings">
+                <field name="name" filter_domain="['|', ('name', 'ilike', self), ('code', 'ilike', self)]"/>
+                <field name="street"/>
+                <field name="municipality"/>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+                <filter name="group_municipality" string="Municipality" context="{'group_by': 'municipality'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="regie_building_action" model="ir.actions.act_window">
+        <field name="name">Buildings</field>
+        <field name="res_model">regie.building</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your first building</p>
+            <p>A building groups the rental units (apartments, shops, parkings...) of an address.</p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="regie_unit_view_list" model="ir.ui.view">
+        <field name="name">regie.unit.list</field>
+        <field name="model">regie.unit</field>
+        <field name="arch" type="xml">
+            <list string="Units">
+                <field name="building_id"/>
+                <field name="name"/>
+                <field name="unit_type"/>
+                <field name="housing_category" optional="hide"/>
+                <field name="floor" optional="show"/>
+                <field name="surface" sum="Total" optional="show"/>
+                <field name="bedroom_count" optional="show"/>
+                <field name="peb_class" optional="show"/>
+                <field name="peb_valid_until" optional="hide"/>
+                <field name="cadastral_income" optional="hide" sum="Total"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'rented'"
+                       decoration-info="state == 'free'"
+                       decoration-warning="state == 'works'"/>
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="regie_unit_view_form" model="ir.ui.view">
+        <field name="name">regie.unit.form</field>
+        <field name="model">regie.unit</field>
+        <field name="arch" type="xml">
+            <form string="Unit">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <field name="active" invisible="1"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="is_dwelling" invisible="1"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="e.g. A.1.2"/></h1>
+                        <h3><field name="building_id" placeholder="Building"/></h3>
+                    </div>
+                    <group>
+                        <group string="Description">
+                            <field name="unit_type"/>
+                            <field name="housing_category" invisible="not is_dwelling"/>
+                            <field name="floor"/>
+                            <field name="surface"/>
+                            <field name="bedroom_count" invisible="not is_dwelling"/>
+                            <field name="cadastral_income"/>
+                            <field name="under_works"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group string="Energy Performance (EPC)">
+                            <field name="peb_class"/>
+                            <field name="peb_certificate_number"/>
+                            <field name="peb_valid_until"/>
+                            <field name="peb_is_valid"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Meters" name="meters">
+                            <field name="meter_ids">
+                                <list editable="bottom">
+                                    <field name="meter_type"/>
+                                    <field name="name"/>
+                                    <field name="ean_code"/>
+                                    <field name="notes"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="regie_unit_view_search" model="ir.ui.view">
+        <field name="name">regie.unit.search</field>
+        <field name="model">regie.unit</field>
+        <field name="arch" type="xml">
+            <search string="Units">
+                <field name="name"/>
+                <field name="building_id"/>
+                <field name="unit_type"/>
+                <filter name="free" string="Free" domain="[('state', '=', 'free')]"/>
+                <filter name="rented" string="Rented" domain="[('state', '=', 'rented')]"/>
+                <filter name="works" string="Under Works" domain="[('state', '=', 'works')]"/>
+                <separator/>
+                <filter name="dwelling" string="Dwellings" domain="[('is_dwelling', '=', True)]"/>
+                <filter name="peb_invalid" string="EPC Missing or Expired" domain="[('peb_is_valid', '=', False)]"/>
+                <separator/>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+                <filter name="group_building" string="Building" context="{'group_by': 'building_id'}"/>
+                <filter name="group_type" string="Type" context="{'group_by': 'unit_type'}"/>
+                <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                <filter name="group_peb" string="EPC Class" context="{'group_by': 'peb_class'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="regie_unit_action" model="ir.actions.act_window">
+        <field name="name">Units</field>
+        <field name="res_model">regie.unit</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_group_building': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a rental unit</p>
+        </field>
+    </record>
+
+    <record id="regie_unit_vacant_action" model="ir.actions.act_window">
+        <field name="name">Vacant Units</field>
+        <field name="res_model">regie.unit</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_free': 1, 'search_default_group_building': 1}</field>
+    </record>
+</odoo>

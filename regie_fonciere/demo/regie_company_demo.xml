@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- All the demo data of the module belongs to this company. -->
+    <record id="demo_company" model="res.company">
+        <field name="name">Régie foncière (démo)</field>
+        <field name="currency_id" ref="base.EUR"/>
+        <field name="country_id" ref="base.be"/>
+        <field name="street">Place de l'Hôtel communal 1</field>
+        <field name="zip">1000</field>
+        <field name="city">Bruxelles</field>
+        <field name="email">regie.demo@example.com</field>
+        <field name="phone">+32 2 000 00 00</field>
+    </record>
+
+    <function model="res.company" name="_regie_demo_setup_company"/>
+</odoo>

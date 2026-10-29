@@ -1,0 +1,10 @@
+id,name,model_id,group_id/id,operation,domain
+access_regie_building_property_manager,regie.building property manager,regie.building,group_regie_property_manager,crud,
+access_regie_building_accountant,regie.building accountant,regie.building,group_regie_accountant,r,
+regie_building_company_rule,Building multi-company,regie.building,,crud,"[('company_id', 'in', company_ids)]"
+access_regie_unit_property_manager,regie.unit property manager,regie.unit,group_regie_property_manager,crud,
+access_regie_unit_accountant,regie.unit accountant,regie.unit,group_regie_accountant,r,
+regie_unit_company_rule,Unit multi-company,regie.unit,,crud,"[('company_id', 'in', company_ids)]"
+access_regie_meter_property_manager,regie.meter property manager,regie.meter,group_regie_property_manager,crud,
+access_regie_meter_accountant,regie.meter accountant,regie.meter,group_regie_accountant,r,
+regie_meter_company_rule,Meter multi-company,regie.meter,,crud,"[('company_id', 'in', company_ids)]"
