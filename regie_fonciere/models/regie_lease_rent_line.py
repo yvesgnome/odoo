@@ -1,4 +1,6 @@
-from odoo import fields, models
+from odoo import api, fields, models
+
+from ..tools import fmt_amount, fmt_number
 
 RENT_CHANGE_REASONS = [
     ('initial', 'Initial Rent'),
@@ -38,3 +40,23 @@ class RegieLeaseRentLine(models.Model):
         help="Why the rent changed: initial rent, indexation, revision, amendment or provision adjustment.",
     )
     note = fields.Char()
+    explanation = fields.Text(compute='_compute_explanation', help="How this rent was obtained.")
+
+    @api.depends('date_start', 'rent', 'charge_provision', 'reason', 'note')
+    @api.depends_context('lang')
+    def _compute_explanation(self):
+        for line in self:
+            line.explanation = line._get_explanation() if line.date_start else False
+
+    def _get_explanation(self):
+        """ Text explaining the amount of the line; extended by the indexation and charges zones. """
+        self.ensure_one()
+        env = self.env
+        lease = self.lease_id
+        if self.reason == 'initial':
+            return env._(
+                "Base rent at the signature of the lease (initial index %(index)s). Monthly charge provision: %(provision)s.",
+                index=fmt_number(env, lease.initial_index), provision=fmt_amount(env, self.charge_provision, self.currency_id))
+        reasons = dict(self._fields['reason']._description_selection(env))
+        text = env._("%(reason)s encoded by hand.", reason=reasons.get(self.reason))
+        return "%s %s" % (text, self.note) if self.note else text

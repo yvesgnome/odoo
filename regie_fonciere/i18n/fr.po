@@ -4895,3 +4895,131 @@ msgid ""
 msgstr ""
 "Pourquoi le loyer a changé : loyer initial, indexation, révision, avenant ou"
 " ajustement de provision."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_indexation.py:0
+#: code:addons/regie_fonciere/models/regie_lease_indexation.py:0
+msgid " × EPC factor %s"
+msgstr " × facteur PEB %s"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_rent_line.py:0
+msgid "%(reason)s encoded by hand."
+msgstr "%(reason)s encodé(e) à la main."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_indexation.py:0
+msgid ""
+"Applied from %(date)s: retroactivity limited to %(months)s months before the"
+" request of %(request)s."
+msgstr ""
+"Appliquée à partir du %(date)s : rétroactivité limitée à %(months)s mois "
+"avant la demande du %(request)s."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_rent_line.py:0
+msgid ""
+"Base rent at the signature of the lease (initial index %(index)s). Monthly "
+"charge provision: %(provision)s."
+msgstr ""
+"Loyer de base à la signature du bail (indice de départ %(index)s). Provision"
+" mensuelle de charges : %(provision)s."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_charge_statement.py:0
+msgid ""
+"Charge provision adjusted after the charge statement %(statement)s: actual "
+"share %(share)s for %(days)s days of occupation, i.e. %(provision)s per "
+"month. Rent unchanged."
+msgstr ""
+"Provision de charges ajustée après le décompte %(statement)s : quote-part "
+"réelle de %(share)s pour %(days)s jours d'occupation, soit %(provision)s par"
+" mois. Loyer inchangé."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_rent_line__explanation
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__explanation
+msgid "Explanation"
+msgstr "Explication"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_schedule_line.py:0
+msgid "Full month."
+msgstr "Mois complet."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease_schedule_line__explanation
+msgid "How the amounts of the month were obtained."
+msgstr "Comment les montants du mois ont été obtenus."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease_rent_line__explanation
+msgid "How this rent was obtained."
+msgstr "Comment ce loyer a été obtenu."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_indexation.py:0
+msgid ""
+"Indexation at %(date)s: base rent %(base)s × new index %(new)s (%(month)s) /"
+" initial index %(initial)s%(factor)s = %(computed)s."
+msgstr ""
+"Indexation au %(date)s : loyer de base %(base)s × nouvel indice %(new)s "
+"(%(month)s) / indice de départ %(initial)s%(factor)s = %(computed)s."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_indexation.py:0
+msgid ""
+"Indexation at the anniversary %(date)s: base rent %(base)s × new index "
+"%(new)s (%(month)s) / initial index %(initial)s%(factor)s = %(computed)s."
+msgstr ""
+"Indexation à la date anniversaire du %(date)s : loyer de base %(base)s × "
+"nouvel indice %(new)s (%(month)s) / indice de départ %(initial)s%(factor)s ="
+" %(computed)s."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_indexation.py:0
+msgid "Indexation encoded by hand."
+msgstr "Indexation encodée à la main."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_schedule_line.py:0
+msgid ""
+"Occupied from %(date_from)s to %(date_to)s: %(days)s/%(month_days)s days, so"
+" rent %(rent)s × %(days)s/%(month_days)s = %(rent_amount)s and charges "
+"%(charges)s × %(days)s/%(month_days)s = %(charge_amount)s."
+msgstr ""
+"Occupé du %(date_from)s au %(date_to)s : %(days)s/%(month_days)s jours, donc"
+" loyer %(rent)s × %(days)s/%(month_days)s = %(rent_amount)s et charges "
+"%(charges)s × %(days)s/%(month_days)s = %(charge_amount)s."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_indexation.py:0
+msgid "Rent applied: %s."
+msgstr "Loyer appliqué : %s."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_indexation.py:0
+msgid "Rent encoded: %s."
+msgstr "Loyer encodé : %s."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_schedule_line.py:0
+msgid ""
+"Rent in force on %(date)s: %(rent)s, charges %(charges)s (rent history from "
+"%(since)s: %(reason)s)."
+msgstr ""
+"Loyer en vigueur au %(date)s : %(rent)s, charges %(charges)s (historique du "
+"loyer depuis le %(since)s : %(reason)s)."

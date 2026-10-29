@@ -172,6 +172,7 @@ class RegieLease(models.Model):
             'ref': "%s %s" % (self.name, period_label),
             'regie_lease_id': self.id,
             'invoice_line_ids': [(0, 0, line_vals) for line_vals in lines],
+            'narration': schedule_line.with_context(lang=self.partner_id.lang or self.env.lang)._get_explanation(),
         }
         sdd_method_line = self._get_sdd_payment_method_line(invoice_date)
         if sdd_method_line:

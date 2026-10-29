@@ -6,7 +6,7 @@ from dateutil.relativedelta import relativedelta
 from odoo import api, fields, models
 from odoo.exceptions import UserError
 
-from ..tools import month_start
+from ..tools import fmt_amount, month_start
 from .regie_charge import ALLOCATION_METHODS
 
 
@@ -464,3 +464,25 @@ class RegieChargeStatementLease(models.Model):
 
     def action_print(self):
         return self.env.ref('regie_fonciere.action_report_charge_statement').report_action(self)
+
+
+class RegieLeaseRentLine(models.Model):
+    _inherit = 'regie.lease.rent.line'
+
+    def _get_explanation(self):
+        self.ensure_one()
+        if self.reason != 'provision_adjustment':
+            return super()._get_explanation()
+        result = self.env['regie.charge.statement.lease'].search([('provision_rent_line_id', '=', self.id)], limit=1)
+        if not result:
+            return super()._get_explanation()
+        env = self.env
+        days = max(result.detail_ids.mapped('days') or [0])
+        return env._(
+            "Charge provision adjusted after the charge statement %(statement)s: actual share %(share)s for "
+            "%(days)s days of occupation, i.e. %(provision)s per month. Rent unchanged.",
+            statement=result.statement_id.name,
+            share=fmt_amount(env, result.actual_amount, self.currency_id),
+            days=days,
+            provision=fmt_amount(env, self.charge_provision, self.currency_id),
+        )

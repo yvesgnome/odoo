@@ -138,7 +138,8 @@
                                     <field name="rent"/>
                                     <field name="charge_provision"/>
                                     <field name="reason"/>
-                                    <field name="note"/>
+                                    <field name="note" optional="hide"/>
+                                    <field name="explanation" optional="show"/>
                                     <field name="currency_id" column_invisible="1"/>
                                 </list>
                             </field>
@@ -186,6 +187,7 @@
                                     <field name="charge_amount" sum="Total"/>
                                     <field name="amount_total" sum="Total"/>
                                     <field name="invoice_id"/>
+                                    <field name="explanation" optional="show"/>
                                     <field name="payment_state" widget="badge" optional="show"
                                            decoration-success="payment_state in ('paid', 'in_payment')"
                                            decoration-danger="payment_state == 'not_paid'"

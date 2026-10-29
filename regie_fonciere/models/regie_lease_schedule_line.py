@@ -1,5 +1,7 @@
 from odoo import api, fields, models
 
+from ..tools import fmt_amount, fmt_date, month_end
+
 
 class RegieLeaseScheduleLine(models.Model):
     """ One line per lease and invoiced month. The unique (lease, period) constraint guarantees that
@@ -51,6 +53,48 @@ class RegieLeaseScheduleLine(models.Model):
         help="To Invoice: waiting for the next run of the schedule; Invoiced: the invoice is posted; "
              "Cancelled: the invoice was cancelled (the month is not invoiced again automatically).",
     )
+
+    explanation = fields.Text(compute='_compute_explanation', help="How the amounts of the month were obtained.")
+
+    @api.depends('date_from', 'date_to', 'rent_amount', 'charge_amount')
+    @api.depends_context('lang')
+    def _compute_explanation(self):
+        for line in self:
+            line.explanation = line._get_explanation() if line.date_from and line.lease_id else False
+
+    def _get_explanation(self):
+        self.ensure_one()
+        env = self.env
+        currency = self.currency_id
+        rent_line = self.lease_id._get_rent_line_at(self.date_from)
+        reasons = dict(rent_line._fields['reason']._description_selection(env))
+        text = env._(
+            "Rent in force on %(date)s: %(rent)s, charges %(charges)s (rent history from %(since)s: %(reason)s).",
+            date=fmt_date(env, self.date_from),
+            rent=fmt_amount(env, rent_line.rent, currency),
+            charges=fmt_amount(env, rent_line.charge_provision, currency),
+            since=fmt_date(env, rent_line.date_start),
+            reason=(reasons.get(rent_line.reason) or '').lower(),
+        )
+        if self.prorata < 1.0:
+            days = (self.date_to - self.date_from).days + 1
+            month_days = month_end(self.period_date).day
+            text += " " + env._(
+                "Occupied from %(date_from)s to %(date_to)s: %(days)s/%(month_days)s days, so rent %(rent)s × "
+                "%(days)s/%(month_days)s = %(rent_amount)s and charges %(charges)s × %(days)s/%(month_days)s = "
+                "%(charge_amount)s.",
+                date_from=fmt_date(env, self.date_from),
+                date_to=fmt_date(env, self.date_to),
+                days=days,
+                month_days=month_days,
+                rent=fmt_amount(env, rent_line.rent, currency),
+                rent_amount=fmt_amount(env, self.rent_amount, currency),
+                charges=fmt_amount(env, rent_line.charge_provision, currency),
+                charge_amount=fmt_amount(env, self.charge_amount, currency),
+            )
+        else:
+            text += " " + env._("Full month.")
+        return text
 
     @api.depends('rent_amount', 'charge_amount')
     def _compute_amount_total(self):

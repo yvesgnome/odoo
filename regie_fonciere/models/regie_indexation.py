@@ -3,7 +3,7 @@ from dateutil.relativedelta import relativedelta
 from odoo import api, fields, models
 from odoo.exceptions import UserError
 
-from ..tools import month_end
+from ..tools import fmt_amount, fmt_date, fmt_number, month_end
 
 INDEXATION_STATES = [
     ('to_validate', 'To Validate'),
@@ -176,6 +176,33 @@ class RegieIndexation(models.Model):
                 raise UserError(self.env._("The indexation of %(lease)s is not allowed:\n%(reasons)s",
                                            lease=indexation.lease_id.name, reasons="\n".join(blocking)))
             indexation.state = 'validated'
+
+    def _get_explanation(self):
+        """ Formula of the indexation with its values, for the rent history. """
+        self.ensure_one()
+        env = self.env
+        currency = self.currency_id
+        text = env._(
+            "Indexation at the anniversary %(date)s: base rent %(base)s × new index %(new)s (%(month)s) / "
+            "initial index %(initial)s%(factor)s = %(computed)s.",
+            date=fmt_date(env, self.anniversary_date),
+            base=fmt_amount(env, self.base_rent, currency),
+            new=fmt_number(env, self.new_index),
+            month=self.new_index_month.strftime('%m/%Y') if self.new_index_month else '',
+            initial=fmt_number(env, self.initial_index),
+            factor=env._(" × EPC factor %s", fmt_number(env, self.correction_factor, 9))
+            if self.correction_factor != 1.0 else "",
+            computed=fmt_amount(env, self.computed_rent, currency),
+        )
+        if currency.compare_amounts(self.new_rent, self.computed_rent):
+            text += " " + env._("Rent applied: %s.", fmt_amount(env, self.new_rent, currency))
+        if self.effective_date and self.effective_date != self.anniversary_date:
+            text += " " + env._(
+                "Applied from %(date)s: retroactivity limited to %(months)s months before the request of %(request)s.",
+                date=fmt_date(env, self.effective_date),
+                months=self.company_id.regie_indexation_retroactivity_months,
+                request=fmt_date(env, self.request_date))
+        return text
 
     def _get_letter_date(self):
         self.ensure_one()

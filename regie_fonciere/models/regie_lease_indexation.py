@@ -3,6 +3,47 @@ from dateutil.relativedelta import relativedelta
 from odoo import api, fields, models
 from odoo.exceptions import UserError
 
+from ..tools import fmt_amount, fmt_date, fmt_number
+
+
+class RegieLeaseRentLine(models.Model):
+    _inherit = 'regie.lease.rent.line'
+
+    def _get_explanation(self):
+        self.ensure_one()
+        if self.reason != 'indexation':
+            return super()._get_explanation()
+        indexation = self.env['regie.indexation'].search([('rent_line_id', '=', self.id)], limit=1)
+        if indexation:
+            return indexation._get_explanation()
+        return self._get_indexation_explanation_from_tables()
+
+    def _get_indexation_explanation_from_tables(self):
+        """ Indexation encoded without proposal (e.g. history taken over): show the formula with the
+        index tables and compare with the encoded rent. """
+        env = self.env
+        lease = self.lease_id
+        index_month = self.date_start.replace(day=1) - relativedelta(months=1)
+        index, is_exact = env['regie.health.index']._get_index(index_month, lease.company_id.regie_index_base_year)
+        if not index or not is_exact or not lease.initial_index:
+            return env._("Indexation encoded by hand.")
+        factor = lease._get_peb_correction_factor(self.date_start)
+        computed = lease.currency_id.round(lease.base_rent * index.value / lease.initial_index * factor)
+        text = env._(
+            "Indexation at %(date)s: base rent %(base)s × new index %(new)s (%(month)s) / initial index %(initial)s"
+            "%(factor)s = %(computed)s.",
+            date=fmt_date(env, self.date_start),
+            base=fmt_amount(env, lease.base_rent, lease.currency_id),
+            new=fmt_number(env, index.value),
+            month=index.month.strftime('%m/%Y'),
+            initial=fmt_number(env, lease.initial_index),
+            factor=env._(" × EPC factor %s", fmt_number(env, factor, 9)) if factor != 1.0 else "",
+            computed=fmt_amount(env, computed, lease.currency_id),
+        )
+        if lease.currency_id.compare_amounts(computed, self.rent):
+            text += " " + env._("Rent encoded: %s.", fmt_amount(env, self.rent, lease.currency_id))
+        return text
+
 
 class RegieLease(models.Model):
     _inherit = 'regie.lease'

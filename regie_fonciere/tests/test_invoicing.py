@@ -95,6 +95,8 @@ class TestInvoicing(RegieTestCommon):
         self.assertEqual(january.rent_amount, 320.0)
         self.assertEqual(january.charge_amount, 32.0)
         self.assertIn("16/01/2025", january.invoice_id.invoice_line_ids[0].name)
+        self.assertIn("16/31", january.explanation)
+        self.assertIn("16/31", str(january.invoice_id.narration))
 
         lease.write({'exit_date': date(2025, 3, 10), 'state': 'terminated'})
         lease._generate_invoices(date(2025, 6, 1))

@@ -4927,3 +4927,130 @@ msgid ""
 msgstr ""
 "Waarom de huur gewijzigd werd: initiële huur, indexering, herziening, "
 "aanhangsel of aanpassing van de provisie."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_indexation.py:0
+#: code:addons/regie_fonciere/models/regie_lease_indexation.py:0
+msgid " × EPC factor %s"
+msgstr " × EPB-factor %s"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_rent_line.py:0
+msgid "%(reason)s encoded by hand."
+msgstr "%(reason)s manueel ingevoerd."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_indexation.py:0
+msgid ""
+"Applied from %(date)s: retroactivity limited to %(months)s months before the"
+" request of %(request)s."
+msgstr ""
+"Toegepast vanaf %(date)s: terugwerkende kracht beperkt tot %(months)s "
+"maanden vóór het verzoek van %(request)s."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_rent_line.py:0
+msgid ""
+"Base rent at the signature of the lease (initial index %(index)s). Monthly "
+"charge provision: %(provision)s."
+msgstr ""
+"Basishuur bij de ondertekening van de huurovereenkomst (aanvangsindex "
+"%(index)s). Maandelijkse provisie voor lasten: %(provision)s."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_charge_statement.py:0
+msgid ""
+"Charge provision adjusted after the charge statement %(statement)s: actual "
+"share %(share)s for %(days)s days of occupation, i.e. %(provision)s per "
+"month. Rent unchanged."
+msgstr ""
+"Provisie voor lasten aangepast na de afrekening %(statement)s: werkelijk "
+"aandeel van %(share)s voor %(days)s dagen bewoning, of %(provision)s per "
+"maand. Huur ongewijzigd."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_rent_line__explanation
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease_schedule_line__explanation
+msgid "Explanation"
+msgstr "Toelichting"
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_schedule_line.py:0
+msgid "Full month."
+msgstr "Volledige maand."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease_schedule_line__explanation
+msgid "How the amounts of the month were obtained."
+msgstr "Hoe de bedragen van de maand verkregen werden."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease_rent_line__explanation
+msgid "How this rent was obtained."
+msgstr "Hoe deze huur verkregen werd."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_indexation.py:0
+msgid ""
+"Indexation at %(date)s: base rent %(base)s × new index %(new)s (%(month)s) /"
+" initial index %(initial)s%(factor)s = %(computed)s."
+msgstr ""
+"Indexering op %(date)s: basishuur %(base)s × nieuwe index %(new)s "
+"(%(month)s) / aanvangsindex %(initial)s%(factor)s = %(computed)s."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_indexation.py:0
+msgid ""
+"Indexation at the anniversary %(date)s: base rent %(base)s × new index "
+"%(new)s (%(month)s) / initial index %(initial)s%(factor)s = %(computed)s."
+msgstr ""
+"Indexering op de verjaardatum %(date)s: basishuur %(base)s × nieuwe index "
+"%(new)s (%(month)s) / aanvangsindex %(initial)s%(factor)s = %(computed)s."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_indexation.py:0
+msgid "Indexation encoded by hand."
+msgstr "Indexering manueel ingevoerd."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_schedule_line.py:0
+msgid ""
+"Occupied from %(date_from)s to %(date_to)s: %(days)s/%(month_days)s days, so"
+" rent %(rent)s × %(days)s/%(month_days)s = %(rent_amount)s and charges "
+"%(charges)s × %(days)s/%(month_days)s = %(charge_amount)s."
+msgstr ""
+"Bewoond van %(date_from)s tot %(date_to)s: %(days)s/%(month_days)s dagen, "
+"dus huur %(rent)s × %(days)s/%(month_days)s = %(rent_amount)s en lasten "
+"%(charges)s × %(days)s/%(month_days)s = %(charge_amount)s."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_indexation.py:0
+msgid "Rent applied: %s."
+msgstr "Toegepaste huur: %s."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_indexation.py:0
+msgid "Rent encoded: %s."
+msgstr "Ingevoerde huur: %s."
+
+#. module: regie_fonciere
+#. odoo-python
+#: code:addons/regie_fonciere/models/regie_lease_schedule_line.py:0
+msgid ""
+"Rent in force on %(date)s: %(rent)s, charges %(charges)s (rent history from "
+"%(since)s: %(reason)s)."
+msgstr ""
+"Huur van kracht op %(date)s: %(rent)s, lasten %(charges)s (huurgeschiedenis "
+"sinds %(since)s: %(reason)s)."

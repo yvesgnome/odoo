@@ -366,3 +366,15 @@ name and description, products, analytic plan) have English, French and Dutch va
 
 Letters are not rendered as PDF while the demo is loaded (no HTTP server); print them from the
 records.
+
+## Explanation of the rent amounts
+
+- `regie.lease.rent.line.explanation` (computed, *Explanation* column of the rent history on the
+  lease): initial rent with the initial index; indexation formula with the indexes, the EPC factor
+  and the retroactivity (from the proposal, or recomputed from the index tables for history lines
+  encoded by hand, with the encoded amount when it differs); provision adjustment from the charge
+  statement. `_get_explanation()` is extended in `regie_lease_indexation.py` and
+  `regie_charge_statement.py`.
+- `regie.lease.schedule.line.explanation` (lease > Invoicing tab, and Invoicing > Invoicing
+  Schedule): rent and charges in force at the first invoiced day, rent history line used, prorata
+  in days. Also copied in the notes (`narration`) of each rent invoice, in the tenant's language.

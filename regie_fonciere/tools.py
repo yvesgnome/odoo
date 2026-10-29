@@ -2,6 +2,8 @@ import re
 
 from dateutil.relativedelta import relativedelta
 
+from odoo.tools.misc import format_date, formatLang
+
 
 def format_structured_communication(base):
     """ Belgian structured communication (OGM-VCS) from a number of at most 10 digits:
@@ -28,3 +30,16 @@ def month_start(date):
 
 def month_end(date):
     return date.replace(day=1) + relativedelta(months=1, days=-1)
+
+
+def fmt_amount(env, amount, currency):
+    """ Amount formatted in the language of the user, with the currency symbol. """
+    return formatLang(env, amount, currency_obj=currency)
+
+
+def fmt_number(env, value, digits=2):
+    return formatLang(env, value, digits=digits)
+
+
+def fmt_date(env, date):
+    return format_date(env, date)

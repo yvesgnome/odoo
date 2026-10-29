@@ -58,6 +58,17 @@ class TestIndexation(RegieTestCommon):
         self.assertEqual(indexation.new_index, INDEX_2025_09)
         self.assertEqual(indexation.new_rent, round(700.0 * INDEX_2025_09 / INDEX_2020_08 * FACTOR_E_OCT_1_13, 2))
 
+    def test_explanation_of_encoded_indexation(self):
+        lease = self._old_lease(self.unit_b, '2020-10-20')  # EPC F
+        rent = round(700.0 * INDEX_2025_09 / INDEX_2020_08 * FACTOR_FG_OCT_14_31, 2)
+        line = self.env['regie.lease.rent.line'].create({
+            'lease_id': lease.id, 'date_start': '2025-10-20', 'rent': rent, 'reason': 'indexation',
+        })
+        self.assertIn('0.898895293', line.explanation)
+        self.assertNotIn('Rent encoded', line.explanation)
+        line.rent += 10
+        self.assertIn('Rent encoded', line.explanation)
+
     def test_correction_factor_epc_f_after_october_14(self):
         lease = self._old_lease(self.unit_b, '2020-10-20')  # EPC F
         indexation = lease._create_indexation(date(2025, 10, 20))
@@ -125,6 +136,9 @@ class TestIndexation(RegieTestCommon):
         indexation.action_apply()
         self.assertEqual(indexation.state, 'applied')
         self.assertEqual(lease._get_rent_at(date(2025, 9, 1))[0], 899.19)
+        explanation = indexation.rent_line_id.explanation
+        for value in ('850.00', '135.64', '08/2025', '128.22', '899.19'):
+            self.assertIn(value, explanation)
         self.assertEqual(lease._get_rent_at(date(2025, 8, 31))[0], 850.0)
         # September and October were invoiced at 850: arrears = 2 × 49.19
         self.assertEqual(indexation.arrears_invoice_id.amount_total, 98.38)
