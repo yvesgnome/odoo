@@ -4,3 +4,4 @@ from . import test_invoicing
 from . import test_indexation
 from . import test_deposit
 from . import test_charge
+from . import test_report

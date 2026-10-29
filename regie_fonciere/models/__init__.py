@@ -16,3 +16,4 @@ from . import regie_deposit
 from . import regie_lease_deposit
 from . import regie_charge
 from . import regie_charge_statement
+from . import regie_dashboard

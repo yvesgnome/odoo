@@ -39,6 +39,7 @@ factor), rental deposits and recoverable charges statements.
         'views/regie_indexation_views.xml',
         'views/regie_deposit_views.xml',
         'views/regie_charge_views.xml',
+        'views/regie_report_views.xml',
         'views/account_move_views.xml',
         'views/regie_menus.xml',
     ],

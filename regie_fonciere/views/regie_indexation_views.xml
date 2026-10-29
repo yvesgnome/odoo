@@ -114,8 +114,9 @@
                 <filter name="to_validate" string="To Validate" domain="[('state', '=', 'to_validate')]"/>
                 <filter name="provisional" string="Provisional Index" domain="[('index_is_provisional', '=', True)]"/>
                 <separator/>
-                <filter name="this_month" string="Anniversary This Month"
-                        domain="[('anniversary_date', '&gt;=', context_today().strftime('%Y-%m-01')), ('anniversary_date', '&lt;', (context_today() + relativedelta(months=1)).strftime('%Y-%m-01'))]"/>
+                <filter name="this_month" string="To Process This Month"
+                        help="Pending proposals whose anniversary is before the end of next month (the letter must be sent this month)"
+                        domain="[('state', 'in', ('to_validate', 'validated', 'sent')), ('anniversary_date', '&lt;', (context_today() + relativedelta(months=2)).strftime('%Y-%m-01'))]"/>
                 <filter name="anniversary" string="Anniversary" date="anniversary_date"/>
                 <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
                 <filter name="group_month" string="Anniversary Month" context="{'group_by': 'anniversary_date:month'}"/>
@@ -145,7 +146,7 @@
         <field name="name">Indexations This Month</field>
         <field name="res_model">regie.indexation</field>
         <field name="view_mode">list,form</field>
-        <field name="context">{'search_default_this_month': 1, 'search_default_to_process': 1}</field>
+        <field name="context">{'search_default_this_month': 1, 'search_default_group_state': 1}</field>
     </record>
 
     <!-- Health index and correction factors -->

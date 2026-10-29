@@ -245,3 +245,12 @@ and pushed without asking (user request of 2026-10-29).
      VAT option. PDF statement per lease detailed by category (`report/regie_charge_statement_report.xml`).
    - Provision adjustment: proposed monthly provision = actual share annualised / 12; *Apply
      Provision* (Supervisor) adds a rent history line from the next month.
+7. **Reports** (`views/regie_report_views.xml`, `models/regie_dashboard.py`):
+   - Unpaid by tenant / by building: open posted rent invoices and credit notes (list + pivot,
+     *Overdue* filter), Accountant group.
+   - Vacant units (unit status *free*), leases ending within 6 months, indexations to process
+     this month = pending proposals (to validate, validated, sent) whose anniversary is before the
+     end of next month (the letter must go out this month; late ones included).
+   - **Dashboard** (`regie.dashboard`, transient, opened by a server action, first menu): open and
+     overdue balance, tenants with overdue invoices, occupancy, vacant units, running / ending /
+     litigation leases, indexations, deposit releases, with links to the lists.

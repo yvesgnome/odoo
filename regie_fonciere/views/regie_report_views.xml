@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Unpaid rents -->
+    <record id="regie_unpaid_view_list" model="ir.ui.view">
+        <field name="name">account.move.list.regie.unpaid</field>
+        <field name="model">account.move</field>
+        <field name="arch" type="xml">
+            <list string="Unpaid Rents" create="0" decoration-danger="invoice_date_due &lt; current_date">
+                <field name="partner_id"/>
+                <field name="regie_building_id"/>
+                <field name="regie_lease_id"/>
+                <field name="name"/>
+                <field name="invoice_date"/>
+                <field name="invoice_date_due"/>
+                <field name="amount_total_signed" string="Total" sum="Total"/>
+                <field name="amount_residual_signed" string="Amount Due" sum="Total"/>
+                <field name="payment_state" widget="badge" decoration-danger="payment_state == 'not_paid'"
+                       decoration-warning="payment_state == 'partial'"/>
+                <field name="company_currency_id" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="regie_unpaid_view_pivot" model="ir.ui.view">
+        <field name="name">account.move.pivot.regie.unpaid</field>
+        <field name="model">account.move</field>
+        <field name="arch" type="xml">
+            <pivot string="Unpaid Rents" sample="1">
+                <field name="amount_residual_signed" type="measure" string="Amount Due"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="regie_unpaid_view_search" model="ir.ui.view">
+        <field name="name">account.move.search.regie.unpaid</field>
+        <field name="model">account.move</field>
+        <field name="arch" type="xml">
+            <search string="Unpaid Rents">
+                <field name="partner_id"/>
+                <field name="regie_building_id"/>
+                <field name="regie_lease_id"/>
+                <filter name="overdue" string="Overdue"
+                        domain="[('invoice_date_due', '&lt;', context_today().strftime('%Y-%m-%d'))]"/>
+                <separator/>
+                <filter name="group_partner" string="Tenant" context="{'group_by': 'partner_id'}"/>
+                <filter name="group_building" string="Building" context="{'group_by': 'regie_building_id'}"/>
+                <filter name="group_lease" string="Lease" context="{'group_by': 'regie_lease_id'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="regie_unpaid_by_tenant_action" model="ir.actions.act_window">
+        <field name="name">Unpaid by Tenant</field>
+        <field name="res_model">account.move</field>
+        <field name="view_mode">list,pivot,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'list', 'view_id': ref('regie_unpaid_view_list')}),
+            (0, 0, {'view_mode': 'pivot', 'view_id': ref('regie_unpaid_view_pivot')})]"/>
+        <field name="search_view_id" ref="regie_unpaid_view_search"/>
+        <field name="domain">[('regie_lease_id', '!=', False), ('state', '=', 'posted'), ('move_type', 'in', ('out_invoice', 'out_refund')), ('payment_state', 'in', ('not_paid', 'partial'))]</field>
+        <field name="context">{'search_default_group_partner': 1, 'pivot_row_groupby': ['partner_id']}</field>
+    </record>
+
+    <record id="regie_unpaid_by_building_action" model="ir.actions.act_window">
+        <field name="name">Unpaid by Building</field>
+        <field name="res_model">account.move</field>
+        <field name="view_mode">list,pivot,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'list', 'view_id': ref('regie_unpaid_view_list')}),
+            (0, 0, {'view_mode': 'pivot', 'view_id': ref('regie_unpaid_view_pivot')})]"/>
+        <field name="search_view_id" ref="regie_unpaid_view_search"/>
+        <field name="domain">[('regie_lease_id', '!=', False), ('state', '=', 'posted'), ('move_type', 'in', ('out_invoice', 'out_refund')), ('payment_state', 'in', ('not_paid', 'partial'))]</field>
+        <field name="context">{'search_default_group_building': 1, 'search_default_group_partner': 1, 'pivot_row_groupby': ['regie_building_id', 'partner_id']}</field>
+    </record>
+
+    <!-- Dashboard -->
+    <record id="regie_dashboard_view_form" model="ir.ui.view">
+        <field name="name">regie.dashboard.form</field>
+        <field name="model">regie.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Dashboard" create="0" edit="0" delete="0">
+                <sheet>
+                    <field name="currency_id" invisible="1"/>
+                    <div class="oe_title">
+                        <h1>Land Agency</h1>
+                        <h3><field name="company_id" readonly="1" groups="base.group_multi_company"/></h3>
+                    </div>
+                    <div class="row g-3 mt-2">
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Unpaid Rents</h5>
+                                    <div class="fs-3 text-danger"><field name="overdue_amount"/></div>
+                                    <div class="text-muted">overdue, out of <field name="unpaid_amount" class="oe_inline"/> open</div>
+                                    <div><field name="overdue_tenant_count" class="oe_inline"/> tenant(s) with overdue invoices</div>
+                                    <button name="action_open_unpaid_tenants" type="object" string="By Tenant" class="btn btn-link px-0 me-3"/>
+                                    <button name="action_open_unpaid_buildings" type="object" string="By Building" class="btn btn-link px-0"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Occupancy</h5>
+                                    <div class="fs-3"><field name="occupancy_rate" class="oe_inline"/> %</div>
+                                    <div><field name="vacant_unit_count" class="oe_inline"/> vacant unit(s) out of <field name="unit_count" class="oe_inline"/></div>
+                                    <div><field name="running_lease_count" class="oe_inline"/> running lease(s), <field name="litigation_lease_count" class="oe_inline"/> in litigation</div>
+                                    <button name="action_open_vacant_units" type="object" string="Vacant Units" class="btn btn-link px-0 me-3"/>
+                                    <button name="action_open_litigation_leases" type="object" string="Litigation" class="btn btn-link px-0"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Leases Ending within 6 Months</h5>
+                                    <div class="fs-3"><field name="ending_lease_count"/></div>
+                                    <button name="action_open_ending_leases" type="object" string="See the Leases" class="btn btn-link px-0"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Indexations</h5>
+                                    <div class="fs-3"><field name="indexation_month_count"/></div>
+                                    <div class="text-muted">to process this month</div>
+                                    <div><field name="indexation_to_validate_count" class="oe_inline"/> to validate</div>
+                                    <button name="action_open_indexations_month" type="object" string="This Month" class="btn btn-link px-0 me-3"/>
+                                    <button name="action_open_indexations_to_validate" type="object" string="To Validate" class="btn btn-link px-0"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Deposits</h5>
+                                    <div class="fs-3"><field name="deposit_release_count"/></div>
+                                    <div class="text-muted">release(s) in progress</div>
+                                    <button name="action_open_deposit_releases" type="object" string="See the Deposits" class="btn btn-link px-0"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_server_regie_dashboard" model="ir.actions.server">
+        <field name="name">Dashboard</field>
+        <field name="model_id" ref="model_regie_dashboard"/>
+        <field name="state">code</field>
+        <field name="code">action = model.action_open_dashboard()</field>
+    </record>
+</odoo>
