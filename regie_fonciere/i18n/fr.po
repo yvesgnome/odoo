@@ -4923,11 +4923,11 @@ msgstr ""
 #. odoo-python
 #: code:addons/regie_fonciere/models/regie_lease_rent_line.py:0
 msgid ""
-"Base rent at the signature of the lease (initial index %(index)s). Monthly "
-"charge provision: %(provision)s."
+"Base rent at the signature of the lease: %(rent)s (initial index %(index)s)."
+" Monthly charge provision: %(provision)s."
 msgstr ""
-"Loyer de base à la signature du bail (indice de départ %(index)s). Provision"
-" mensuelle de charges : %(provision)s."
+"Loyer de base à la signature du bail : %(rent)s (indice de départ "
+"%(index)s). Provision mensuelle de charges : %(provision)s."
 
 #. module: regie_fonciere
 #. odoo-python

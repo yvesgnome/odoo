@@ -4955,11 +4955,11 @@ msgstr ""
 #. odoo-python
 #: code:addons/regie_fonciere/models/regie_lease_rent_line.py:0
 msgid ""
-"Base rent at the signature of the lease (initial index %(index)s). Monthly "
-"charge provision: %(provision)s."
+"Base rent at the signature of the lease: %(rent)s (initial index %(index)s)."
+" Monthly charge provision: %(provision)s."
 msgstr ""
-"Basishuur bij de ondertekening van de huurovereenkomst (aanvangsindex "
-"%(index)s). Maandelijkse provisie voor lasten: %(provision)s."
+"Basishuur bij de ondertekening van de huurovereenkomst: %(rent)s "
+"(aanvangsindex %(index)s). Maandelijkse provisie voor lasten: %(provision)s."
 
 #. module: regie_fonciere
 #. odoo-python

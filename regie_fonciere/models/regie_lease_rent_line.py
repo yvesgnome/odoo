@@ -55,7 +55,9 @@ class RegieLeaseRentLine(models.Model):
         lease = self.lease_id
         if self.reason == 'initial':
             return env._(
-                "Base rent at the signature of the lease (initial index %(index)s). Monthly charge provision: %(provision)s.",
+                "Base rent at the signature of the lease: %(rent)s (initial index %(index)s). "
+                "Monthly charge provision: %(provision)s.",
+                rent=fmt_amount(env, self.rent, self.currency_id),
                 index=fmt_number(env, lease.initial_index), provision=fmt_amount(env, self.charge_provision, self.currency_id))
         reasons = dict(self._fields['reason']._description_selection(env))
         text = env._("%(reason)s encoded by hand.", reason=reasons.get(self.reason))

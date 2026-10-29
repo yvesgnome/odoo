@@ -6,3 +6,4 @@ from . import test_deposit
 from . import test_charge
 from . import test_report
 from . import test_security
+from . import test_ui

@@ -48,6 +48,11 @@ venv/Scripts/python.exe odoo-bin i18n loadlang -c wb.conf -d wb_dev -l fr_BE nl_
 venv/Scripts/python.exe odoo-bin i18n export -c wb.conf -d wb_dev -l pot -o <scratch>/regie_fonciere.pot regie_fonciere
 venv/Scripts/python.exe odoo-bin -c wb.conf -d wb_dev -u regie_fonciere --i18n-overwrite --stop-after-init
 
+# browser (UI) tests: Odoo only looks for Chrome; use Edge (Chromium) through ODOO_BROWSER_BIN,
+# `websocket-client` is installed in the venv, and use another port than the running server (8070)
+ODOO_BROWSER_BIN="C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" MSYS_NO_PATHCONV=1     venv/Scripts/python.exe odoo-bin -c wb.conf -d wb_dev -u regie_fonciere --test-tags /regie_fonciere     --stop-after-init --http-port=8079
+# (without ODOO_BROWSER_BIN the browser test is skipped)
+
 # run the server
 venv/Scripts/python.exe odoo-bin -c wb.conf -d wb_dev --dev=xml
 ```
@@ -152,7 +157,7 @@ Every figure is a company setting (Land Agency settings) or an editable table:
   specification, added so that retroactivity is actually invoiced).
 - Company settings are edited by Odoo administrators; supervisors maintain the tables.
 
-## Tests (`tests/`, 44 tests, `--test-tags /regie_fonciere`)
+## Tests (`tests/`, 46 tests incl. 1 browser test, `--test-tags /regie_fonciere`)
 
 | Requirement | Test |
 | --- | --- |
