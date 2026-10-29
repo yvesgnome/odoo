@@ -9,3 +9,6 @@ from . import account_move
 from . import regie_lease_schedule_line
 from . import regie_lease_invoicing
 from . import res_config_settings
+from . import regie_health_index
+from . import regie_indexation
+from . import regie_lease_indexation

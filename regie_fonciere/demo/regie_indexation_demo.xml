@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Indexation proposals in each state; leases 04 (not registered) and 05 (expired EPC) are blocked. -->
+    <function model="regie.indexation" name="_regie_demo_create_indexations"/>
+</odoo>

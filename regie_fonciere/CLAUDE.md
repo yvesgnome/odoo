@@ -172,3 +172,37 @@ Future household income data (income-based rents, out of scope) must be restrict
    - Demo payments are posted directly on the bank account (payment account of the manual inbound
      method = bank account): without an outstanding account, Odoo 20 only reconciles payments
      with invoices at bank reconciliation.
+4. **Indexation** (`regie.health.index`, `regie.peb.correction.factor`, `regie.indexation`,
+   `models/regie_lease_indexation.py`):
+   - **Health index base 2013**: real Statbel data, January 2018 → October 2026, loaded as normal
+     data (`data/regie_health_index_data.xml`, `noupdate`, source in the file header: Statbel open
+     data `CPI All base years.zip`, column `MS_HLTH_IDX`, `NM_BASE_YR = 2013`). The download
+     worked: no fictitious values. New months are encoded in Configuration > Health Index.
+   - **EPC correction factors**: official table (Bruxelles Logement, art. 224/2 Brussels Housing
+     Code, ordinance of 13/10/2023) as normal data, editable (`data/regie_peb_correction_factor_data.xml`).
+   - Formula: base rent × new index / initial index (× correction factor), rounded to the cent.
+     New index = index of the month preceding the anniversary. When it is not published yet
+     (proposal created 45 days before), the last published index is used and the proposal is
+     flagged *provisional* (button *Recompute*).
+   - Initial index proposed from the table (month preceding the signature) when the signature date
+     is encoded.
+   - Correction factor when: housing lease on a dwelling, effective date before the company
+     cut-off date (default 14/10/2022), EPC class E, F or G; factor by anniversary month (October
+     split on the 14th).
+   - Blocking conditions (no proposal, reason shown on the lease): written lease, registered,
+     no exclusion clause, indexable flag, initial index, and for dwellings a valid EPC at the request
+     date that was communicated to the tenant.
+   - Daily cron creates the proposals `regie_indexation_notice_days` (45) days before the
+     anniversary; button *Create Indexation* on the lease for late requests.
+   - States: to validate → validated (Supervisor only) → sent → applied (Supervisor only); refused.
+   - **Send**: request date (default today), effective date = max(anniversary, request date −
+     retroactivity months (default 3)); French PDF letter (`report/regie_indexation_letter.xml`,
+     rendered in `fr_BE`/`fr_FR` when active) attached to the lease and emailed to the tenants from
+     the lease chatter. During demo loading (no HTTP server, wkhtmltopdf cannot load the assets) the
+     PDF is not generated; print it from the proposal.
+   - **Apply**: new line in the rent history at the effective date (taken over by the schedule) and
+     an arrears invoice (30 days) for the days already invoiced since the effective date.
+   - Menus: Leases > Indexations to Process (grouped by state and anniversary month);
+     Reporting > Indexations This Month.
+   - QWeb in Odoo 20: variables such as `address` must be set **before** `t-call="web.external_layout"`
+     and passed as attributes (`address="address"`).

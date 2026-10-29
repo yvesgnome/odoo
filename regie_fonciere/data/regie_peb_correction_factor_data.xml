@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!--
+        Brussels EPC (PEB) correction factor applied to the indexed rent of housing leases that
+        took effect before 14/10/2022 for dwellings of EPC class E, F or G, depending on the month
+        (and day, in October) of the anniversary of the lease.
+        Source: Bruxelles Logement, "Indexation des loyers avec facteur de correction"; art. 224/2 of
+        the Brussels Housing Code, ordinance of 13/10/2023.
+    -->
+    <record id="peb_factor_e_10a" model="regie.peb.correction.factor">
+        <field name="peb_group">e</field>
+        <field name="month">10</field>
+        <field name="day_from">1</field>
+        <field name="day_to">13</field>
+        <field name="factor">0.989805521</field>
+    </record>
+    <record id="peb_factor_fg_10a" model="regie.peb.correction.factor">
+        <field name="peb_group">fg</field>
+        <field name="month">10</field>
+        <field name="day_from">1</field>
+        <field name="day_to">13</field>
+        <field name="factor">0.979611041</field>
+    </record>
+    <record id="peb_factor_e_10b" model="regie.peb.correction.factor">
+        <field name="peb_group">e</field>
+        <field name="month">10</field>
+        <field name="day_from">14</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.949447646</field>
+    </record>
+    <record id="peb_factor_fg_10b" model="regie.peb.correction.factor">
+        <field name="peb_group">fg</field>
+        <field name="month">10</field>
+        <field name="day_from">14</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.898895293</field>
+    </record>
+    <record id="peb_factor_e_11" model="regie.peb.correction.factor">
+        <field name="peb_group">e</field>
+        <field name="month">11</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.945356473</field>
+    </record>
+    <record id="peb_factor_fg_11" model="regie.peb.correction.factor">
+        <field name="peb_group">fg</field>
+        <field name="month">11</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.890712946</field>
+    </record>
+    <record id="peb_factor_e_12" model="regie.peb.correction.factor">
+        <field name="peb_group">e</field>
+        <field name="month">12</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.951977401</field>
+    </record>
+    <record id="peb_factor_fg_12" model="regie.peb.correction.factor">
+        <field name="peb_group">fg</field>
+        <field name="month">12</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.903954802</field>
+    </record>
+    <record id="peb_factor_e_01" model="regie.peb.correction.factor">
+        <field name="peb_group">e</field>
+        <field name="month">1</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.951950895</field>
+    </record>
+    <record id="peb_factor_fg_01" model="regie.peb.correction.factor">
+        <field name="peb_group">fg</field>
+        <field name="month">1</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.903901791</field>
+    </record>
+    <record id="peb_factor_e_02" model="regie.peb.correction.factor">
+        <field name="peb_group">e</field>
+        <field name="month">2</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.961757813</field>
+    </record>
+    <record id="peb_factor_fg_02" model="regie.peb.correction.factor">
+        <field name="peb_group">fg</field>
+        <field name="month">2</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.923515625</field>
+    </record>
+    <record id="peb_factor_e_03" model="regie.peb.correction.factor">
+        <field name="peb_group">e</field>
+        <field name="month">3</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.967996216</field>
+    </record>
+    <record id="peb_factor_fg_03" model="regie.peb.correction.factor">
+        <field name="peb_group">fg</field>
+        <field name="month">3</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.935992433</field>
+    </record>
+    <record id="peb_factor_e_04" model="regie.peb.correction.factor">
+        <field name="peb_group">e</field>
+        <field name="month">4</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.965766823</field>
+    </record>
+    <record id="peb_factor_fg_04" model="regie.peb.correction.factor">
+        <field name="peb_group">fg</field>
+        <field name="month">4</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.931533646</field>
+    </record>
+    <record id="peb_factor_e_05" model="regie.peb.correction.factor">
+        <field name="peb_group">e</field>
+        <field name="month">5</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.971941594</field>
+    </record>
+    <record id="peb_factor_fg_05" model="regie.peb.correction.factor">
+        <field name="peb_group">fg</field>
+        <field name="month">5</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.943883189</field>
+    </record>
+    <record id="peb_factor_e_06" model="regie.peb.correction.factor">
+        <field name="peb_group">e</field>
+        <field name="month">6</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.972124068</field>
+    </record>
+    <record id="peb_factor_fg_06" model="regie.peb.correction.factor">
+        <field name="peb_group">fg</field>
+        <field name="month">6</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.944248135</field>
+    </record>
+    <record id="peb_factor_e_07" model="regie.peb.correction.factor">
+        <field name="peb_group">e</field>
+        <field name="month">7</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.976119286</field>
+    </record>
+    <record id="peb_factor_fg_07" model="regie.peb.correction.factor">
+        <field name="peb_group">fg</field>
+        <field name="month">7</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.952238571</field>
+    </record>
+    <record id="peb_factor_e_08" model="regie.peb.correction.factor">
+        <field name="peb_group">e</field>
+        <field name="month">8</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.977109655</field>
+    </record>
+    <record id="peb_factor_fg_08" model="regie.peb.correction.factor">
+        <field name="peb_group">fg</field>
+        <field name="month">8</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.954219311</field>
+    </record>
+    <record id="peb_factor_e_09" model="regie.peb.correction.factor">
+        <field name="peb_group">e</field>
+        <field name="month">9</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.980049682</field>
+    </record>
+    <record id="peb_factor_fg_09" model="regie.peb.correction.factor">
+        <field name="peb_group">fg</field>
+        <field name="month">9</field>
+        <field name="day_from">1</field>
+        <field name="day_to">31</field>
+        <field name="factor">0.960099363</field>
+    </record>
+</odoo>

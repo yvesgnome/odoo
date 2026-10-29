@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_indexation_letter" model="ir.actions.report">
+        <field name="name">Indexation Letter</field>
+        <field name="model">regie.indexation</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">regie_fonciere.report_indexation_letter</field>
+        <field name="print_report_name">'Indexation - %s' % (object.name or '').replace('/', '-')</field>
+        <field name="binding_model_id" ref="model_regie_indexation"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_indexation_letter">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="regie_fonciere.report_indexation_letter_document" t-lang="o._get_letter_lang()"/>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_indexation_letter_document">
+        <t t-set="lease" t-value="o.lease_id"/>
+        <t t-set="address">
+            <t t-foreach="lease.tenant_ids" t-as="tenant">
+                <div t-field="tenant.name"/>
+            </t>
+            <div t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}'/>
+        </t>
+        <t t-call="web.external_layout" company="o.company_id.sudo()" address="address">
+            <div class="page">
+                <p class="text-end">
+                    <span t-out="o.company_id.city"/>, <span t-out="o.request_date or context_today()" t-options="{'widget': 'date'}"/>
+                </p>
+                <p>
+                    <strong>Subject:</strong> indexation of the rent – lease <span t-out="lease.name"/>
+                    (<span t-out="', '.join(lease.unit_ids.mapped('name'))"/>,
+                    <span t-out="lease.building_id.street"/>, <span t-out="lease.building_id.zip"/> <span t-out="lease.building_id.city"/>)
+                </p>
+                <p>Dear Madam, Dear Sir,</p>
+                <p>
+                    In accordance with the lease and with article 224 of the Brussels Housing Code, we hereby
+                    inform you that your rent is indexed at the anniversary date of the lease,
+                    <strong t-out="o.anniversary_date" t-options="{'widget': 'date'}"/>.
+                </p>
+                <table class="table table-sm o_main_table mt-4">
+                    <tbody>
+                        <tr>
+                            <td>Base rent (at signature)</td>
+                            <td class="text-end"><span t-field="o.base_rent"/></td>
+                        </tr>
+                        <tr>
+                            <td>Initial health index (base <span t-out="o.company_id.regie_index_base_year"/>)</td>
+                            <td class="text-end"><span t-out="'%.2f' % o.initial_index"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                New health index (<span t-out="o.new_index_month.strftime('%m/%Y') if o.new_index_month else ''"/>)
+                            </td>
+                            <td class="text-end"><span t-out="'%.2f' % o.new_index"/></td>
+                        </tr>
+                        <tr t-if="o.correction_factor != 1.0">
+                            <td>
+                                EPC correction factor (EPC class <span t-field="o.peb_class"/>, lease in force before
+                                <span t-out="o.company_id.regie_peb_correction_cutoff_date" t-options="{'widget': 'date'}"/>)
+                            </td>
+                            <td class="text-end"><span t-out="'%.9f' % o.correction_factor"/></td>
+                        </tr>
+                        <tr>
+                            <td>Current rent</td>
+                            <td class="text-end"><span t-field="o.current_rent"/></td>
+                        </tr>
+                        <tr class="fw-bold">
+                            <td>New rent (excluding charges)</td>
+                            <td class="text-end"><span t-field="o.new_rent"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>
+                    Calculation: base rent × new index / initial index<t t-if="o.correction_factor != 1.0"> × EPC correction factor</t>
+                    = <span t-field="o.base_rent"/> × <span t-out="'%.2f' % o.new_index"/> / <span t-out="'%.2f' % o.initial_index"/><t t-if="o.correction_factor != 1.0"> × <span t-out="'%.9f' % o.correction_factor"/></t>
+                    = <span t-field="o.computed_rent"/>.
+                </p>
+                <p>
+                    The new rent applies from <strong t-out="o.effective_date or o.anniversary_date" t-options="{'widget': 'date'}"/>.
+                    Please pay it from your next payment, with the structured communication
+                    <strong t-out="lease.structured_communication"/>.
+                </p>
+                <p t-if="o.peb_class">
+                    The energy performance certificate (EPC) of the dwelling, class <span t-field="o.peb_class"/>,
+                    was communicated to you.
+                </p>
+                <p>We remain at your disposal for any further information.</p>
+                <p>Yours faithfully,</p>
+                <p class="mt-5"><span t-out="o.company_id.name"/></p>
+            </div>
+        </t>
+    </template>
+</odoo>

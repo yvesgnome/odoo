@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!--
+        Belgian health index (indice santé / gezondheidsindex), base 2013 = 100, monthly values.
+        Source: Statbel open data, "Consumer price index and health index", file
+        https://statbel.fgov.be/sites/default/files/files/opendata/Consumptieprijsindex%20en%20gezondheidsindex/CPI%20All%20base%20years.zip
+        (column MS_HLTH_IDX, NM_BASE_YR = 2013), downloaded on 2026-10-29, January 2018 to October 2026.
+        New months are added in the menu Land Agency > Configuration > Health Index.
+    -->
+    <record id="health_index_2013_2018_01" model="regie.health.index">
+        <field name="month">2018-01-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">106.37</field>
+    </record>
+    <record id="health_index_2013_2018_02" model="regie.health.index">
+        <field name="month">2018-02-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">106.54</field>
+    </record>
+    <record id="health_index_2013_2018_03" model="regie.health.index">
+        <field name="month">2018-03-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">106.71</field>
+    </record>
+    <record id="health_index_2013_2018_04" model="regie.health.index">
+        <field name="month">2018-04-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">106.89</field>
+    </record>
+    <record id="health_index_2013_2018_05" model="regie.health.index">
+        <field name="month">2018-05-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">106.99</field>
+    </record>
+    <record id="health_index_2013_2018_06" model="regie.health.index">
+        <field name="month">2018-06-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">107.01</field>
+    </record>
+    <record id="health_index_2013_2018_07" model="regie.health.index">
+        <field name="month">2018-07-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">107.44</field>
+    </record>
+    <record id="health_index_2013_2018_08" model="regie.health.index">
+        <field name="month">2018-08-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">107.55</field>
+    </record>
+    <record id="health_index_2013_2018_09" model="regie.health.index">
+        <field name="month">2018-09-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">107.52</field>
+    </record>
+    <record id="health_index_2013_2018_10" model="regie.health.index">
+        <field name="month">2018-10-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">108.26</field>
+    </record>
+    <record id="health_index_2013_2018_11" model="regie.health.index">
+        <field name="month">2018-11-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">108.48</field>
+    </record>
+    <record id="health_index_2013_2018_12" model="regie.health.index">
+        <field name="month">2018-12-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">108.45</field>
+    </record>
+    <record id="health_index_2013_2019_01" model="regie.health.index">
+        <field name="month">2019-01-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">108.50</field>
+    </record>
+    <record id="health_index_2013_2019_02" model="regie.health.index">
+        <field name="month">2019-02-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">108.78</field>
+    </record>
+    <record id="health_index_2013_2019_03" model="regie.health.index">
+        <field name="month">2019-03-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">109.04</field>
+    </record>
+    <record id="health_index_2013_2019_04" model="regie.health.index">
+        <field name="month">2019-04-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">108.98</field>
+    </record>
+    <record id="health_index_2013_2019_05" model="regie.health.index">
+        <field name="month">2019-05-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">108.89</field>
+    </record>
+    <record id="health_index_2013_2019_06" model="regie.health.index">
+        <field name="month">2019-06-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">109.02</field>
+    </record>
+    <record id="health_index_2013_2019_07" model="regie.health.index">
+        <field name="month">2019-07-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">109.07</field>
+    </record>
+    <record id="health_index_2013_2019_08" model="regie.health.index">
+        <field name="month">2019-08-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">109.07</field>
+    </record>
+    <record id="health_index_2013_2019_09" model="regie.health.index">
+        <field name="month">2019-09-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">108.58</field>
+    </record>
+    <record id="health_index_2013_2019_10" model="regie.health.index">
+        <field name="month">2019-10-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">108.98</field>
+    </record>
+    <record id="health_index_2013_2019_11" model="regie.health.index">
+        <field name="month">2019-11-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">109.00</field>
+    </record>
+    <record id="health_index_2013_2019_12" model="regie.health.index">
+        <field name="month">2019-12-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">109.18</field>
+    </record>
+    <record id="health_index_2013_2020_01" model="regie.health.index">
+        <field name="month">2020-01-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">109.72</field>
+    </record>
+    <record id="health_index_2013_2020_02" model="regie.health.index">
+        <field name="month">2020-02-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">109.87</field>
+    </record>
+    <record id="health_index_2013_2020_03" model="regie.health.index">
+        <field name="month">2020-03-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">109.96</field>
+    </record>
+    <record id="health_index_2013_2020_04" model="regie.health.index">
+        <field name="month">2020-04-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">110.22</field>
+    </record>
+    <record id="health_index_2013_2020_05" model="regie.health.index">
+        <field name="month">2020-05-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">110.10</field>
+    </record>
+    <record id="health_index_2013_2020_06" model="regie.health.index">
+        <field name="month">2020-06-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">110.05</field>
+    </record>
+    <record id="health_index_2013_2020_07" model="regie.health.index">
+        <field name="month">2020-07-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">110.16</field>
+    </record>
+    <record id="health_index_2013_2020_08" model="regie.health.index">
+        <field name="month">2020-08-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">110.20</field>
+    </record>
+    <record id="health_index_2013_2020_09" model="regie.health.index">
+        <field name="month">2020-09-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">109.78</field>
+    </record>
+    <record id="health_index_2013_2020_10" model="regie.health.index">
+        <field name="month">2020-10-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">110.11</field>
+    </record>
+    <record id="health_index_2013_2020_11" model="regie.health.index">
+        <field name="month">2020-11-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">109.91</field>
+    </record>
+    <record id="health_index_2013_2020_12" model="regie.health.index">
+        <field name="month">2020-12-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">109.88</field>
+    </record>
+    <record id="health_index_2013_2021_01" model="regie.health.index">
+        <field name="month">2021-01-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">110.35</field>
+    </record>
+    <record id="health_index_2013_2021_02" model="regie.health.index">
+        <field name="month">2021-02-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">110.39</field>
+    </record>
+    <record id="health_index_2013_2021_03" model="regie.health.index">
+        <field name="month">2021-03-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">110.56</field>
+    </record>
+    <record id="health_index_2013_2021_04" model="regie.health.index">
+        <field name="month">2021-04-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">110.93</field>
+    </record>
+    <record id="health_index_2013_2021_05" model="regie.health.index">
+        <field name="month">2021-05-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">110.99</field>
+    </record>
+    <record id="health_index_2013_2021_06" model="regie.health.index">
+        <field name="month">2021-06-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">111.31</field>
+    </record>
+    <record id="health_index_2013_2021_07" model="regie.health.index">
+        <field name="month">2021-07-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">112.18</field>
+    </record>
+    <record id="health_index_2013_2021_08" model="regie.health.index">
+        <field name="month">2021-08-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">112.74</field>
+    </record>
+    <record id="health_index_2013_2021_09" model="regie.health.index">
+        <field name="month">2021-09-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">112.29</field>
+    </record>
+    <record id="health_index_2013_2021_10" model="regie.health.index">
+        <field name="month">2021-10-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">113.94</field>
+    </record>
+    <record id="health_index_2013_2021_11" model="regie.health.index">
+        <field name="month">2021-11-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">115.20</field>
+    </record>
+    <record id="health_index_2013_2021_12" model="regie.health.index">
+        <field name="month">2021-12-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">115.60</field>
+    </record>
+    <record id="health_index_2013_2022_01" model="regie.health.index">
+        <field name="month">2022-01-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">118.21</field>
+    </record>
+    <record id="health_index_2013_2022_02" model="regie.health.index">
+        <field name="month">2022-02-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">118.74</field>
+    </record>
+    <record id="health_index_2013_2022_03" model="regie.health.index">
+        <field name="month">2022-03-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">119.05</field>
+    </record>
+    <record id="health_index_2013_2022_04" model="regie.health.index">
+        <field name="month">2022-04-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">119.59</field>
+    </record>
+    <record id="health_index_2013_2022_05" model="regie.health.index">
+        <field name="month">2022-05-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">120.25</field>
+    </record>
+    <record id="health_index_2013_2022_06" model="regie.health.index">
+        <field name="month">2022-06-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">121.02</field>
+    </record>
+    <record id="health_index_2013_2022_07" model="regie.health.index">
+        <field name="month">2022-07-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">122.35</field>
+    </record>
+    <record id="health_index_2013_2022_08" model="regie.health.index">
+        <field name="month">2022-08-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">123.68</field>
+    </record>
+    <record id="health_index_2013_2022_09" model="regie.health.index">
+        <field name="month">2022-09-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">124.92</field>
+    </record>
+    <record id="health_index_2013_2022_10" model="regie.health.index">
+        <field name="month">2022-10-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">127.92</field>
+    </record>
+    <record id="health_index_2013_2022_11" model="regie.health.index">
+        <field name="month">2022-11-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">127.44</field>
+    </record>
+    <record id="health_index_2013_2022_12" model="regie.health.index">
+        <field name="month">2022-12-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">127.89</field>
+    </record>
+    <record id="health_index_2013_2023_01" model="regie.health.index">
+        <field name="month">2023-01-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">128.00</field>
+    </record>
+    <record id="health_index_2013_2023_02" model="regie.health.index">
+        <field name="month">2023-02-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">126.86</field>
+    </record>
+    <record id="health_index_2013_2023_03" model="regie.health.index">
+        <field name="month">2023-03-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">127.80</field>
+    </record>
+    <record id="health_index_2013_2023_04" model="regie.health.index">
+        <field name="month">2023-04-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">126.70</field>
+    </record>
+    <record id="health_index_2013_2023_05" model="regie.health.index">
+        <field name="month">2023-05-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">127.35</field>
+    </record>
+    <record id="health_index_2013_2023_06" model="regie.health.index">
+        <field name="month">2023-06-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">127.09</field>
+    </record>
+    <record id="health_index_2013_2023_07" model="regie.health.index">
+        <field name="month">2023-07-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">128.22</field>
+    </record>
+    <record id="health_index_2013_2023_08" model="regie.health.index">
+        <field name="month">2023-08-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">128.82</field>
+    </record>
+    <record id="health_index_2013_2023_09" model="regie.health.index">
+        <field name="month">2023-09-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">127.52</field>
+    </record>
+    <record id="health_index_2013_2023_10" model="regie.health.index">
+        <field name="month">2023-10-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">128.30</field>
+    </record>
+    <record id="health_index_2013_2023_11" model="regie.health.index">
+        <field name="month">2023-11-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">128.55</field>
+    </record>
+    <record id="health_index_2013_2023_12" model="regie.health.index">
+        <field name="month">2023-12-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">129.53</field>
+    </record>
+    <record id="health_index_2013_2024_01" model="regie.health.index">
+        <field name="month">2024-01-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">130.19</field>
+    </record>
+    <record id="health_index_2013_2024_02" model="regie.health.index">
+        <field name="month">2024-02-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">130.95</field>
+    </record>
+    <record id="health_index_2013_2024_03" model="regie.health.index">
+        <field name="month">2024-03-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">131.75</field>
+    </record>
+    <record id="health_index_2013_2024_04" model="regie.health.index">
+        <field name="month">2024-04-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">130.85</field>
+    </record>
+    <record id="health_index_2013_2024_05" model="regie.health.index">
+        <field name="month">2024-05-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">131.42</field>
+    </record>
+    <record id="health_index_2013_2024_06" model="regie.health.index">
+        <field name="month">2024-06-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">131.92</field>
+    </record>
+    <record id="health_index_2013_2024_07" model="regie.health.index">
+        <field name="month">2024-07-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">132.84</field>
+    </record>
+    <record id="health_index_2013_2024_08" model="regie.health.index">
+        <field name="month">2024-08-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">132.94</field>
+    </record>
+    <record id="health_index_2013_2024_09" model="regie.health.index">
+        <field name="month">2024-09-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">132.41</field>
+    </record>
+    <record id="health_index_2013_2024_10" model="regie.health.index">
+        <field name="month">2024-10-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">132.96</field>
+    </record>
+    <record id="health_index_2013_2024_11" model="regie.health.index">
+        <field name="month">2024-11-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">133.22</field>
+    </record>
+    <record id="health_index_2013_2024_12" model="regie.health.index">
+        <field name="month">2024-12-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">133.73</field>
+    </record>
+    <record id="health_index_2013_2025_01" model="regie.health.index">
+        <field name="month">2025-01-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">135.52</field>
+    </record>
+    <record id="health_index_2013_2025_02" model="regie.health.index">
+        <field name="month">2025-02-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">135.79</field>
+    </record>
+    <record id="health_index_2013_2025_03" model="regie.health.index">
+        <field name="month">2025-03-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">135.91</field>
+    </record>
+    <record id="health_index_2013_2025_04" model="regie.health.index">
+        <field name="month">2025-04-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">134.77</field>
+    </record>
+    <record id="health_index_2013_2025_05" model="regie.health.index">
+        <field name="month">2025-05-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">134.54</field>
+    </record>
+    <record id="health_index_2013_2025_06" model="regie.health.index">
+        <field name="month">2025-06-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">135.04</field>
+    </record>
+    <record id="health_index_2013_2025_07" model="regie.health.index">
+        <field name="month">2025-07-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">135.60</field>
+    </record>
+    <record id="health_index_2013_2025_08" model="regie.health.index">
+        <field name="month">2025-08-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">135.64</field>
+    </record>
+    <record id="health_index_2013_2025_09" model="regie.health.index">
+        <field name="month">2025-09-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">135.26</field>
+    </record>
+    <record id="health_index_2013_2025_10" model="regie.health.index">
+        <field name="month">2025-10-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">135.76</field>
+    </record>
+    <record id="health_index_2013_2025_11" model="regie.health.index">
+        <field name="month">2025-11-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">136.49</field>
+    </record>
+    <record id="health_index_2013_2025_12" model="regie.health.index">
+        <field name="month">2025-12-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">136.69</field>
+    </record>
+    <record id="health_index_2013_2026_01" model="regie.health.index">
+        <field name="month">2026-01-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">137.37</field>
+    </record>
+    <record id="health_index_2013_2026_02" model="regie.health.index">
+        <field name="month">2026-02-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">138.06</field>
+    </record>
+    <record id="health_index_2013_2026_03" model="regie.health.index">
+        <field name="month">2026-03-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">137.78</field>
+    </record>
+    <record id="health_index_2013_2026_04" model="regie.health.index">
+        <field name="month">2026-04-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">139.33</field>
+    </record>
+    <record id="health_index_2013_2026_05" model="regie.health.index">
+        <field name="month">2026-05-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">139.22</field>
+    </record>
+    <record id="health_index_2013_2026_06" model="regie.health.index">
+        <field name="month">2026-06-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">139.08</field>
+    </record>
+    <record id="health_index_2013_2026_07" model="regie.health.index">
+        <field name="month">2026-07-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">139.96</field>
+    </record>
+    <record id="health_index_2013_2026_08" model="regie.health.index">
+        <field name="month">2026-08-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">140.30</field>
+    </record>
+    <record id="health_index_2013_2026_09" model="regie.health.index">
+        <field name="month">2026-09-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">140.67</field>
+    </record>
+    <record id="health_index_2013_2026_10" model="regie.health.index">
+        <field name="month">2026-10-01</field>
+        <field name="base_year">2013</field>
+        <field name="value">141.91</field>
+    </record>
+</odoo>

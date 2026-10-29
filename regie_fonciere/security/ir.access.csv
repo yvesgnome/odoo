@@ -19,3 +19,10 @@ regie_lease_rent_line_company_rule,Lease rent history multi-company,regie.lease.
 access_regie_lease_schedule_line_property_manager,regie.lease.schedule.line property manager,regie.lease.schedule.line,group_regie_property_manager,r,
 access_regie_lease_schedule_line_accountant,regie.lease.schedule.line accountant,regie.lease.schedule.line,group_regie_accountant,crud,
 regie_lease_schedule_line_company_rule,Lease schedule multi-company,regie.lease.schedule.line,,crud,"[('company_id', 'in', company_ids)]"
+access_regie_health_index_user,regie.health.index user,regie.health.index,base.group_user,r,
+access_regie_health_index_supervisor,regie.health.index supervisor,regie.health.index,group_regie_supervisor,crud,
+access_regie_peb_correction_factor_user,regie.peb.correction.factor user,regie.peb.correction.factor,base.group_user,r,
+access_regie_peb_correction_factor_supervisor,regie.peb.correction.factor supervisor,regie.peb.correction.factor,group_regie_supervisor,crud,
+access_regie_indexation_property_manager,regie.indexation property manager,regie.indexation,group_regie_property_manager,crud,
+access_regie_indexation_accountant,regie.indexation accountant,regie.indexation,group_regie_accountant,r,
+regie_indexation_company_rule,Indexation multi-company,regie.indexation,,crud,"[('company_id', 'in', company_ids)]"

@@ -112,6 +112,29 @@
                             </div>
                         </setting>
                     </block>
+                    <block title="Indexation" name="regie_indexation_settings">
+                        <setting id="regie_indexation_rules" string="Indexation Rules" company_dependent="1"
+                                 help="Brussels rules for the indexation of the rents.">
+                            <div class="content-group">
+                                <div class="row mt8">
+                                    <label for="regie_index_base_year" class="col-lg-5 o_light_label"/>
+                                    <field name="regie_index_base_year"/>
+                                </div>
+                                <div class="row">
+                                    <label for="regie_indexation_notice_days" class="col-lg-5 o_light_label"/>
+                                    <field name="regie_indexation_notice_days"/>
+                                </div>
+                                <div class="row">
+                                    <label for="regie_indexation_retroactivity_months" class="col-lg-5 o_light_label"/>
+                                    <field name="regie_indexation_retroactivity_months"/>
+                                </div>
+                                <div class="row">
+                                    <label for="regie_peb_correction_cutoff_date" class="col-lg-5 o_light_label"/>
+                                    <field name="regie_peb_correction_cutoff_date"/>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
                 </app>
             </xpath>
         </field>

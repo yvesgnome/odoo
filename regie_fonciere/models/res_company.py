@@ -39,6 +39,24 @@ class ResCompany(models.Model):
         domain="[('account_type', 'in', ('income', 'income_other'))]",
     )
 
+    # Indexation (Brussels rules)
+    regie_index_base_year = fields.Char(
+        string="Health Index Base Year", default='2013', required=True,
+        help="Base year of the health index used for the indexation of the rents.",
+    )
+    regie_indexation_notice_days = fields.Integer(
+        string="Indexation Proposal Notice (days)", default=45,
+        help="Number of days before the anniversary of the lease at which the indexation proposal is created.",
+    )
+    regie_indexation_retroactivity_months = fields.Integer(
+        string="Indexation Retroactivity (months)", default=3,
+        help="The indexation applies at most this number of months before the written request.",
+    )
+    regie_peb_correction_cutoff_date = fields.Date(
+        string="EPC Correction Cut-off Date", default=fields.Date.to_date('2022-10-14'),
+        help="The EPC correction factor applies to housing leases that took effect before this date.",
+    )
+
     def _regie_get_rent_journal(self):
         self.ensure_one()
         return self.regie_rent_journal_id or self.env['account.journal'].search([

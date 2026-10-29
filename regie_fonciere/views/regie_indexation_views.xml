@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Indexation proposals -->
+    <record id="regie_indexation_view_list" model="ir.ui.view">
+        <field name="name">regie.indexation.list</field>
+        <field name="model">regie.indexation</field>
+        <field name="arch" type="xml">
+            <list string="Indexations" decoration-muted="state in ('applied', 'refused')"
+                  decoration-info="state == 'to_validate'">
+                <field name="lease_id"/>
+                <field name="partner_id"/>
+                <field name="building_id" optional="show"/>
+                <field name="anniversary_date"/>
+                <field name="effective_date" optional="show"/>
+                <field name="peb_class" optional="show"/>
+                <field name="correction_factor" optional="hide"/>
+                <field name="current_rent"/>
+                <field name="new_rent"/>
+                <field name="rent_increase" optional="show"/>
+                <field name="index_is_provisional" optional="hide"/>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="state" widget="badge"
+                       decoration-info="state == 'to_validate'"
+                       decoration-warning="state == 'validated'"
+                       decoration-primary="state == 'sent'"
+                       decoration-success="state == 'applied'"
+                       decoration-danger="state == 'refused'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="regie_indexation_view_form" model="ir.ui.view">
+        <field name="name">regie.indexation.form</field>
+        <field name="model">regie.indexation</field>
+        <field name="arch" type="xml">
+            <form string="Indexation">
+                <header>
+                    <button name="action_validate" string="Validate" type="object" class="btn-primary"
+                            groups="regie_fonciere.group_regie_supervisor" invisible="state != 'to_validate'"/>
+                    <button name="action_send" string="Send Letter" type="object" class="btn-primary"
+                            invisible="state != 'validated'"/>
+                    <button name="action_apply" string="Apply" type="object" class="btn-primary"
+                            groups="regie_fonciere.group_regie_supervisor" invisible="state != 'sent'"/>
+                    <button name="action_recompute" string="Recompute" type="object"
+                            invisible="state not in ('to_validate', 'validated')"/>
+                    <button name="action_refuse" string="Refuse" type="object"
+                            invisible="state not in ('to_validate', 'validated', 'sent')"/>
+                    <button name="action_reset_to_validate" string="Reset" type="object"
+                            invisible="state not in ('validated', 'refused')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="to_validate,validated,sent,applied"/>
+                </header>
+                <div class="alert alert-warning mb-0" role="alert" invisible="not index_is_provisional">
+                    The index of the month preceding the anniversary is not published yet: the last published
+                    index is used. Recompute the proposal once it is available.
+                </div>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_lease" type="object" class="oe_stat_button" icon="fa-file-text-o"
+                                string="Lease"/>
+                    </div>
+                    <field name="currency_id" invisible="1"/>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group string="Lease">
+                            <field name="lease_id" readonly="state != 'to_validate'"/>
+                            <field name="partner_id"/>
+                            <field name="main_unit_id"/>
+                            <field name="peb_class"/>
+                            <field name="anniversary_date" readonly="state != 'to_validate'"/>
+                            <field name="request_date" readonly="state in ('applied', 'refused')"/>
+                            <field name="effective_date" readonly="state in ('applied', 'refused')"/>
+                        </group>
+                        <group string="Calculation">
+                            <field name="base_rent"/>
+                            <field name="initial_index"/>
+                            <field name="new_index_month" widget="date" options="{'format': 'MM/yyyy'}"/>
+                            <field name="new_index"/>
+                            <field name="index_is_provisional" invisible="not index_is_provisional"/>
+                            <field name="correction_factor"/>
+                            <field name="computed_rent"/>
+                            <field name="current_rent"/>
+                            <field name="new_rent" readonly="state not in ('to_validate', 'validated')"/>
+                            <field name="rent_increase"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="letter_attachment_id" invisible="not letter_attachment_id"/>
+                            <field name="rent_line_id" invisible="not rent_line_id"/>
+                            <field name="arrears_invoice_id" invisible="not arrears_invoice_id"/>
+                        </group>
+                        <group>
+                            <field name="refusal_reason" invisible="state != 'refused'"/>
+                        </group>
+                    </group>
+                    <field name="notes" placeholder="Notes..."/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="regie_indexation_view_search" model="ir.ui.view">
+        <field name="name">regie.indexation.search</field>
+        <field name="model">regie.indexation</field>
+        <field name="arch" type="xml">
+            <search string="Indexations">
+                <field name="lease_id"/>
+                <field name="partner_id"/>
+                <field name="building_id"/>
+                <filter name="to_process" string="To Process" domain="[('state', 'in', ('to_validate', 'validated', 'sent'))]"/>
+                <filter name="to_validate" string="To Validate" domain="[('state', '=', 'to_validate')]"/>
+                <filter name="provisional" string="Provisional Index" domain="[('index_is_provisional', '=', True)]"/>
+                <separator/>
+                <filter name="this_month" string="Anniversary This Month"
+                        domain="[('anniversary_date', '&gt;=', context_today().strftime('%Y-%m-01')), ('anniversary_date', '&lt;', (context_today() + relativedelta(months=1)).strftime('%Y-%m-01'))]"/>
+                <filter name="anniversary" string="Anniversary" date="anniversary_date"/>
+                <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                <filter name="group_month" string="Anniversary Month" context="{'group_by': 'anniversary_date:month'}"/>
+                <filter name="group_building" string="Building" context="{'group_by': 'building_id'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="regie_indexation_action" model="ir.actions.act_window">
+        <field name="name">Indexations</field>
+        <field name="res_model">regie.indexation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="regie_indexation_to_process_action" model="ir.actions.act_window">
+        <field name="name">Indexations to Process</field>
+        <field name="res_model">regie.indexation</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_group_state': 1, 'search_default_group_month': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No indexation to process</p>
+            <p>Proposals are created automatically before the anniversary of the leases that can be indexed.</p>
+        </field>
+    </record>
+
+    <record id="regie_indexation_this_month_action" model="ir.actions.act_window">
+        <field name="name">Indexations This Month</field>
+        <field name="res_model">regie.indexation</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_this_month': 1, 'search_default_to_process': 1}</field>
+    </record>
+
+    <!-- Health index and correction factors -->
+    <record id="regie_health_index_view_list" model="ir.ui.view">
+        <field name="name">regie.health.index.list</field>
+        <field name="model">regie.health.index</field>
+        <field name="arch" type="xml">
+            <list string="Health Index" editable="top">
+                <field name="month" widget="date" options="{'format': 'MM/yyyy'}"/>
+                <field name="base_year"/>
+                <field name="value"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="regie_health_index_view_search" model="ir.ui.view">
+        <field name="name">regie.health.index.search</field>
+        <field name="model">regie.health.index</field>
+        <field name="arch" type="xml">
+            <search string="Health Index">
+                <field name="base_year"/>
+                <filter name="month" string="Month" date="month"/>
+                <filter name="group_year" string="Year" context="{'group_by': 'month:year'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="regie_health_index_action" model="ir.actions.act_window">
+        <field name="name">Health Index</field>
+        <field name="res_model">regie.health.index</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <record id="regie_peb_correction_factor_view_list" model="ir.ui.view">
+        <field name="name">regie.peb.correction.factor.list</field>
+        <field name="model">regie.peb.correction.factor</field>
+        <field name="arch" type="xml">
+            <list string="EPC Correction Factors" editable="bottom">
+                <field name="peb_group"/>
+                <field name="month"/>
+                <field name="day_from"/>
+                <field name="day_to"/>
+                <field name="factor"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="regie_peb_correction_factor_action" model="ir.actions.act_window">
+        <field name="name">EPC Correction Factors</field>
+        <field name="res_model">regie.peb.correction.factor</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <!-- Lease form: indexation -->
+    <record id="regie_lease_view_form_indexation" model="ir.ui.view">
+        <field name="name">regie.lease.form.indexation</field>
+        <field name="model">regie.lease</field>
+        <field name="inherit_id" ref="regie_lease_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_open_indexations" type="object" class="oe_stat_button" icon="fa-line-chart">
+                    <field name="indexation_count" string="Indexations" widget="statinfo"/>
+                </button>
+            </xpath>
+            <xpath expr="//group[@name='indexation']" position="inside">
+                <field name="indexation_blocking_reason" invisible="not indexation_blocking_reason"
+                       class="text-danger" string="Indexation Blocked"/>
+                <button name="action_create_indexation" type="object" string="Create Indexation"
+                        class="btn-secondary" colspan="2"
+                        invisible="state not in ('active', 'notice', 'litigation') or indexation_blocking_reason"/>
+            </xpath>
+            <xpath expr="//header" position="after">
+                <div class="alert alert-danger mb-0" role="alert"
+                     invisible="not indexation_blocking_reason or state not in ('active', 'notice', 'litigation')">
+                    <strong>Indexation not allowed: </strong>
+                    <field name="indexation_blocking_reason" readonly="1"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
