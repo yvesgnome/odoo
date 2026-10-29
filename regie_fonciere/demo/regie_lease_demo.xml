@@ -6,8 +6,8 @@
         <field name="company_id" ref="demo_company"/>
         <field name="lang">fr_BE</field>
         <field name="street">Rue du Héron Cendré 14, bte 1.1</field>
-        <field name="zip">1060</field>
-        <field name="city">Saint-Gilles</field>
+        <field name="zip">1170</field>
+        <field name="city">Watermael-Boitsfort</field>
         <field name="country_id" ref="base.be"/>
         <field name="email">marc.dubois@example.com</field>
     </record>
@@ -16,8 +16,8 @@
         <field name="company_id" ref="demo_company"/>
         <field name="lang">fr_BE</field>
         <field name="street">Rue du Héron Cendré 14, bte 1.2</field>
-        <field name="zip">1060</field>
-        <field name="city">Saint-Gilles</field>
+        <field name="zip">1170</field>
+        <field name="city">Watermael-Boitsfort</field>
         <field name="country_id" ref="base.be"/>
         <field name="email">sofie.peeters@example.com</field>
     </record>
@@ -26,8 +26,8 @@
         <field name="company_id" ref="demo_company"/>
         <field name="lang">fr_BE</field>
         <field name="street">Rue du Héron Cendré 14, bte 2.1</field>
-        <field name="zip">1060</field>
-        <field name="city">Saint-Gilles</field>
+        <field name="zip">1170</field>
+        <field name="city">Watermael-Boitsfort</field>
         <field name="country_id" ref="base.be"/>
         <field name="email">youssef.benali@example.com</field>
     </record>
@@ -36,8 +36,8 @@
         <field name="company_id" ref="demo_company"/>
         <field name="lang">fr_BE</field>
         <field name="street">Rue du Héron Cendré 14, bte 3.2</field>
-        <field name="zip">1060</field>
-        <field name="city">Saint-Gilles</field>
+        <field name="zip">1170</field>
+        <field name="city">Watermael-Boitsfort</field>
         <field name="country_id" ref="base.be"/>
         <field name="email">jan.vermeulen@example.com</field>
     </record>
@@ -46,8 +46,8 @@
         <field name="company_id" ref="demo_company"/>
         <field name="lang">fr_BE</field>
         <field name="street">Rue du Héron Cendré 14, bte 4.1</field>
-        <field name="zip">1060</field>
-        <field name="city">Saint-Gilles</field>
+        <field name="zip">1170</field>
+        <field name="city">Watermael-Boitsfort</field>
         <field name="country_id" ref="base.be"/>
         <field name="email">camille.lambert@example.com</field>
     </record>
@@ -56,8 +56,8 @@
         <field name="company_id" ref="demo_company"/>
         <field name="lang">fr_BE</field>
         <field name="street">Rue du Héron Cendré 14, bte 2.2</field>
-        <field name="zip">1060</field>
-        <field name="city">Saint-Gilles</field>
+        <field name="zip">1170</field>
+        <field name="city">Watermael-Boitsfort</field>
         <field name="country_id" ref="base.be"/>
         <field name="email">lotte.janssens@example.com</field>
     </record>
@@ -66,8 +66,8 @@
         <field name="company_id" ref="demo_company"/>
         <field name="lang">fr_BE</field>
         <field name="street">Avenue des Saules Pleureurs 27, bte 2.1</field>
-        <field name="zip">1050</field>
-        <field name="city">Ixelles</field>
+        <field name="zip">1170</field>
+        <field name="city">Watermael-Boitsfort</field>
         <field name="country_id" ref="base.be"/>
         <field name="email">pieter.desmet@example.com</field>
     </record>
@@ -76,8 +76,8 @@
         <field name="company_id" ref="demo_company"/>
         <field name="lang">fr_BE</field>
         <field name="street">Avenue des Saules Pleureurs 27, bte 2.1</field>
-        <field name="zip">1050</field>
-        <field name="city">Ixelles</field>
+        <field name="zip">1170</field>
+        <field name="city">Watermael-Boitsfort</field>
         <field name="country_id" ref="base.be"/>
         <field name="email">thomas.maes@example.com</field>
     </record>
@@ -97,8 +97,8 @@
         <field name="company_id" ref="demo_company"/>
         <field name="lang">fr_BE</field>
         <field name="street">Rue du Héron Cendré 14</field>
-        <field name="zip">1060</field>
-        <field name="city">Saint-Gilles</field>
+        <field name="zip">1170</field>
+        <field name="city">Watermael-Boitsfort</field>
         <field name="country_id" ref="base.be"/>
         <field name="email">contact@fournil-heron.example.com</field>
     </record>
@@ -107,8 +107,8 @@
         <field name="company_id" ref="demo_company"/>
         <field name="lang">fr_BE</field>
         <field name="street">Avenue des Saules Pleureurs 31</field>
-        <field name="zip">1050</field>
-        <field name="city">Ixelles</field>
+        <field name="zip">1170</field>
+        <field name="city">Watermael-Boitsfort</field>
         <field name="country_id" ref="base.be"/>
         <field name="email">elise.wouters@example.com</field>
     </record>
@@ -117,8 +117,8 @@
         <field name="company_id" ref="demo_company"/>
         <field name="lang">fr_BE</field>
         <field name="street">Avenue des Saules Pleureurs 27, bte 1.1</field>
-        <field name="zip">1050</field>
-        <field name="city">Ixelles</field>
+        <field name="zip">1170</field>
+        <field name="city">Watermael-Boitsfort</field>
         <field name="country_id" ref="base.be"/>
         <field name="email">nathalie.lefebvre@example.com</field>
     </record>
@@ -137,8 +137,8 @@
         <field name="company_id" ref="demo_company"/>
         <field name="lang">fr_BE</field>
         <field name="street">Rue des Trois Lanternes 9</field>
-        <field name="zip">1030</field>
-        <field name="city">Schaerbeek</field>
+        <field name="zip">1170</field>
+        <field name="city">Watermael-Boitsfort</field>
         <field name="country_id" ref="base.be"/>
         <field name="email">amelie.fontaine@example.com</field>
     </record>

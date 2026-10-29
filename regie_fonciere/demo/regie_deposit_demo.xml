@@ -44,7 +44,7 @@
         <field name="amount">2300</field>
         <field name="constituted_amount">2300</field>
         <field name="state">constituted</field>
-        <field name="account_reference">CPAS Ixelles – décision 2024/1187</field>
+        <field name="account_reference">CPAS Watermael-Boitsfort – décision 2024/1187</field>
     </record>
     <!-- Brussels Housing Fund, requested for the short-term lease -->
     <record id="demo_deposit_06" model="regie.deposit">

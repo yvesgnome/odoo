@@ -8,9 +8,9 @@
         <field name="code">HER</field>
         <field name="company_id" ref="demo_company"/>
         <field name="street">Rue du Héron Cendré 14</field>
-        <field name="zip">1060</field>
-        <field name="city">Saint-Gilles</field>
-        <field name="municipality">saint_gilles</field>
+        <field name="zip">1170</field>
+        <field name="city">Watermael-Boitsfort</field>
+        <field name="municipality">watermael_boitsfort</field>
         <field name="construction_year">1931</field>
     </record>
 
@@ -161,9 +161,9 @@
         <field name="code">SAU</field>
         <field name="company_id" ref="demo_company"/>
         <field name="street">Avenue des Saules Pleureurs 27</field>
-        <field name="zip">1050</field>
-        <field name="city">Ixelles</field>
-        <field name="municipality">ixelles</field>
+        <field name="zip">1170</field>
+        <field name="city">Watermael-Boitsfort</field>
+        <field name="municipality">watermael_boitsfort</field>
         <field name="construction_year">2008</field>
     </record>
 
@@ -258,9 +258,9 @@
         <field name="code">LAN</field>
         <field name="company_id" ref="demo_company"/>
         <field name="street">Rue des Trois Lanternes 9</field>
-        <field name="zip">1030</field>
-        <field name="city">Schaerbeek</field>
-        <field name="municipality">schaerbeek</field>
+        <field name="zip">1170</field>
+        <field name="city">Watermael-Boitsfort</field>
+        <field name="municipality">watermael_boitsfort</field>
         <field name="construction_year">1912</field>
     </record>
     <record id="demo_unit_lan_house" model="regie.unit">
