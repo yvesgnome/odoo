@@ -13,7 +13,10 @@ _logger = logging.getLogger(__name__)
 class RegieLease(models.Model):
     _inherit = 'regie.lease'
 
-    schedule_line_ids = fields.One2many('regie.lease.schedule.line', 'lease_id', string="Invoicing Schedule", copy=False)
+    schedule_line_ids = fields.One2many(
+        'regie.lease.schedule.line', 'lease_id', string="Invoicing Schedule", copy=False,
+        help="One line per invoiced month; a month can never be invoiced twice.",
+    )
     sepa_mandate_id = fields.Many2one(
         'account.direct.debit.mandate', string="SEPA Mandate", check_company=True, tracking=True,
         domain="[('partner_id', '=', partner_id), ('state', '=', 'active')]",

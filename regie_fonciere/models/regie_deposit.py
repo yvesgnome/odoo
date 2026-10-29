@@ -41,14 +41,35 @@ class RegieDeposit(models.Model):
     building_id = fields.Many2one(related='lease_id.building_id', store=True)
     lease_state = fields.Selection(related='lease_id.state', string="Lease Status")
     exit_date = fields.Date(related='lease_id.exit_date')
-    deposit_type = fields.Selection(DEPOSIT_TYPES, string="Form", required=True, default='blocked_account', tracking=True)
-    state = fields.Selection(DEPOSIT_STATES, string="Status", default='requested', required=True, tracking=True)
-    date = fields.Date(string="Request Date", default=fields.Date.context_today, required=True)
-    amount = fields.Monetary(required=True, tracking=True)
-    constituted_amount = fields.Monetary(tracking=True)
-    bank_name = fields.Char(string="Bank or Guarantor")
+    deposit_type = fields.Selection(
+        DEPOSIT_TYPES, string="Form", required=True, default='blocked_account', tracking=True,
+        help="Blocked account in the name of the tenant, progressive bank guarantee (built up by monthly "
+             "payments), guarantee of the CPAS, loan of the Brussels Housing Fund or other form.",
+    )
+    state = fields.Selection(
+        DEPOSIT_STATES, string="Status", default='requested', required=True, tracking=True,
+        help="Requested → (partially) constituted → release requested at the end of the lease → released "
+             "(returned, minus the retentions) or retained (fully kept by the agency).",
+    )
+    date = fields.Date(
+        string="Request Date", default=fields.Date.context_today, required=True,
+        help="Date of the request; the legal cap is computed with the rent in force at that date.",
+    )
+    amount = fields.Monetary(required=True, tracking=True, help="Deposit required by the lease.")
+    constituted_amount = fields.Monetary(
+        tracking=True,
+        help="Amount actually deposited or guaranteed so far.",
+    )
+    bank_name = fields.Char(
+        string="Bank or Guarantor",
+        help="Bank holding the blocked account or issuing the guarantee, or the guarantor (CPAS, Housing "
+             "Fund).",
+    )
     bank_bic = fields.Char(string="BIC")
-    account_reference = fields.Char(string="IBAN or Reference", tracking=True)
+    account_reference = fields.Char(
+        string="IBAN or Reference", tracking=True,
+        help="IBAN of the blocked account or reference of the guarantee.",
+    )
 
     # Legal cap (housing leases)
     cap_amount = fields.Monetary(
@@ -59,13 +80,31 @@ class RegieDeposit(models.Model):
     exceeds_cap = fields.Boolean(compute='_compute_cap')
 
     # Release
-    release_request_date = fields.Date(tracking=True, copy=False)
+    release_request_date = fields.Date(
+        tracking=True, copy=False,
+        help="Date on which the release was requested; reminders are scheduled after the move-out.",
+    )
     release_date = fields.Date(tracking=True, copy=False)
-    unpaid_rent_amount = fields.Monetary(string="Unpaid Rents", tracking=True)
-    unpaid_charges_amount = fields.Monetary(string="Unpaid Charges", tracking=True)
-    damage_amount = fields.Monetary(string="Damages", tracking=True)
-    retained_amount = fields.Monetary(compute='_compute_release_amounts', store=True, tracking=True)
-    released_amount = fields.Monetary(string="Amount Returned to the Tenant", compute='_compute_release_amounts', store=True)
+    unpaid_rent_amount = fields.Monetary(
+        string="Unpaid Rents", tracking=True,
+        help="Filled by Compute Retentions from the open rent invoices of the lease; can be changed.",
+    )
+    unpaid_charges_amount = fields.Monetary(
+        string="Unpaid Charges", tracking=True,
+        help="Filled by Compute Retentions from the open charge invoices of the lease; can be changed.",
+    )
+    damage_amount = fields.Monetary(
+        string="Damages", tracking=True,
+        help="Damages noted in the exit inventory, encoded by hand.",
+    )
+    retained_amount = fields.Monetary(
+        compute='_compute_release_amounts', store=True, tracking=True,
+        help="Total of the retentions, limited to the constituted amount.",
+    )
+    released_amount = fields.Monetary(
+        string="Amount Returned to the Tenant", compute='_compute_release_amounts', store=True,
+        help="Constituted amount minus the retentions.",
+    )
     retention_reason = fields.Text()
     notes = fields.Text()
 

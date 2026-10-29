@@ -33,10 +33,12 @@ class ResCompany(models.Model):
     regie_rent_account_id = fields.Many2one(
         'account.account', string="Rent Income Account", check_company=True,
         domain="[('account_type', 'in', ('income', 'income_other'))]",
+        help="Income account of the rent lines of the invoices.",
     )
     regie_charge_account_id = fields.Many2one(
         'account.account', string="Charge Provisions Income Account", check_company=True,
         domain="[('account_type', 'in', ('income', 'income_other'))]",
+        help="Income account of the charge provisions and of the charge regularisations.",
     )
 
     # Indexation (Brussels rules)
@@ -67,8 +69,14 @@ class ResCompany(models.Model):
         string="Deposit Return Delay (months)", default=2,
         help="Delay to return the deposit after the move-out.",
     )
-    regie_deposit_reminder_days_1 = fields.Integer(string="First Release Reminder (days)", default=30)
-    regie_deposit_reminder_days_2 = fields.Integer(string="Second Release Reminder (days)", default=50)
+    regie_deposit_reminder_days_1 = fields.Integer(
+        string="First Release Reminder (days)", default=30,
+        help="Days after the move-out at which a first reminder is scheduled on a deposit to release.",
+    )
+    regie_deposit_reminder_days_2 = fields.Integer(
+        string="Second Release Reminder (days)", default=50,
+        help="Days after the move-out at which a second reminder is scheduled on a deposit to release.",
+    )
 
     def _regie_get_letter_lang(self, partner=None):
         """ Letters to the tenants (indexation, deposit release, charge statement) are in French. """

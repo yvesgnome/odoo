@@ -60,18 +60,33 @@ class RegieLease(models.Model):
     company_id = fields.Many2one('res.company', required=True, index=True, default=lambda self: self.env.company)
     currency_id = fields.Many2one(related='company_id.currency_id')
     active = fields.Boolean(default=True)
-    state = fields.Selection(LEASE_STATES, string="Status", default='draft', required=True, tracking=True, copy=False)
-    lease_type = fields.Selection(LEASE_TYPES, string="Type", required=True, default='main_residence', tracking=True)
-    is_housing = fields.Boolean(compute='_compute_is_housing', store=True)
+    state = fields.Selection(
+        LEASE_STATES, string="Status", default='draft', required=True, tracking=True, copy=False,
+        help="Signed leases become active on their effective date and are terminated the day after the "
+             "move-out date (daily scheduled action). Rent is invoiced while active, in notice or in "
+             "litigation.",
+    )
+    lease_type = fields.Selection(
+        LEASE_TYPES, string="Type", required=True, default='main_residence', tracking=True,
+        help="Determines the default duration, the maximum duration of short-term leases and whether the "
+             "housing rules apply (all types except commercial and parking).",
+    )
+    is_housing = fields.Boolean(
+        compute='_compute_is_housing', store=True,
+        help="Housing lease (all types except commercial and parking): reference rent, EPC rules and deposit "
+             "cap apply.",
+    )
 
     # Units
     unit_ids = fields.Many2many(
         'regie.unit', 'regie_lease_unit_rel', 'lease_id', 'unit_id', string="Units",
         check_company=True, tracking=True,
+        help="All the units rented by this lease, e.g. an apartment and a parking.",
     )
     main_unit_id = fields.Many2one(
         'regie.unit', string="Main Unit", required=True, check_company=True, tracking=True,
         domain="[('id', 'in', unit_ids)]",
+        help="Unit that determines the building, the EPC rules of the indexation and the deposit cap.",
     )
     building_id = fields.Many2one(related='main_unit_id.building_id', store=True, index=True)
 
@@ -82,6 +97,7 @@ class RegieLease(models.Model):
     )
     tenant_ids = fields.Many2many(
         'res.partner', 'regie_lease_tenant_rel', 'lease_id', 'partner_id', string="Tenants", check_company=True,
+        help="All the tenants signing the lease; the main tenant receives the invoices and letters.",
     )
     joint_liability = fields.Boolean(
         string="Jointly and Severally Liable", default=True,
@@ -90,17 +106,36 @@ class RegieLease(models.Model):
     guarantor_ids = fields.Many2many(
         'res.partner', 'regie_lease_guarantor_rel', 'lease_id', 'partner_id', string="Guarantors",
         check_company=True,
+        help="Persons standing surety for the tenants (copy of the letters on request).",
     )
 
     # Dates
-    signature_date = fields.Date(tracking=True)
-    start_date = fields.Date(string="Effective Date", required=True, tracking=True)
-    end_date = fields.Date(tracking=True)
+    signature_date = fields.Date(
+        tracking=True,
+        help="Date of signature of the lease. The initial index is the health index of the month before.",
+    )
+    start_date = fields.Date(
+        string="Effective Date", required=True, tracking=True,
+        help="Start of the occupation and of the invoicing. Its anniversary is the date of the yearly "
+             "indexation.",
+    )
+    end_date = fields.Date(
+        tracking=True,
+        help="Contractual end of the lease. Leases ending within 6 months are listed in the reports.",
+    )
     duration_months = fields.Integer(
         string="Duration (months)", compute='_compute_duration_months', store=True, readonly=False,
+        help="Computed from the effective and end dates; changing the lease type proposes the usual duration.",
     )
-    notice_date = fields.Date(string="Notice Date", tracking=True)
-    exit_date = fields.Date(string="Actual Move-out Date", tracking=True)
+    notice_date = fields.Date(
+        string="Notice Date", tracking=True,
+        help="Date on which the notice was given (by the tenant or the agency).",
+    )
+    exit_date = fields.Date(
+        string="Actual Move-out Date", tracking=True,
+        help="Day the tenant actually leaves: the last month is invoiced prorata and the lease is terminated "
+             "the next day. Needed to release the deposit.",
+    )
     next_anniversary_date = fields.Date(
         compute='_compute_next_anniversary_date',
         help="Next anniversary of the effective date (today or later).",
@@ -109,7 +144,11 @@ class RegieLease(models.Model):
     # Rent
     base_rent = fields.Monetary(string="Base Rent", required=True, tracking=True,
                                 help="Rent at signature, basis of the indexation formula.")
-    initial_charge_provision = fields.Monetary(string="Initial Charge Provision")
+    initial_charge_provision = fields.Monetary(
+        string="Initial Charge Provision",
+        help="Monthly charge provision (or flat-rate charges) at the signature: first line of the rent "
+             "history.",
+    )
     initial_index = fields.Float(
         string="Initial Index", digits=(10, 2), tracking=True,
         help="Health index (base 2013) of the month preceding the signature of the lease.",
@@ -119,7 +158,10 @@ class RegieLease(models.Model):
         help="Reference rent of the Brussels regional grid (mandatory mention in housing leases).",
     )
     rent_line_ids = fields.One2many('regie.lease.rent.line', 'lease_id', string="Rent History", copy=False)
-    current_rent = fields.Monetary(compute='_compute_current_rent')
+    current_rent = fields.Monetary(
+        compute='_compute_current_rent',
+        help="Rent in force today according to the rent history.",
+    )
     current_charge_provision = fields.Monetary(string="Current Charge Provision", compute='_compute_current_rent')
     charge_mode = fields.Selection(
         [('provisions', 'Provisions'), ('flat', 'Flat Rate')],
@@ -132,17 +174,32 @@ class RegieLease(models.Model):
     )
 
     # Registration and indexation conditions
-    registration_date = fields.Date(tracking=True)
-    registration_reference = fields.Char(tracking=True)
-    registration_document = fields.Binary(attachment=True, copy=False)
+    registration_date = fields.Date(
+        tracking=True,
+        help="Date of registration of the lease (SPF Finances). An unregistered lease cannot be indexed.",
+    )
+    registration_reference = fields.Char(tracking=True, help="Reference given by the registration office.")
+    registration_document = fields.Binary(
+        attachment=True, copy=False,
+        help="Proof of registration (scan or PDF).",
+    )
     registration_document_name = fields.Char()
-    is_registered = fields.Boolean(compute='_compute_is_registered', store=True)
-    is_written = fields.Boolean(string="Written Lease", default=True)
+    is_registered = fields.Boolean(
+        compute='_compute_is_registered', store=True,
+        help="The lease has a registration date.",
+    )
+    is_written = fields.Boolean(
+        string="Written Lease", default=True,
+        help="Only written leases can be indexed.",
+    )
     indexation_excluded = fields.Boolean(
         string="Indexation Excluded by the Lease",
         help="The lease contains a clause excluding the indexation of the rent.",
     )
-    is_indexable = fields.Boolean(string="Indexable", default=True, tracking=True)
+    is_indexable = fields.Boolean(
+        string="Indexable", default=True, tracking=True,
+        help="Uncheck to never index this lease (decision of the agency); no proposal is created.",
+    )
     peb_communicated = fields.Boolean(
         string="EPC Communicated to the Tenant", tracking=True,
         help="The EPC certificate of the unit was handed over to the tenant.",
@@ -159,12 +216,26 @@ class RegieLease(models.Model):
     tax_ids = fields.Many2many(
         'account.tax', string="Taxes", check_company=True,
         domain="[('type_tax_use', '=', 'sale')]",
+        help="Sales taxes applied to the rent and charges of a commercial lease with the VAT option.",
     )
-    structured_communication = fields.Char(copy=False, readonly=True, index=True)
-    invoice_ids = fields.One2many('account.move', 'regie_lease_id', string="Invoices")
+    structured_communication = fields.Char(
+        copy=False, readonly=True, index=True,
+        help="Belgian structured communication of the lease (+++xxx/xxxx/xxxxx+++), unique, printed on every "
+             "rent invoice so that the payments can be matched automatically.",
+    )
+    invoice_ids = fields.One2many(
+        'account.move', 'regie_lease_id', string="Invoices",
+        help="Customer invoices and credit notes of the lease (rent, regularisations, one-off invoices).",
+    )
     invoice_count = fields.Integer(compute='_compute_invoice_stats')
-    open_balance = fields.Monetary(compute='_compute_invoice_stats', string="Open Balance")
-    overdue_invoice_count = fields.Integer(compute='_compute_invoice_stats', string="Overdue Invoices")
+    open_balance = fields.Monetary(
+        compute='_compute_invoice_stats', string="Open Balance",
+        help="Amount still due on the posted invoices and credit notes of the lease.",
+    )
+    overdue_invoice_count = fields.Integer(
+        compute='_compute_invoice_stats', string="Overdue Invoices",
+        help="Posted invoices of the lease not fully paid after their due date.",
+    )
     notes = fields.Html()
 
     # ------------------------------------------------------------

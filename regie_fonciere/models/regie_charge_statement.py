@@ -27,19 +27,27 @@ class RegieChargeStatement(models.Model):
     building_id = fields.Many2one('regie.building', required=True, index=True, check_company=True, tracking=True)
     company_id = fields.Many2one(related='building_id.company_id', store=True, index=True)
     currency_id = fields.Many2one(related='company_id.currency_id')
-    year = fields.Integer(required=True, default=lambda self: fields.Date.context_today(self).year - 1, tracking=True)
+    year = fields.Integer(
+        required=True, default=lambda self: fields.Date.context_today(self).year - 1, tracking=True,
+        help="Calendar year of the statement: costs booked and occupation from 1 January to 31 December.",
+    )
     date_from = fields.Date(compute='_compute_dates', store=True)
     date_to = fields.Date(compute='_compute_dates', store=True)
     state = fields.Selection(
         [('draft', 'Draft'), ('computed', 'Computed'), ('invoiced', 'Invoiced')],
         string="Status", default='draft', required=True, tracking=True,
+        help="Draft → Computed (costs split, can be recomputed) → Invoiced (regularisations posted).",
     )
     cost_line_ids = fields.One2many('regie.charge.statement.cost', 'statement_id', string="Costs")
     lease_line_ids = fields.One2many('regie.charge.statement.lease', 'statement_id', string="Leases")
     detail_ids = fields.One2many('regie.charge.statement.detail', 'statement_id', string="Details")
     total_cost = fields.Monetary(compute='_compute_totals')
     total_tenants = fields.Monetary(string="Charged to Tenants", compute='_compute_totals')
-    total_agency = fields.Monetary(string="Borne by the Agency", compute='_compute_totals')
+    total_agency = fields.Monetary(
+        string="Borne by the Agency", compute='_compute_totals',
+        help="Part of the costs not recoverable: vacant units, categories not provided by the leases, "
+             "flat-rate leases.",
+    )
     notes = fields.Text()
 
     @api.depends('building_id.name', 'year')
@@ -338,12 +346,18 @@ class RegieChargeStatementDetail(models.Model):
     unit_id = fields.Many2one('regie.unit', required=True)
     category_id = fields.Many2one('regie.charge.category', string="Charge Category", required=True)
     method = fields.Selection(ALLOCATION_METHODS, string="Allocation")
-    weight = fields.Float(digits=(12, 4))
-    total_weight = fields.Float(digits=(12, 4))
-    category_amount = fields.Monetary(string="Building Cost")
+    weight = fields.Float(
+        digits=(12, 4),
+        help="Weight of the unit for the allocation key (surface, shares, 1 or consumption).",
+    )
+    total_weight = fields.Float(digits=(12, 4), help="Sum of the weights of all the units of the building.")
+    category_amount = fields.Monetary(
+        string="Building Cost",
+        help="Cost of the category for the whole building.",
+    )
     date_from = fields.Date()
     date_to = fields.Date()
-    days = fields.Integer()
+    days = fields.Integer(help="Days of occupation of the unit by the lease during the year.")
     amount = fields.Monetary(string="Share")
 
 
@@ -360,15 +374,28 @@ class RegieChargeStatementLease(models.Model):
     lease_id = fields.Many2one('regie.lease', required=True, index=True)
     partner_id = fields.Many2one(related='lease_id.partner_id')
     detail_ids = fields.One2many('regie.charge.statement.detail', compute='_compute_detail_ids')
-    provisions_amount = fields.Monetary(string="Provisions Called")
-    actual_amount = fields.Monetary(string="Actual Share")
+    provisions_amount = fields.Monetary(
+        string="Provisions Called",
+        help="Charge provisions invoiced to the lease for the months of the year.",
+    )
+    actual_amount = fields.Monetary(
+        string="Actual Share",
+        help="Share of the actual charges of the year: allocation key × days of occupation, only for the "
+             "categories provided by the lease.",
+    )
     balance = fields.Monetary(compute='_compute_balance', store=True,
                               help="Positive: the tenant owes the difference; negative: refund to the tenant.")
-    invoice_id = fields.Many2one('account.move', string="Regularisation", copy=False)
+    invoice_id = fields.Many2one(
+        'account.move', string="Regularisation", copy=False,
+        help="Regularisation invoice (balance due) or credit note (refund).",
+    )
     proposed_provision = fields.Monetary(
         compute='_compute_proposed_provision', store=True, readonly=False,
         help="Monthly provision suggested from the actual charges of the year.")
-    provision_rent_line_id = fields.Many2one('regie.lease.rent.line', string="Provision Adjustment", copy=False)
+    provision_rent_line_id = fields.Many2one(
+        'regie.lease.rent.line', string="Provision Adjustment", copy=False,
+        help="Rent history line created by Apply Provision.",
+    )
 
     @api.depends('statement_id', 'lease_id')
     def _compute_detail_ids(self):

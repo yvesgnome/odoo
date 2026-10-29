@@ -19,17 +19,37 @@ class RegieLeaseScheduleLine(models.Model):
     partner_id = fields.Many2one(related='lease_id.partner_id')
     building_id = fields.Many2one(related='lease_id.building_id', store=True)
     period_date = fields.Date(string="Period", required=True, help="First day of the invoiced month.")
-    date_from = fields.Date(string="From", required=True)
-    date_to = fields.Date(string="To", required=True)
-    prorata = fields.Float(digits=(6, 4), default=1.0, help="Share of the month invoiced (occupied days / days of the month).")
-    rent_amount = fields.Monetary(string="Rent")
-    charge_amount = fields.Monetary(string="Charges")
+    date_from = fields.Date(
+        string="From", required=True,
+        help="First day of the month invoiced for this lease (effective date for the first month).",
+    )
+    date_to = fields.Date(
+        string="To", required=True,
+        help="Last day of the month invoiced for this lease (move-out date for the last month).",
+    )
+    prorata = fields.Float(
+        digits=(6, 4), default=1.0,
+        help="Share of the month invoiced (occupied days / days of the month).",
+    )
+    rent_amount = fields.Monetary(
+        string="Rent",
+        help="Rent of the month, read in the rent history and prorated on the occupied days.",
+    )
+    charge_amount = fields.Monetary(
+        string="Charges",
+        help="Charge provision of the month, prorated on the occupied days.",
+    )
     amount_total = fields.Monetary(string="Total", compute='_compute_amount_total', store=True)
-    invoice_id = fields.Many2one('account.move', string="Invoice", copy=False, index='btree_not_null')
+    invoice_id = fields.Many2one(
+        'account.move', string="Invoice", copy=False, index='btree_not_null',
+        help="Posted invoice of this month.",
+    )
     payment_state = fields.Selection(related='invoice_id.payment_state', string="Payment Status")
     state = fields.Selection(
         [('to_invoice', 'To Invoice'), ('invoiced', 'Invoiced'), ('cancelled', 'Cancelled')],
         string="Status", compute='_compute_state', store=True, readonly=False, default='to_invoice',
+        help="To Invoice: waiting for the next run of the schedule; Invoiced: the invoice is posted; "
+             "Cancelled: the invoice was cancelled (the month is not invoiced again automatically).",
     )
 
     @api.depends('rent_amount', 'charge_amount')

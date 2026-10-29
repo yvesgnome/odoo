@@ -24,8 +24,17 @@ class RegieLeaseRentLine(models.Model):
     lease_id = fields.Many2one('regie.lease', required=True, index=True, ondelete='cascade')
     company_id = fields.Many2one(related='lease_id.company_id', store=True, index=True)
     currency_id = fields.Many2one(related='lease_id.currency_id')
-    date_start = fields.Date(string="Effective Date", required=True)
-    rent = fields.Monetary(required=True)
-    charge_provision = fields.Monetary(string="Charge Provision")
-    reason = fields.Selection(RENT_CHANGE_REASONS, required=True, default='revision')
+    date_start = fields.Date(
+        string="Effective Date", required=True,
+        help="First day from which this rent and this provision apply; they apply until the next line.",
+    )
+    rent = fields.Monetary(required=True, help="Monthly rent excluding charges.")
+    charge_provision = fields.Monetary(
+        string="Charge Provision",
+        help="Monthly charge provision, or flat-rate charges for leases with flat-rate charges.",
+    )
+    reason = fields.Selection(
+        RENT_CHANGE_REASONS, required=True, default='revision',
+        help="Why the rent changed: initial rent, indexation, revision, amendment or provision adjustment.",
+    )
     note = fields.Char()

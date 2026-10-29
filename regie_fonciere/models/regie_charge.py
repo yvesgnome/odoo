@@ -35,7 +35,11 @@ class RegieAllocationKey(models.Model):
     building_id = fields.Many2one('regie.building', required=True, index=True, ondelete='cascade', check_company=True)
     company_id = fields.Many2one(related='building_id.company_id', store=True, index=True)
     category_id = fields.Many2one('regie.charge.category', string="Charge Category", required=True)
-    method = fields.Selection(ALLOCATION_METHODS, required=True, default='surface')
+    method = fields.Selection(
+        ALLOCATION_METHODS, required=True, default='surface',
+        help="Surface: by unit surface; Shares: by the shares encoded below; Equal Parts: same amount per "
+             "unit; Consumption: by the consumption readings of the year.",
+    )
     line_ids = fields.One2many('regie.allocation.key.line', 'key_id', string="Shares")
     notes = fields.Text()
 
@@ -83,7 +87,10 @@ class RegieAllocationKeyLine(models.Model):
     company_id = fields.Many2one(related='key_id.company_id', store=True)
     building_id = fields.Many2one(related='key_id.building_id')
     unit_id = fields.Many2one('regie.unit', required=True, domain="[('building_id', '=', building_id)]")
-    shares = fields.Float(digits=(12, 4))
+    shares = fields.Float(
+        digits=(12, 4),
+        help="Weight of the unit (quotité). Units without share bear no part of these costs.",
+    )
 
 
 class RegieConsumptionReading(models.Model):
@@ -99,6 +106,12 @@ class RegieConsumptionReading(models.Model):
     category_id = fields.Many2one('regie.charge.category', string="Charge Category", required=True)
     meter_id = fields.Many2one('regie.meter', domain="[('unit_id', '=', unit_id)]")
     date_from = fields.Date(string="From", required=True)
-    date_to = fields.Date(string="To", required=True)
-    quantity = fields.Float(required=True, digits=(12, 3))
+    date_to = fields.Date(
+        string="To", required=True,
+        help="The reading counts for the statement of the year in which this date falls.",
+    )
+    quantity = fields.Float(
+        required=True, digits=(12, 3),
+        help="Consumption of the unit for the period (kWh, m³, heat cost allocator units...).",
+    )
     uom = fields.Char(string="Unit of Measure", help="e.g. kWh, m³, heat cost allocator units")

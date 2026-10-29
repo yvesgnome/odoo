@@ -35,8 +35,15 @@ class RegieIndexation(models.Model):
     partner_id = fields.Many2one(related='lease_id.partner_id', store=True)
     building_id = fields.Many2one(related='lease_id.building_id', store=True)
     main_unit_id = fields.Many2one(related='lease_id.main_unit_id')
-    state = fields.Selection(INDEXATION_STATES, string="Status", default='to_validate', required=True, tracking=True)
-    anniversary_date = fields.Date(required=True, tracking=True)
+    state = fields.Selection(
+        INDEXATION_STATES, string="Status", default='to_validate', required=True, tracking=True,
+        help="To Validate: proposal computed; Validated: approved by a supervisor; Sent: letter sent to the "
+             "tenants (written request); Applied: new rent in the rent history; Refused: no indexation.",
+    )
+    anniversary_date = fields.Date(
+        required=True, tracking=True,
+        help="Anniversary of the effective date of the lease for which the rent is indexed.",
+    )
     request_date = fields.Date(
         tracking=True, copy=False,
         help="Date of the written request to the tenant (date the letter is sent).",
@@ -46,25 +53,49 @@ class RegieIndexation(models.Model):
         help="Anniversary date, limited to the retroactivity allowed before the request date.",
     )
 
-    base_rent = fields.Monetary(readonly=True)
-    initial_index = fields.Float(digits=(10, 2), readonly=True)
-    new_index_month = fields.Date(readonly=True, help="Month of the new index (month preceding the anniversary).")
-    new_index = fields.Float(digits=(10, 2), readonly=True)
+    base_rent = fields.Monetary(
+        readonly=True,
+        help="Base rent of the lease (at the signature), basis of the formula.",
+    )
+    initial_index = fields.Float(
+        digits=(10, 2), readonly=True,
+        help="Initial index of the lease (month preceding the signature).",
+    )
+    new_index_month = fields.Date(
+        readonly=True,
+        help="Month of the new index (month preceding the anniversary).",
+    )
+    new_index = fields.Float(digits=(10, 2), readonly=True, help="Health index used as new index.")
     index_is_provisional = fields.Boolean(
         readonly=True,
         help="The index of the month preceding the anniversary is not published yet: the last "
              "published index is used. Recompute the proposal once it is available.",
     )
     peb_class = fields.Selection(related='lease_id.main_unit_id.peb_class', string="EPC Class")
-    correction_factor = fields.Float(digits=(12, 9), readonly=True, default=1.0)
+    correction_factor = fields.Float(
+        digits=(12, 9), readonly=True, default=1.0,
+        help="EPC correction factor applied (1 when not applicable).",
+    )
     computed_rent = fields.Monetary(readonly=True, help="Result of the indexation formula.")
     current_rent = fields.Monetary(readonly=True, help="Rent in force before the anniversary.")
     new_rent = fields.Monetary(tracking=True, help="Indexed rent proposed (can be lowered).")
-    rent_increase = fields.Monetary(compute='_compute_rent_increase')
-    rent_line_id = fields.Many2one('regie.lease.rent.line', readonly=True, copy=False)
-    arrears_invoice_id = fields.Many2one('account.move', string="Arrears Invoice", readonly=True, copy=False)
-    letter_attachment_id = fields.Many2one('ir.attachment', readonly=True, copy=False)
-    refusal_reason = fields.Text(tracking=True)
+    rent_increase = fields.Monetary(compute='_compute_rent_increase', help="New rent minus current rent.")
+    rent_line_id = fields.Many2one(
+        'regie.lease.rent.line', readonly=True, copy=False,
+        help="Line added to the rent history when the indexation is applied.",
+    )
+    arrears_invoice_id = fields.Many2one(
+        'account.move', string="Arrears Invoice", readonly=True, copy=False,
+        help="Invoice of the difference for the months already invoiced since the effective date.",
+    )
+    letter_attachment_id = fields.Many2one(
+        'ir.attachment', readonly=True, copy=False,
+        help="PDF letter sent to the tenants, also attached to the lease.",
+    )
+    refusal_reason = fields.Text(
+        tracking=True,
+        help="Why the indexation is not applied (kept in the history).",
+    )
     notes = fields.Text()
 
     @api.depends('lease_id.name', 'anniversary_date')

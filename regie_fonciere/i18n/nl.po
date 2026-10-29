@@ -4132,3 +4132,798 @@ msgstr "Bezoldiging en lasten van de conciërge (verhaalbaar deel)."
 #: model:regie.charge.category,description:regie_fonciere.charge_category_water
 msgid "Water consumption of the building (common meter)."
 msgstr "Waterverbruik van het gebouw (gemeenschappelijke meter)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__lease_ids
+msgid "All the leases of the unit, past and present."
+msgstr "Alle huurovereenkomsten van de eenheid, vroegere en lopende."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__tenant_ids
+msgid ""
+"All the tenants signing the lease; the main tenant receives the invoices and"
+" letters."
+msgstr ""
+"Alle huurders die de huurovereenkomst ondertekenen; de hoofdhuurder ontvangt"
+" de facturen en brieven."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__unit_ids
+msgid "All the units rented by this lease, e.g. an apartment and a parking."
+msgstr ""
+"Alle eenheden verhuurd door deze huurovereenkomst, bv. een appartement en "
+"een parkeerplaats."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__constituted_amount
+msgid "Amount actually deposited or guaranteed so far."
+msgstr "Tot nu toe werkelijk gestort of gewaarborgd bedrag."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__open_balance
+msgid "Amount still due on the posted invoices and credit notes of the lease."
+msgstr ""
+"Nog verschuldigd bedrag op de geboekte facturen en creditnota's van de "
+"huurovereenkomst."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__anniversary_date
+msgid ""
+"Anniversary of the effective date of the lease for which the rent is "
+"indexed."
+msgstr ""
+"Verjaardag van de ingangsdatum van de huurovereenkomst waarvoor de huur "
+"geïndexeerd wordt."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__is_dwelling
+msgid ""
+"Apartment, house or studio: the housing rules apply to the leases of this "
+"unit."
+msgstr ""
+"Appartement, huis of studio: de regels voor woningen gelden voor de "
+"huurovereenkomsten van deze eenheid."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__unit_type
+msgid ""
+"Apartments, houses and studios are dwellings: the housing rules apply to "
+"them (EPC conditions, reference rent, deposit cap)."
+msgstr ""
+"Appartementen, huizen en studio's zijn woningen: de regels voor woningen "
+"zijn van toepassing (EPB-voorwaarden, referentiehuurprijs, plafond van de "
+"waarborg)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__bank_name
+msgid ""
+"Bank holding the blocked account or issuing the guarantee, or the guarantor "
+"(CPAS, Housing Fund)."
+msgstr ""
+"Bank die de geblokkeerde rekening beheert of de waarborg verstrekt, of de "
+"borg (OCMW, Woningfonds)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__base_rent
+msgid "Base rent of the lease (at the signature), basis of the formula."
+msgstr ""
+"Basishuur van de huurovereenkomst (bij ondertekening), basis van de formule."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_health_index__base_year
+msgid "Base year of the series (index 100 = average of that year)."
+msgstr "Basisjaar van de reeks (index 100 = gemiddelde van dat jaar)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__structured_communication
+msgid ""
+"Belgian structured communication of the lease (+++xxx/xxxx/xxxxx+++), "
+"unique, printed on every rent invoice so that the payments can be matched "
+"automatically."
+msgstr ""
+"Belgische gestructureerde mededeling van de huurovereenkomst "
+"(+++xxx/xxxx/xxxxx+++), uniek, vermeld op elke huurfactuur zodat de "
+"betalingen automatisch afgepunt worden."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__deposit_type
+msgid ""
+"Blocked account in the name of the tenant, progressive bank guarantee (built"
+" up by monthly payments), guarantee of the CPAS, loan of the Brussels "
+"Housing Fund or other form."
+msgstr ""
+"Geblokkeerde rekening op naam van de huurder, progressieve bankwaarborg "
+"(opgebouwd met maandelijkse stortingen), waarborg van het OCMW, lening van "
+"het Brusselse Woningfonds of andere vorm."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement__year
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement_lease__year
+msgid ""
+"Calendar year of the statement: costs booked and occupation from 1 January "
+"to 31 December."
+msgstr ""
+"Kalenderjaar van de afrekening: geboekte kosten en bezetting van 1 januari "
+"tot 31 december."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__housing_category
+msgid ""
+"Category of the dwelling in the housing policy of the agency. Informative "
+"for now; prepared for the income-based rents and the allocation of the "
+"dwellings."
+msgstr ""
+"Categorie van de woning in het huisvestingsbeleid van de regie. Voorlopig "
+"informatief; voorzien voor de inkomensgebonden huurprijzen en de toewijzing "
+"van de woningen."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease_schedule_line__charge_amount
+msgid "Charge provision of the month, prorated on the occupied days."
+msgstr "Provisie voor lasten van de maand, pro rata van de bewoonde dagen."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement_lease__provisions_amount
+msgid "Charge provisions invoiced to the lease for the months of the year."
+msgstr ""
+"Provisies voor lasten gefactureerd aan de huurovereenkomst voor de maanden "
+"van het jaar."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_peb_correction_factor__factor
+msgid ""
+"Coefficient applied to the indexed rent (art. 224/2 of the Brussels Housing "
+"Code)."
+msgstr ""
+"Coëfficiënt toegepast op de geïndexeerde huur (art. 224/2 van de Brusselse "
+"Huisvestingscode)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__duration_months
+msgid ""
+"Computed from the effective and end dates; changing the lease type proposes "
+"the usual duration."
+msgstr ""
+"Berekend op basis van de ingangs- en einddatum; het type huurovereenkomst "
+"wijzigen stelt de gebruikelijke duur voor."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__state
+msgid ""
+"Computed: Rented while a lease of the unit is active, in notice or in "
+"litigation; otherwise Under Works or Free."
+msgstr ""
+"Berekend: Verhuurd zolang een huurovereenkomst van de eenheid actief, in "
+"opzeg of in geschil is; anders In werken of Vrij."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__released_amount
+msgid "Constituted amount minus the retentions."
+msgstr "Gesteld bedrag min de inhoudingen."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_consumption_reading__quantity
+msgid ""
+"Consumption of the unit for the period (kWh, m³, heat cost allocator "
+"units...)."
+msgstr ""
+"Verbruik van de eenheid voor de periode (kWh, m³, eenheden "
+"kostenverdelers...)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__end_date
+msgid ""
+"Contractual end of the lease. Leases ending within 6 months are listed in "
+"the reports."
+msgstr ""
+"Contractueel einde van de huurovereenkomst. Huurovereenkomsten die binnen 6 "
+"maanden vervallen staan in de rapporten."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement_detail__category_amount
+msgid "Cost of the category for the whole building."
+msgstr "Kosten van de categorie voor het hele gebouw."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__invoice_ids
+msgid ""
+"Customer invoices and credit notes of the lease (rent, regularisations, one-"
+"off invoices)."
+msgstr ""
+"Klantfacturen en creditnota's van de huurovereenkomst (huur, regularisaties,"
+" losse facturen)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__damage_amount
+msgid "Damages noted in the exit inventory, encoded by hand."
+msgstr ""
+"Schade vastgesteld in de uitgaande plaatsbeschrijving, manueel ingevoerd."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__registration_date
+msgid ""
+"Date of registration of the lease (SPF Finances). An unregistered lease "
+"cannot be indexed."
+msgstr ""
+"Registratiedatum van de huurovereenkomst (FOD Financiën). Een niet-"
+"geregistreerde huurovereenkomst kan niet geïndexeerd worden."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__signature_date
+msgid ""
+"Date of signature of the lease. The initial index is the health index of the"
+" month before."
+msgstr ""
+"Datum van ondertekening van de huurovereenkomst. De aanvangsindex is de "
+"gezondheidsindex van de maand ervoor."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__date
+msgid ""
+"Date of the request; the legal cap is computed with the rent in force at "
+"that date."
+msgstr ""
+"Datum van het verzoek; het wettelijke plafond wordt berekend met de huur van"
+" kracht op die datum."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__notice_date
+msgid "Date on which the notice was given (by the tenant or the agency)."
+msgstr ""
+"Datum waarop de opzeg gegeven werd (door de huurder of door de regie)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__release_request_date
+msgid ""
+"Date on which the release was requested; reminders are scheduled after the "
+"move-out."
+msgstr ""
+"Datum van het verzoek tot vrijgave; herinneringen worden na het vertrek "
+"gepland."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__exit_date
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__exit_date
+msgid ""
+"Day the tenant actually leaves: the last month is invoiced prorata and the "
+"lease is terminated the next day. Needed to release the deposit."
+msgstr ""
+"Dag waarop de huurder werkelijk vertrekt: de laatste maand wordt pro rata "
+"gefactureerd en de huurovereenkomst wordt de dag nadien beëindigd. Nodig om "
+"de waarborg vrij te geven."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_res_company__regie_deposit_reminder_days_1
+#: model:ir.model.fields,help:regie_fonciere.field_res_config_settings__regie_deposit_reminder_days_1
+msgid ""
+"Days after the move-out at which a first reminder is scheduled on a deposit "
+"to release."
+msgstr ""
+"Dagen na het vertrek waarop een eerste herinnering gepland wordt op een vrij"
+" te geven waarborg."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_res_company__regie_deposit_reminder_days_2
+#: model:ir.model.fields,help:regie_fonciere.field_res_config_settings__regie_deposit_reminder_days_2
+msgid ""
+"Days after the move-out at which a second reminder is scheduled on a deposit"
+" to release."
+msgstr ""
+"Dagen na het vertrek waarop een tweede herinnering gepland wordt op een vrij"
+" te geven waarborg."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement_detail__days
+msgid "Days of occupation of the unit by the lease during the year."
+msgstr ""
+"Dagen bewoning van de eenheid door de huurovereenkomst tijdens het jaar."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__amount
+msgid "Deposit required by the lease."
+msgstr "Door de huurovereenkomst vereiste waarborg."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__lease_type
+msgid ""
+"Determines the default duration, the maximum duration of short-term leases "
+"and whether the housing rules apply (all types except commercial and "
+"parking)."
+msgstr ""
+"Bepaalt de standaardduur, de maximale duur van huurovereenkomsten van korte "
+"duur en of de regels voor woningen gelden (alle types behalve handelshuur en"
+" parkeerplaats)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement__state
+msgid ""
+"Draft → Computed (costs split, can be recomputed) → Invoiced "
+"(regularisations posted)."
+msgstr ""
+"Concept → Berekend (kosten verdeeld, kan herberekend worden) → Gefactureerd "
+"(regularisaties geboekt)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_peb_correction_factor__peb_group
+msgid "EPC classes to which the factor applies."
+msgstr "EPB-klassen waarop de factor van toepassing is."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__correction_factor
+msgid "EPC correction factor applied (1 when not applicable)."
+msgstr "Toegepaste EPB-correctiefactor (1 indien niet van toepassing)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__peb_valid_until
+msgid ""
+"End of validity of the EPC certificate. An expired certificate blocks the "
+"indexation of the rent."
+msgstr ""
+"Einde van de geldigheid van het EPB-certificaat. Een vervallen certificaat "
+"blokkeert de indexering van de huur."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__peb_class
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__peb_class
+msgid ""
+"Energy class of the EPC certificate. For leases in force before 14/10/2022, "
+"classes E, F and G reduce the indexed rent with the EPC correction factor."
+msgstr ""
+"Energieklasse van het EPB-certificaat. Voor huurovereenkomsten van kracht "
+"vóór 14/10/2022 verlagen de klassen E, F en G de geïndexeerde huur met de "
+"EPB-correctiefactor."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__unpaid_charges_amount
+msgid ""
+"Filled by Compute Retentions from the open charge invoices of the lease; can"
+" be changed."
+msgstr ""
+"Ingevuld door Inhoudingen berekenen op basis van de openstaande "
+"lastenfacturen van de huurovereenkomst; kan gewijzigd worden."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__unpaid_rent_amount
+msgid ""
+"Filled by Compute Retentions from the open rent invoices of the lease; can "
+"be changed."
+msgstr ""
+"Ingevuld door Inhoudingen berekenen op basis van de openstaande huurfacturen"
+" van de huurovereenkomst; kan gewijzigd worden."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease_rent_line__date_start
+msgid ""
+"First day from which this rent and this provision apply; they apply until "
+"the next line."
+msgstr ""
+"Eerste dag vanaf wanneer deze huur en deze provisie gelden; ze gelden tot de"
+" volgende regel."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_peb_correction_factor__day_from
+msgid "First day of the month covered (October is split on the 14th)."
+msgstr "Eerste dag van de gedekte maand (oktober wordt op de 14e gesplitst)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease_schedule_line__date_from
+msgid ""
+"First day of the month invoiced for this lease (effective date for the first"
+" month)."
+msgstr ""
+"Eerste dag van de gefactureerde maand voor deze huurovereenkomst "
+"(ingangsdatum voor de eerste maand)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__new_index
+msgid "Health index used as new index."
+msgstr "Gezondheidsindex gebruikt als nieuwe index."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__is_housing
+msgid ""
+"Housing lease (all types except commercial and parking): reference rent, EPC"
+" rules and deposit cap apply."
+msgstr ""
+"Woninghuurovereenkomst (alle types behalve handelshuur en parkeerplaats): "
+"referentiehuurprijs, EPB-regels en plafond van de waarborg zijn van "
+"toepassing."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__account_reference
+msgid "IBAN of the blocked account or reference of the guarantee."
+msgstr "IBAN van de geblokkeerde rekening of referentie van de waarborg."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_res_company__regie_charge_account_id
+#: model:ir.model.fields,help:regie_fonciere.field_res_config_settings__regie_charge_account_id
+msgid ""
+"Income account of the charge provisions and of the charge regularisations."
+msgstr ""
+"Opbrengstenrekening van de provisies voor lasten en van de regularisaties "
+"van de lasten."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_res_company__regie_rent_account_id
+#: model:ir.model.fields,help:regie_fonciere.field_res_config_settings__regie_rent_account_id
+msgid "Income account of the rent lines of the invoices."
+msgstr "Opbrengstenrekening van de huurregels van de facturen."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__initial_index
+msgid "Initial index of the lease (month preceding the signature)."
+msgstr "Aanvangsindex van de huurovereenkomst (maand vóór de ondertekening)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__arrears_invoice_id
+msgid ""
+"Invoice of the difference for the months already invoiced since the "
+"effective date."
+msgstr ""
+"Factuur van het verschil voor de maanden die sinds de ingangsdatum al "
+"gefactureerd werden."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_peb_correction_factor__day_to
+msgid "Last day of the month covered."
+msgstr "Laatste dag van de gedekte maand."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease_schedule_line__date_to
+msgid ""
+"Last day of the month invoiced for this lease (move-out date for the last "
+"month)."
+msgstr ""
+"Laatste dag van de gefactureerde maand voor deze huurovereenkomst "
+"(vertrekdatum voor de laatste maand)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__current_lease_id
+msgid ""
+"Lease currently occupying the unit (active, in notice or in litigation)."
+msgstr ""
+"Huurovereenkomst die de eenheid momenteel bezet (actief, in opzeg of in "
+"geschil)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_account_bank_statement_line__regie_lease_id
+#: model:ir.model.fields,help:regie_fonciere.field_account_move__regie_lease_id
+msgid ""
+"Lease invoiced by this document. Rent invoices are linked automatically; set"
+" it on one-off invoices so that they count in the balance of the lease."
+msgstr ""
+"Huurovereenkomst gefactureerd door dit document. Huurfacturen worden "
+"automatisch gekoppeld; vul het in op losse facturen zodat ze meetellen in "
+"het saldo van de huurovereenkomst."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__rent_line_id
+msgid "Line added to the rent history when the indexation is applied."
+msgstr ""
+"Regel toegevoegd aan de huurgeschiedenis wanneer de indexering toegepast "
+"wordt."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_peb_correction_factor__month
+msgid "Month of the anniversary date of the lease (1 to 12)."
+msgstr "Maand van de verjaardatum van de huurovereenkomst (1 tot 12)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__initial_charge_provision
+msgid ""
+"Monthly charge provision (or flat-rate charges) at the signature: first line"
+" of the rent history."
+msgstr ""
+"Maandelijkse provisie voor lasten (of forfaitaire lasten) bij ondertekening:"
+" eerste regel van de huurgeschiedenis."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease_rent_line__charge_provision
+msgid ""
+"Monthly charge provision, or flat-rate charges for leases with flat-rate "
+"charges."
+msgstr ""
+"Maandelijkse provisie voor lasten, of forfaitaire lasten voor "
+"huurovereenkomsten met forfaitaire lasten."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease_rent_line__rent
+msgid "Monthly rent excluding charges."
+msgstr "Maandelijkse huur zonder lasten."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_health_index__value
+msgid "Monthly value of the health index published by Statbel."
+msgstr ""
+"Maandelijkse waarde van de gezondheidsindex gepubliceerd door Statbel."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_building__municipality
+msgid ""
+"Municipality of the Brussels-Capital Region where the building is located."
+msgstr ""
+"Gemeente van het Brussels Hoofdstedelijk Gewest waar het gebouw gelegen is."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__rent_increase
+msgid "New rent minus current rent."
+msgstr "Nieuwe huur min huidige huur."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__cadastral_income
+msgid "Non-indexed cadastral income of the unit."
+msgstr "Niet-geïndexeerd kadastraal inkomen van de eenheid."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__peb_certificate_number
+msgid ""
+"Number of the EPC certificate; without certificate the rent of a dwelling "
+"cannot be indexed."
+msgstr ""
+"Nummer van het EPB-certificaat; zonder certificaat kan de huur van een "
+"woning niet geïndexeerd worden."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_meter__name
+msgid "Number printed on the meter, used to match the readings."
+msgstr "Nummer op de meter, gebruikt om de metingen te koppelen."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__schedule_line_ids
+msgid "One line per invoiced month; a month can never be invoiced twice."
+msgstr ""
+"Eén regel per gefactureerde maand; een maand kan nooit twee keer "
+"gefactureerd worden."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__is_written
+msgid "Only written leases can be indexed."
+msgstr "Alleen schriftelijke huurovereenkomsten kunnen geïndexeerd worden."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__letter_attachment_id
+msgid "PDF letter sent to the tenants, also attached to the lease."
+msgstr ""
+"PDF-brief verzonden naar de huurders, ook gekoppeld aan de huurovereenkomst."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement__total_agency
+msgid ""
+"Part of the costs not recoverable: vacant units, categories not provided by "
+"the leases, flat-rate leases."
+msgstr ""
+"Niet-verhaalbaar deel van de kosten: leegstaande eenheden, categorieën "
+"waarin de huurovereenkomsten niet voorzien, forfaitaire huurovereenkomsten."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__guarantor_ids
+msgid ""
+"Persons standing surety for the tenants (copy of the letters on request)."
+msgstr ""
+"Personen die borg staan voor de huurders (kopie van de brieven op verzoek)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease_schedule_line__invoice_id
+msgid "Posted invoice of this month."
+msgstr "Geboekte factuur van deze maand."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__overdue_invoice_count
+msgid "Posted invoices of the lease not fully paid after their due date."
+msgstr ""
+"Geboekte facturen van de huurovereenkomst die na hun vervaldatum niet "
+"volledig betaald zijn."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__registration_document
+msgid "Proof of registration (scan or PDF)."
+msgstr "Bewijs van registratie (scan of PDF)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__registration_reference
+msgid "Reference given by the registration office."
+msgstr "Referentie gegeven door het registratiekantoor."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement_lease__invoice_id
+msgid "Regularisation invoice (balance due) or credit note (refund)."
+msgstr ""
+"Regularisatiefactuur (verschuldigd saldo) of creditnota (terugbetaling)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement_lease__provision_rent_line_id
+msgid "Rent history line created by Apply Provision."
+msgstr "Regel in de huurgeschiedenis aangemaakt door Provisie toepassen."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__current_rent
+msgid "Rent in force today according to the rent history."
+msgstr "Huur die vandaag van kracht is volgens de huurgeschiedenis."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease_schedule_line__rent_amount
+msgid ""
+"Rent of the month, read in the rent history and prorated on the occupied "
+"days."
+msgstr ""
+"Huur van de maand, gelezen in de huurgeschiedenis en pro rata van de "
+"bewoonde dagen."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__state
+msgid ""
+"Requested → (partially) constituted → release requested at the end of the "
+"lease → released (returned, minus the retentions) or retained (fully kept by"
+" the agency)."
+msgstr ""
+"Aangevraagd → (gedeeltelijk) gesteld → vrijgave aangevraagd op het einde van"
+" de huurovereenkomst → vrijgegeven (terugbetaald, min de inhoudingen) of "
+"ingehouden (volledig behouden door de regie)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__tax_ids
+msgid ""
+"Sales taxes applied to the rent and charges of a commercial lease with the "
+"VAT option."
+msgstr ""
+"Verkoopbelastingen toegepast op de huur en de lasten van een "
+"handelshuurovereenkomst met btw-optie."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement_lease__actual_amount
+msgid ""
+"Share of the actual charges of the year: allocation key × days of "
+"occupation, only for the categories provided by the lease."
+msgstr ""
+"Aandeel in de werkelijke lasten van het jaar: verdeelsleutel × dagen "
+"bewoning, enkel voor de categorieën waarin de huurovereenkomst voorziet."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__lease_state
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__state
+msgid ""
+"Signed leases become active on their effective date and are terminated the "
+"day after the move-out date (daily scheduled action). Rent is invoiced while"
+" active, in notice or in litigation."
+msgstr ""
+"Ondertekende huurovereenkomsten worden actief op hun ingangsdatum en worden "
+"de dag na de vertrekdatum beëindigd (dagelijkse geplande actie). De huur "
+"wordt gefactureerd zolang de huurovereenkomst actief, in opzeg of in geschil"
+" is."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__start_date
+msgid ""
+"Start of the occupation and of the invoicing. Its anniversary is the date of"
+" the yearly indexation."
+msgstr ""
+"Begin van de bewoning en van de facturatie. De verjaardag ervan is de datum "
+"van de jaarlijkse indexering."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement_detail__total_weight
+msgid "Sum of the weights of all the units of the building."
+msgstr "Som van de gewichten van alle eenheden van het gebouw."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__surface
+msgid "Surface used by the charge allocation keys of type Surface."
+msgstr ""
+"Oppervlakte gebruikt door de verdeelsleutels van de lasten van het type "
+"Oppervlakte."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_allocation_key__method
+msgid ""
+"Surface: by unit surface; Shares: by the shares encoded below; Equal Parts: "
+"same amount per unit; Consumption: by the consumption readings of the year."
+msgstr ""
+"Oppervlakte: volgens de oppervlakte van de eenheden; Aandelen: volgens de "
+"hieronder ingevoerde aandelen; Gelijke delen: hetzelfde bedrag per eenheid; "
+"Verbruik: volgens de verbruiksmetingen van het jaar."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__is_registered
+msgid "The lease has a registration date."
+msgstr "De huurovereenkomst heeft een registratiedatum."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_consumption_reading__date_to
+msgid ""
+"The reading counts for the statement of the year in which this date falls."
+msgstr ""
+"De meting telt mee voor de afrekening van het jaar waarin deze datum valt."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_unit__under_works
+msgid ""
+"The unit cannot be rented because of works. Its status is Under Works as "
+"long as no lease occupies it."
+msgstr ""
+"De eenheid kan wegens werken niet verhuurd worden. Haar status is In werken "
+"zolang geen huurovereenkomst ze bezet."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease_schedule_line__state
+msgid ""
+"To Invoice: waiting for the next run of the schedule; Invoiced: the invoice "
+"is posted; Cancelled: the invoice was cancelled (the month is not invoiced "
+"again automatically)."
+msgstr ""
+"Te factureren: wacht op de volgende uitvoering van de planning; "
+"Gefactureerd: de factuur is geboekt; Geannuleerd: de factuur werd "
+"geannuleerd (de maand wordt niet automatisch opnieuw gefactureerd)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__state
+msgid ""
+"To Validate: proposal computed; Validated: approved by a supervisor; Sent: "
+"letter sent to the tenants (written request); Applied: new rent in the rent "
+"history; Refused: no indexation."
+msgstr ""
+"Te valideren: voorstel berekend; Gevalideerd: goedgekeurd door een "
+"verantwoordelijke; Verzonden: brief verzonden naar de huurders (schriftelijk"
+" verzoek); Toegepast: nieuwe huur in de huurgeschiedenis; Geweigerd: geen "
+"indexering."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_deposit__retained_amount
+msgid "Total of the retentions, limited to the constituted amount."
+msgstr "Totaal van de inhoudingen, beperkt tot het gestelde bedrag."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__is_indexable
+msgid ""
+"Uncheck to never index this lease (decision of the agency); no proposal is "
+"created."
+msgstr ""
+"Vink uit om deze huurovereenkomst nooit te indexeren (beslissing van de "
+"regie); er wordt geen voorstel aangemaakt."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__main_unit_id
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__main_unit_id
+msgid ""
+"Unit that determines the building, the EPC rules of the indexation and the "
+"deposit cap."
+msgstr ""
+"Eenheid die het gebouw, de EPB-regels van de indexering en het plafond van "
+"de waarborg bepaalt."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_building__free_unit_count
+msgid "Units of the building that are neither rented nor under works."
+msgstr "Eenheden van het gebouw die niet verhuurd en niet in werken zijn."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_allocation_key_line__shares
+msgid ""
+"Weight of the unit (quotité). Units without share bear no part of these "
+"costs."
+msgstr ""
+"Gewicht van de eenheid (aandeel). Eenheden zonder aandeel dragen geen deel "
+"van deze kosten."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_charge_statement_detail__weight
+msgid ""
+"Weight of the unit for the allocation key (surface, shares, 1 or "
+"consumption)."
+msgstr ""
+"Gewicht van de eenheid voor de verdeelsleutel (oppervlakte, aandelen, 1 of "
+"verbruik)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_indexation__refusal_reason
+msgid "Why the indexation is not applied (kept in the history)."
+msgstr ""
+"Waarom de indexering niet toegepast wordt (bewaard in de geschiedenis)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease_rent_line__reason
+msgid ""
+"Why the rent changed: initial rent, indexation, revision, amendment or "
+"provision adjustment."
+msgstr ""
+"Waarom de huur gewijzigd werd: initiële huur, indexering, herziening, "
+"aanhangsel of aanpassing van de provisie."

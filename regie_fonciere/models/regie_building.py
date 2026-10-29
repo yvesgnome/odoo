@@ -48,7 +48,10 @@ class RegieBuilding(models.Model):
     street2 = fields.Char()
     zip = fields.Char()
     city = fields.Char()
-    municipality = fields.Selection(BRUSSELS_MUNICIPALITIES, tracking=True)
+    municipality = fields.Selection(
+        BRUSSELS_MUNICIPALITIES, tracking=True,
+        help="Municipality of the Brussels-Capital Region where the building is located.",
+    )
     country_id = fields.Many2one('res.country', default=lambda self: self.env.ref('base.be', raise_if_not_found=False))
     construction_year = fields.Integer()
     analytic_account_id = fields.Many2one(
@@ -58,7 +61,10 @@ class RegieBuilding(models.Model):
     )
     unit_ids = fields.One2many('regie.unit', 'building_id', string="Units")
     unit_count = fields.Integer(compute='_compute_unit_stats')
-    free_unit_count = fields.Integer(compute='_compute_unit_stats')
+    free_unit_count = fields.Integer(
+        compute='_compute_unit_stats',
+        help="Units of the building that are neither rented nor under works.",
+    )
     total_surface = fields.Float(compute='_compute_unit_stats', string="Total Surface (m²)")
     notes = fields.Html()
 

@@ -15,8 +15,14 @@ class RegieMeter(models.Model):
         [('water', 'Water'), ('gas', 'Gas'), ('electricity', 'Electricity')],
         string="Type", required=True,
     )
-    name = fields.Char(string="Meter Number", required=True)
-    ean_code = fields.Char(string="EAN Code", help="18-digit EAN code of the delivery point (gas and electricity).")
+    name = fields.Char(
+        string="Meter Number", required=True,
+        help="Number printed on the meter, used to match the readings.",
+    )
+    ean_code = fields.Char(
+        string="EAN Code",
+        help="18-digit EAN code of the delivery point (gas and electricity).",
+    )
     notes = fields.Char()
 
     @api.constrains('ean_code')

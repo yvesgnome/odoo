@@ -15,8 +15,14 @@ class RegieHealthIndex(models.Model):
     )
 
     month = fields.Date(required=True, help="First day of the month of the index.")
-    base_year = fields.Char(required=True, default='2013')
-    value = fields.Float(required=True, digits=(10, 2))
+    base_year = fields.Char(
+        required=True, default='2013',
+        help="Base year of the series (index 100 = average of that year).",
+    )
+    value = fields.Float(
+        required=True, digits=(10, 2),
+        help="Monthly value of the health index published by Statbel.",
+    )
 
     @api.depends('month', 'base_year', 'value')
     def _compute_display_name(self):
@@ -45,11 +51,23 @@ class RegiePebCorrectionFactor(models.Model):
     _description = "EPC Correction Factor"
     _order = 'peb_group, month, day_from'
 
-    peb_group = fields.Selection([('e', 'EPC E'), ('fg', 'EPC F or G')], string="EPC Classes", required=True)
-    month = fields.Integer(string="Anniversary Month", required=True)
-    day_from = fields.Integer(string="From Day", required=True, default=1)
-    day_to = fields.Integer(string="To Day", required=True, default=31)
-    factor = fields.Float(required=True, digits=(12, 9))
+    peb_group = fields.Selection(
+        [('e', 'EPC E'), ('fg', 'EPC F or G')], string="EPC Classes", required=True,
+        help="EPC classes to which the factor applies.",
+    )
+    month = fields.Integer(
+        string="Anniversary Month", required=True,
+        help="Month of the anniversary date of the lease (1 to 12).",
+    )
+    day_from = fields.Integer(
+        string="From Day", required=True, default=1,
+        help="First day of the month covered (October is split on the 14th).",
+    )
+    day_to = fields.Integer(string="To Day", required=True, default=31, help="Last day of the month covered.")
+    factor = fields.Float(
+        required=True, digits=(12, 9),
+        help="Coefficient applied to the indexed rent (art. 224/2 of the Brussels Housing Code).",
+    )
 
     @api.model
     def _get_factor(self, peb_class, anniversary_date):
