@@ -5054,3 +5054,19 @@ msgid ""
 msgstr ""
 "Huur van kracht op %(date)s: %(rent)s, lasten %(charges)s (huurgeschiedenis "
 "sinds %(since)s: %(reason)s)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__current_rent_explanation
+msgid "Current Rent Explanation"
+msgstr "Toelichting bij de huidige huur"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__current_rent_explanation
+msgid "How the current rent was obtained."
+msgstr "Hoe de huidige huur verkregen werd."
+
+#. module: regie_fonciere
+#. odoo-javascript
+#: code:addons/regie_fonciere/static/src/fields/info_tooltip_field.js:0
+msgid "Info Tooltip"
+msgstr "Infoballon"

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="regie_fonciere.InfoTooltipField">
+        <span t-if="this.value" class="o_regie_info_tooltip fa fa-info-circle text-info" role="img"
+              t-att-aria-label="this.value" t-att-data-tooltip="this.value" data-tooltip-position="left"
+              data-tooltip-touch-tap-to-show="true"/>
+    </t>
+
+</templates>

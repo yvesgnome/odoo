@@ -163,6 +163,7 @@ class RegieLease(models.Model):
         help="Rent in force today according to the rent history.",
     )
     current_charge_provision = fields.Monetary(string="Current Charge Provision", compute='_compute_current_rent')
+    current_rent_explanation = fields.Text(compute='_compute_current_rent', help="How the current rent was obtained.")
     charge_mode = fields.Selection(
         [('provisions', 'Provisions'), ('flat', 'Flat Rate')],
         default='provisions', required=True, tracking=True,
@@ -280,6 +281,7 @@ class RegieLease(models.Model):
             line = lease._get_rent_line_at(today) or lease.rent_line_ids.sorted('date_start')[:1]
             lease.current_rent = line.rent
             lease.current_charge_provision = line.charge_provision
+            lease.current_rent_explanation = line.explanation
 
     @api.depends('invoice_ids.state', 'invoice_ids.amount_residual_signed', 'invoice_ids.invoice_date_due')
     def _compute_invoice_stats(self):

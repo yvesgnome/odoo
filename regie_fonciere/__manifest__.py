@@ -52,6 +52,11 @@ factor), rental deposits and recoverable charges statements.
         'demo/regie_deposit_demo.xml',
         'demo/regie_charge_demo.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            'regie_fonciere/static/src/**/*',
+        ],
+    },
     'application': True,
     'installable': True,
 }

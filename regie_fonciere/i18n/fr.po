@@ -5023,3 +5023,19 @@ msgid ""
 msgstr ""
 "Loyer en vigueur au %(date)s : %(rent)s, charges %(charges)s (historique du "
 "loyer depuis le %(since)s : %(reason)s)."
+
+#. module: regie_fonciere
+#: model:ir.model.fields,field_description:regie_fonciere.field_regie_lease__current_rent_explanation
+msgid "Current Rent Explanation"
+msgstr "Explication du loyer actuel"
+
+#. module: regie_fonciere
+#: model:ir.model.fields,help:regie_fonciere.field_regie_lease__current_rent_explanation
+msgid "How the current rent was obtained."
+msgstr "Comment le loyer actuel a été obtenu."
+
+#. module: regie_fonciere
+#. odoo-javascript
+#: code:addons/regie_fonciere/static/src/fields/info_tooltip_field.js:0
+msgid "Info Tooltip"
+msgstr "Infobulle"

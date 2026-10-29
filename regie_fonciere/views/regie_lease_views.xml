@@ -102,7 +102,11 @@
                             <field name="exit_date" invisible="state in ('draft', 'signed')"/>
                         </group>
                         <group string="Rent">
-                            <field name="current_rent"/>
+                            <label for="current_rent"/>
+                            <div class="o_row">
+                                <field name="current_rent"/>
+                                <field name="current_rent_explanation" widget="regie_info_tooltip" nolabel="1"/>
+                            </div>
                             <field name="current_charge_provision"/>
                             <field name="reference_rent" required="is_housing and state != 'draft'"/>
                             <field name="charge_mode"/>
@@ -136,10 +140,10 @@
                                 <list editable="bottom" default_order="date_start desc">
                                     <field name="date_start"/>
                                     <field name="rent"/>
+                                    <field name="explanation" widget="regie_info_tooltip" string=" " width="30px"/>
                                     <field name="charge_provision"/>
                                     <field name="reason"/>
                                     <field name="note" optional="hide"/>
-                                    <field name="explanation" optional="show"/>
                                     <field name="currency_id" column_invisible="1"/>
                                 </list>
                             </field>
@@ -186,8 +190,8 @@
                                     <field name="rent_amount" sum="Total"/>
                                     <field name="charge_amount" sum="Total"/>
                                     <field name="amount_total" sum="Total"/>
+                                    <field name="explanation" widget="regie_info_tooltip" string=" " width="30px"/>
                                     <field name="invoice_id"/>
-                                    <field name="explanation" optional="show"/>
                                     <field name="payment_state" widget="badge" optional="show"
                                            decoration-success="payment_state in ('paid', 'in_payment')"
                                            decoration-danger="payment_state == 'not_paid'"

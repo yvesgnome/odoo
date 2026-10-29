@@ -14,8 +14,8 @@
                 <field name="rent_amount" sum="Total"/>
                 <field name="charge_amount" sum="Total"/>
                 <field name="amount_total" sum="Total"/>
+                <field name="explanation" widget="regie_info_tooltip" string=" " width="30px"/>
                 <field name="invoice_id"/>
-                <field name="explanation" optional="hide"/>
                 <field name="payment_state" widget="badge" optional="show"
                        decoration-success="payment_state in ('paid', 'in_payment')"
                        decoration-danger="payment_state == 'not_paid'"

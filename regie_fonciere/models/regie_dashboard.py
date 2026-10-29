@@ -23,6 +23,11 @@ class RegieDashboard(models.TransientModel):
     deposit_release_count = fields.Integer(string="Deposit Releases in Progress", compute='_compute_figures')
     litigation_lease_count = fields.Integer(string="Leases in Litigation", compute='_compute_figures')
 
+    @api.depends_context('lang')
+    def _compute_display_name(self):
+        for dashboard in self:
+            dashboard.display_name = self.env._("Dashboard")
+
     def _get_unpaid_domain(self, overdue=False):
         domain = [
             ('company_id', '=', self.company_id.id),
